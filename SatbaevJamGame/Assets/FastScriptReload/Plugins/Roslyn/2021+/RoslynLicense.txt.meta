@@ -1,6 +1,5 @@
-﻿fileFormatVersion: 2
+fileFormatVersion: 2
 guid: d7099df6462159544838be814444129f
-timeCreated: 1670158681
 AssetOrigin:
   serializedVersion: 1
   productId: 239351
@@ -8,3 +7,8 @@ AssetOrigin:
   packageVersion: 1.6.1
   assetPath: Assets/FastScriptReload/Plugins/Roslyn/2021+/RoslynLicense.txt
   uploadId: 710802
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

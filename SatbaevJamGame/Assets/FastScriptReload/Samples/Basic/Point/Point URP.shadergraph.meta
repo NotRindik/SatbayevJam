@@ -1,10 +1,5 @@
 fileFormatVersion: 2
 guid: 82beab10442e4ad41a3a39f6ad008ec4
-DefaultImporter:
-  externalObjects: {}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
 AssetOrigin:
   serializedVersion: 1
   productId: 239351
@@ -12,3 +7,11 @@ AssetOrigin:
   packageVersion: 1.6.1
   assetPath: Assets/FastScriptReload/Samples/Basic/Point/Point URP.shadergraph
   uploadId: 710802
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 625f186215c104763be7675aa2d941aa, type: 3}

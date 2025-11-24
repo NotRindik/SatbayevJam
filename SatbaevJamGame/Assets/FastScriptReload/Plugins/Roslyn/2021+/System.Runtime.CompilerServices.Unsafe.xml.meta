@@ -1,10 +1,5 @@
 fileFormatVersion: 2
 guid: 37aa3a1626690b44da6b8799b8f26450
-TextScriptImporter:
-  externalObjects: {}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
 AssetOrigin:
   serializedVersion: 1
   productId: 239351
@@ -12,3 +7,8 @@ AssetOrigin:
   packageVersion: 1.6.1
   assetPath: Assets/FastScriptReload/Plugins/Roslyn/2021+/System.Runtime.CompilerServices.Unsafe.xml
   uploadId: 710802
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

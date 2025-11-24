@@ -1,6 +1,5 @@
-﻿fileFormatVersion: 2
+fileFormatVersion: 2
 guid: 0e9e687bdfc0444395deab1e7c68ed3f
-timeCreated: 1672993042
 AssetOrigin:
   serializedVersion: 1
   productId: 239351
@@ -8,3 +7,12 @@ AssetOrigin:
   packageVersion: 1.6.1
   assetPath: Assets/FastScriptReload/Scripts/Editor/Compilation/CodeRewriting/NewFieldsRewriter.cs
   uploadId: 710802
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

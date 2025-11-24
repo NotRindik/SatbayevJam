@@ -1,10 +1,5 @@
 fileFormatVersion: 2
 guid: 59922c0cd2ffd71478db2dea7fb3fb7a
-TextScriptImporter:
-  externalObjects: {}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
 AssetOrigin:
   serializedVersion: 1
   productId: 239351
@@ -12,3 +7,8 @@ AssetOrigin:
   packageVersion: 1.6.1
   assetPath: Assets/FastScriptReload/Plugins/Harmony/net48/0Harmony.xml
   uploadId: 710802
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

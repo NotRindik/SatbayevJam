@@ -1,10 +1,5 @@
 fileFormatVersion: 2
 guid: e4d31e46efd843644b0ca6010aa753e4
-DefaultImporter:
-  externalObjects: {}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
 AssetOrigin:
   serializedVersion: 1
   productId: 239351
@@ -12,3 +7,8 @@ AssetOrigin:
   packageVersion: 1.6.1
   assetPath: Assets/FastScriptReload/Documentation/documentation.pdf
   uploadId: 710802
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

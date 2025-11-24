@@ -1,6 +1,5 @@
-﻿fileFormatVersion: 2
+fileFormatVersion: 2
 guid: 656785d4ce824de4ac3c58af77fec60d
-timeCreated: 1670158565
 AssetOrigin:
   serializedVersion: 1
   productId: 239351
@@ -8,3 +7,8 @@ AssetOrigin:
   packageVersion: 1.6.1
   assetPath: Assets/FastScriptReload/Plugins/ImmersiveVrToolsCommon/ImmersiveVRToolsCommonLicense.txt
   uploadId: 710802
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
