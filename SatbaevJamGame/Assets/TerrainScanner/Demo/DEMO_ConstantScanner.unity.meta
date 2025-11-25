@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 089ca542be85f6140bf23fd74eabe2a9
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 238456
+  packageName: Terrain Scanner VFX
+  packageVersion: 1.0
+  assetPath: Assets/TerrainScanner/Demo/DEMO_ConstantScanner.unity
+  uploadId: 541307
