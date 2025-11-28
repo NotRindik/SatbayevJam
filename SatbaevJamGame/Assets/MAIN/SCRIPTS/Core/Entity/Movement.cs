@@ -66,7 +66,7 @@ public unsafe class Movement : BaseSystem, IDisposable
     }
 }
 
-public struct MoveComponent : IComponent
+public class MoveComponent : IComponent
 {
     public float speed;
     public Vector3 dir;
