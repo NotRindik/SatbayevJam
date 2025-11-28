@@ -44,6 +44,7 @@ public unsafe class Movement : BaseSystem, IDisposable
     public IEnumerator DashProcess()
     {
         float currTime = dashComponent.time;
+        Vector3 temp = moveComponent.dir;
         while (currTime >= 0)
         {
             _characterController.Move(moveComponent.dir * dashComponent.speed * moveComponent.deltaTime);

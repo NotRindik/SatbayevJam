@@ -13,7 +13,7 @@ public class PlayerUIManager : MonoBehaviour
 
     private void Start()
     {
-        healthChangeAction = h =>
+/*        healthChangeAction = h =>
         {
             hpSlider.DOKill();
             hpSlider.DOValue(h,0.2f).SetEase(Ease.InBounce);
@@ -24,6 +24,6 @@ public class PlayerUIManager : MonoBehaviour
         _hpc.OnCurrHealthDataChanged += healthChangeAction;
 
         hpSlider.maxValue = _hpc.maxHealth;
-        hpSlider.value = _hpc.maxHealth;
+        hpSlider.value = _hpc.maxHealth;*/
     }
 }

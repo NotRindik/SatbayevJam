@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+public class TrailComponent : IComponent
+{
+    public MeshTrail_Script meshTrail;
+}
 public class MeshTrail_Script : MonoBehaviour
 {
     public float activetime = 7f;
@@ -17,20 +20,26 @@ public class MeshTrail_Script : MonoBehaviour
     public Material mat;
     public Transform positionToSpawn;
     public SkinnedMeshRenderer[] skinnedMeshRenderers;
-    public bool dashing = true;
 
     void Start()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Activate()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && !isTrailActive)
+        if (!isTrailActive)
         {
             isTrailActive = true;
             StartCoroutine(ActiveTrail(activetime));
+        }
+    }
+    public void Activate(float time)
+    {
+        if (!isTrailActive)
+        {
+            isTrailActive = true;
+            StartCoroutine(ActiveTrail(time));
         }
     }
 

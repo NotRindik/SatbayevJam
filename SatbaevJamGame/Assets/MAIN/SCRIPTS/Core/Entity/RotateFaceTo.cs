@@ -1,9 +1,12 @@
+using DG.Tweening;
 using Systems;
 using UnityEngine;
 
 public class RotateFaceTo : BaseSystem
 {
     private MoveComponent moveComponent;
+    private Vector3 temp;
+    private Tween rotateTween;
     public override void Initialize(Entity owner)
     {
         base.Initialize(owner);
@@ -18,7 +21,11 @@ public class RotateFaceTo : BaseSystem
 
         if (dir.sqrMagnitude < 0.0001f)
             return;
-
-        owner.transform.rotation = Quaternion.LookRotation(dir, Vector3.up);
+        if (temp != dir)
+        {
+            rotateTween?.Kill();
+            rotateTween = owner.transform.DORotateQuaternion(Quaternion.LookRotation(dir, Vector3.up), 0.1f);
+            temp = dir;
+        }
     }
 }

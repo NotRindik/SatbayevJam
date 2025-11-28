@@ -42,7 +42,7 @@ public class TimeDataManager : MonoBehaviour
     public void Start()
     {
         InputManager.inputActions.Player.Replay.started += replayStart;
-        InputManager.inputActions.Player.Replay.canceled += replayEnd;
+        //InputManager.inputActions.Player.Replay.canceled += replayEnd;
 
         StartCoroutine(std.Utilities.InvokeRepeatedly(() =>
         {
@@ -50,7 +50,7 @@ public class TimeDataManager : MonoBehaviour
                 return;
             for (int i = 0; i < entities.Count; i++)
             {
-                Save(entities[i],new SaveTimeData(entities[i].transform.position, entities[i].Components));
+                Save(entities[i],new SaveTimeData(entities[i].transform.position, entities[i].Components, entities[i].transform.rotation));
             }
         }, saveDelay,1));
     }
@@ -126,23 +126,47 @@ public class TimeDataManager : MonoBehaviour
         List<SaveTimeData> data = saveTimeDatas[ent];
         int count = data.Count;
 
+        float duration = 0.2f;
+
+        // »дЄм с конца к началу
         for (int j = count - 1; j >= 0; j--)
         {
             if (preFinish)
-            {
-                ent.transform.DOKill();
                 break;
+
+            Vector3 startPos = ent.transform.position;
+            Quaternion startRot = ent.transform.rotation;
+
+            Vector3 targetPos = data[j].position;
+            Quaternion targetRot = data[j].rotation;
+
+            float t = 0f;
+
+            // ѕлавна€ интерпол€ци€ руками
+            while (t < duration)
+            {
+                if (preFinish)
+                    break;
+
+                t += Time.unscaledDeltaTime;
+                float lerp = t / duration;
+
+                ent.transform.position = Vector3.Lerp(startPos, targetPos, lerp);
+                ent.transform.rotation = Quaternion.Lerp(startRot, targetRot, lerp);
+
+                yield return null;
             }
-            ent.transform.DOKill();
 
-            float t = 0.2f * Mathf.Lerp(0.1f, 1f, (float)j / (count - 1));
-            ent.transform.DOMove(data[j].position, t);
-
-            yield return new WaitForSeconds(t);
+            // Ќа вс€кий случай Ч зафиксировать точное значение
+            ent.transform.position = targetPos;
+            ent.transform.rotation = targetRot;
+            Debug.Log(ent.name + " Was Moved");
+            // —ледующий кадр истории
         }
 
         finish?.Invoke(ent);
     }
+
 
     private void Save(Entity who,SaveTimeData saveTimeData)
     {
@@ -164,11 +188,13 @@ public class TimeDataManager : MonoBehaviour
 public struct SaveTimeData : IComponent
 {
     public Vector3 position;
+    public Quaternion rotation;
     public List<IComponent> component;
 
-    public SaveTimeData(Vector3 position, List<IComponent> component)
+    public SaveTimeData(Vector3 position, List<IComponent> component,Quaternion rot)
     {
         this.position = position;
+        rotation = rot;
         this.component = new List<IComponent>(component.Count);
         foreach (var c in component)
         {
