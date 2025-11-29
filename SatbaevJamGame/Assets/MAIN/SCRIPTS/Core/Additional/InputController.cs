@@ -29,6 +29,7 @@ public class InputState : IDisposable
     public InputActionState Look = new();
     public InputActionState WeaponWheel = new();
     public InputActionState Attack = new();
+    public InputActionState Shoot = new();
     public InputActionState Interact = new();
     public InputActionState Crouch = new();
     public InputActionState Jump = new();
@@ -138,6 +139,7 @@ public class PlayerSourceInput : IInputProvider, IDisposable
         Bind<Vector2>(inputActions.Player.Look, InputState.Look);
         //Bind<Vector2>(inputActions.Player.WeaponWheel, InputState.WeaponWheel);
         Bind<bool>(inputActions.Player.Attack, InputState.Attack);
+        Bind<bool>(inputActions.Player.Shoot, InputState.Shoot);
         Bind<bool>(inputActions.Player.Interact, InputState.Interact);
         Bind<bool>(inputActions.Player.Crouch, InputState.Crouch);
         Bind<bool>(inputActions.Player.Jump, InputState.Jump);

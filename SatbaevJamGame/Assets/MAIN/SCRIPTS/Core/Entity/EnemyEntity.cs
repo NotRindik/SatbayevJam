@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using Systems;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyEntity : SavingEntity, ReInitAfterRePlay
@@ -10,9 +12,11 @@ public class EnemyEntity : SavingEntity, ReInitAfterRePlay
     private MoveComponent movC;
     private AttackSystem atkSys;
     private HealthComponent healthComponent;
+    private CharacterController chC;
 
     private IInputProvider input;
     private int _combo;
+    int lTemp;
     public override void Start()
     {
         base.Start();
@@ -22,7 +26,7 @@ public class EnemyEntity : SavingEntity, ReInitAfterRePlay
         healthComponent = GetControllerComponent<HealthComponent>();
         movC = GetControllerComponent<MoveComponent>();
         gvS = GetControllerSystem<GravitySystem>();
-
+        lTemp = gameObject.layer;
         input.GetState().Dash.started += c =>
         {
             meshTrail.Activate(0.2f);
@@ -40,6 +44,7 @@ public class EnemyEntity : SavingEntity, ReInitAfterRePlay
                 _combo = 1;
         };
 
+
         animationComponent.CrossFade("Idle", 0);
     }
 
@@ -47,10 +52,6 @@ public class EnemyEntity : SavingEntity, ReInitAfterRePlay
     {
         base.Update();
         AnimSates();
-        /*        if (!gvS.isGround)
-                {
-                    animationComponent.CrossFade("Fall", 0);
-                }*/
     }
 
     private void AnimSates()
@@ -58,7 +59,12 @@ public class EnemyEntity : SavingEntity, ReInitAfterRePlay
         if (healthComponent.currHealth <= 0)
         {
             animationComponent.CrossFade("Death", 0.3f);
+            gameObject.layer = 0;
             return;
+        }
+        else
+        {
+            gameObject.layer = lTemp;
         }
 
         if(atkSys != null) 
