@@ -13,10 +13,14 @@ public class PlayerEntity : SavingEntity
     private AttackSystem atkSys;
     private HealthComponent healthComponent;
     public Pistol pistol;
+    public AudioClip slash;
+    public AudioClip dash;
+    public AudioClip walk;
     public float animationLen;
     private bool shootAble;
     private IInputProvider input;
     private int _combo;
+    
     public override void Start()
     {
         base.Start();
@@ -31,6 +35,8 @@ public class PlayerEntity : SavingEntity
         shootAble = true;
         input.GetState().Dash.started += c =>
         {
+            AudioManager.instance.PlayAudioClip(dash);
+
             meshTrail.Activate(0.2f);
         };
         _combo = 1;
@@ -41,6 +47,7 @@ public class PlayerEntity : SavingEntity
             atkSys.OnAttack();
             
             animationComponent.CrossFade($"Attack{_combo}", 0.1f);
+            AudioManager.instance.PlayAudioClip(slash);
             _combo++;
             if (_combo == 3)
                 _combo = 1;
@@ -96,7 +103,11 @@ public class PlayerEntity : SavingEntity
             return;
         if (movC.dir != Vector3.zero)
         {
-            animationComponent.CrossFade("Walk", 0.3f);
+            if (animationComponent.currentState != "Walk")
+            {
+                animationComponent.CrossFade("Walk", 0.3f);
+                StartCoroutine(std.Utilities.InvokeRepeatedly(()=> AudioManager.instance.PlayAudioClip(walk), 0.3f,() => animationComponent.currentState != "Walk"));
+            }
         }
         else
         {

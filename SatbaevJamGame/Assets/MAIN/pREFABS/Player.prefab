@@ -648,6 +648,9 @@ MonoBehaviour:
       Data: 
   meshTrail: {fileID: 404493141452909694}
   pistol: {fileID: 5343914830086424558}
+  slash: {fileID: 8300000, guid: 9ce0817f69c392943bf0f05686f3cf0c, type: 3}
+  dash: {fileID: 8300000, guid: b5cc542f32e662d41ba78cffd90f206c, type: 3}
+  walk: {fileID: 8300000, guid: 414c48b16d3bf9044801cfb735850e3f, type: 3}
   animationLen: 0.2
 --- !u!136 &74885912604780534
 CapsuleCollider:

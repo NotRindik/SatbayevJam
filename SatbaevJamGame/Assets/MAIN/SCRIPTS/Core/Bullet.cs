@@ -1,12 +1,18 @@
+using DG.Tweening.Core.Easing;
 using Systems;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public AudioClip shot;
+
     public BulletComponent bc;
     private void Start()
     {
-        Destroy(gameObject,bc.lifeTime);
+        AudioManager.instance.PlayAudioClip(shot);
+
+        Destroy(gameObject, bc.lifeTime);
+
     }
     private void Update()
     {
