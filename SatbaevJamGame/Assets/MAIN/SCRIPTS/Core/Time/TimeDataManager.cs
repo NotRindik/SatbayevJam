@@ -177,13 +177,13 @@ public class TimeDataManager : MonoBehaviour, IStopCoroutineSafely
 
                 yield return null;
             }
-/*            ent.Components.Clear();
+            ent.Components.Clear();
             foreach (var c in saveTimeDatas[ent][j].component)
             {
                 ent.Components.Add(c);
             }
             if (ent is ReInitAfterRePlay re)
-                re.ReInit();*/
+                re.ReInit();
 
             ent.transform.position = targetPos;
             ent.transform.rotation = targetRot;

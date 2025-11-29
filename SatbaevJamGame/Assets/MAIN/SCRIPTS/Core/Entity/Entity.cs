@@ -109,7 +109,7 @@ public class Entity : SerializedMonoBehaviour
 
     }
 
-    public virtual void OnDestroy()
+    public void DisposeSystems()
     {
         foreach (var sys in Systems)
         {
@@ -118,6 +118,11 @@ public class Entity : SerializedMonoBehaviour
                 disposable.Dispose();
             }
         }
+    }
+
+    public virtual void OnDestroy()
+    {
+        DisposeSystems();
 
         ReferenceClean();
     }
