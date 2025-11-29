@@ -33,18 +33,6 @@ public class EnemyEntity : SavingEntity, ReInitAfterRePlay
         {
             meshTrail.Activate(0.2f);
         };
-        _combo = 1;
-        input.GetState().Attack.started += c =>
-        {
-            if (!atkSys.canAttack)
-                return;
-            atkSys.OnAttack();
-
-            animationComponent.CrossFade($"Attack{_combo}", 0.1f);
-            _combo++;
-            if (_combo == 3)
-                _combo = 1;
-        };
 
 
         animationComponent.CrossFade("Idle", 0);
@@ -56,7 +44,7 @@ public class EnemyEntity : SavingEntity, ReInitAfterRePlay
         AnimSates();
     }
 
-    private void AnimSates()
+    public virtual void AnimSates()
     {
         if (healthComponent.currHealth <= 0)
         {
@@ -72,9 +60,6 @@ public class EnemyEntity : SavingEntity, ReInitAfterRePlay
             gameObject.layer = lTemp;
         }
 
-        if(atkSys != null) 
-            if (atkSys.isAttacking)
-                return;
         if (movC.dir != Vector3.zero)
         {
             animationComponent.CrossFade("Walk", 0.3f);

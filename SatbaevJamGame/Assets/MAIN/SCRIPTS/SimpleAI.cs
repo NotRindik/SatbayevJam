@@ -6,13 +6,39 @@ using UnityEngine.Windows;
 public class SimpleShooterAI : EnemyEntity
 {
     private ShootData shootData;
+    private bool shootAble;
+    private float animationLen;
     public override void Start()
     {
         base.Start();
         input = GetControllerSystem<SimpleShooter>();
         shootData = GetControllerComponent<ShootData>();
+        shootAble = true;
+        input.GetState().Shoot.performed += c =>
+        {
+            if (shootAble)
+            {
+                shootAble = false;
+                movSys.IsActive = false;
+                animationComponent.CrossFade($"Shoot", 0);
+                StartCoroutine(ShootAnim());
+            }
+        };
     }
-
+    public IEnumerator ShootAnim()
+    {
+        yield return new WaitForSecondsRealtime(0.1f);
+        shootData.pist.Shoot();
+        yield return new WaitForSecondsRealtime(animationLen);
+        shootAble = true;
+        movSys.IsActive = true;
+    }
+    public override void AnimSates()
+    {
+        if (!shootAble)
+            return;
+        base.AnimSates();
+    }
     public override void Update()
     {
         base.Update();
@@ -35,6 +61,7 @@ public class SimpleShooter : BaseInputProvider
     private int nextPatrolPoint;
     private Coroutine loop;
     public ShootData shootData;
+    private bool isFire;
     public override void Initialize(Entity obj)
     {
         base.Initialize(obj);
@@ -55,10 +82,39 @@ public class SimpleShooter : BaseInputProvider
         loop = null;
     }
 
-    public IEnumerator AILoop()
+    public IEnumerator RotationProcess()
     {
         while (true)
         {
+            yield return null;
+            if (!isActive)
+            {
+                yield return null;
+                continue;
+            }
+            if (shootData.Traget == null || (shootData.stopRotWhileFire && isFire))
+                continue;
+            Vector3 dir = shootData.Traget.transform.position - Entity.transform.position;
+            dir.y = 0;
+            InputState.Move.Update<Vector3>(true, Vector3.zero);
+            if (dir.sqrMagnitude > 0.001f)
+            {
+                Quaternion targetRot = Quaternion.LookRotation(dir);
+                Entity.transform.rotation = Quaternion.Slerp(
+                    Entity.transform.rotation,
+                    targetRot,
+                    shootData.rotateSpeed * Time.deltaTime
+                );
+            }
+        }
+    }
+
+    public IEnumerator AILoop()
+    {
+        Entity.StartCoroutine(RotationProcess());
+        while (true)
+        {
+        restart:;
             if (!isActive)
             {
                 yield return null;
@@ -67,20 +123,25 @@ public class SimpleShooter : BaseInputProvider
 
             if (shootData.Traget != null)
             {
-                Vector3 dir = shootData.Traget.transform.position - Entity.transform.position;
-                dir.y = 0;
-                InputState.Move.Update<Vector3>(true, Vector3.zero);
-                if (dir.sqrMagnitude > 0.001f)
-                {
-                    Quaternion targetRot = Quaternion.LookRotation(dir);
-                    Entity.transform.rotation = Quaternion.Slerp(
-                        Entity.transform.rotation,
-                        targetRot,
-                        shootData.rotateSpeed * Time.deltaTime
-                    );
-                }
+                Vector3 dirToTarget = (shootData.Traget.transform.position - Entity.transform.position);
+                dirToTarget.y = 0;
 
-                shootData.pist.Shoot();
+                float dot = Vector3.Dot(Entity.transform.forward, dirToTarget.normalized);
+
+
+                while (dot < 0.5f)
+                {
+                    yield return null;
+                    goto restart;
+                }
+                yield return new WaitForSeconds(shootData.delay);
+                for (int i = 0; i < shootData.shotcount; i++)
+                {
+                    isFire = true;
+                    InputState.Shoot.Update(true, true);
+                    yield return new WaitForSeconds(shootData.delayPerShot);
+                }
+                isFire = false;
             }
             else
             {
@@ -108,8 +169,9 @@ public class ShootData : IComponent
 {
     public GameObject Traget;
     public Collider[] hits = new Collider[10];
-    public float radiusToShoot;
+    public float radiusToShoot,delay,shotcount,delayPerShot;
     public LayerMask TragetLayer;
     public Pistol pist;
     public float rotateSpeed = 2;
+    public bool stopRotWhileFire;
 }
