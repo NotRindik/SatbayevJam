@@ -131,6 +131,9 @@ public class TimeDataManager : MonoBehaviour, IStopCoroutineSafely
                 trails.Remove(e);
             }
             entityReplayProcess.Remove(e);
+            colorAdj.saturation.value = 100;
+
+            AudioManager.instance.StopSoundEffect(reversetime);
         };
         for (int i = 0; i < entities.Count; i++)
         {
@@ -140,9 +143,7 @@ public class TimeDataManager : MonoBehaviour, IStopCoroutineSafely
         yield return new WaitUntil(() => finishes == entities.Count);
 
         _rePlayProcess = null;
-        colorAdj.saturation.value = 100;
-
-        AudioManager.instance.StopSoundEffect(reversetime);
+      
 
         yield return ReplayCoolDown();
     }
