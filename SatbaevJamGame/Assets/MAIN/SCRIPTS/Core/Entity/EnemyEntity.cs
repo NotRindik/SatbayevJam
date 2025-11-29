@@ -6,21 +6,23 @@ using UnityEngine;
 
 public class EnemyEntity : SavingEntity, ReInitAfterRePlay
 {
-    private AnimationComponent animationComponent;
+    protected AnimationComponent animationComponent;
     public MeshTrail_Script meshTrail;
-    private GravitySystem gvS;
-    private MoveComponent movC;
-    private AttackSystem atkSys;
-    private HealthComponent healthComponent;
-    private CharacterController chC;
+    protected GravitySystem gvS;
+    protected MoveComponent movC;
+    protected Movement movSys;
+    protected AttackSystem atkSys;
+    protected HealthComponent healthComponent;
+    protected CharacterController chC;
 
-    private IInputProvider input;
-    private int _combo;
+    protected BaseInputProvider input;
+    protected int _combo;
     int lTemp;
     public override void Start()
     {
         base.Start();
-        input = GetControllerSystem<IInputProvider>();
+        input = GetControllerSystem<BaseInputProvider>();
+        movSys = GetControllerSystem<Movement>();
         atkSys = GetControllerSystem<AttackSystem>();
         animationComponent = GetControllerComponent<AnimationComponent>();
         healthComponent = GetControllerComponent<HealthComponent>();
@@ -60,10 +62,13 @@ public class EnemyEntity : SavingEntity, ReInitAfterRePlay
         {
             animationComponent.CrossFade("Death", 0.3f);
             gameObject.layer = 0;
+            movSys.IsActive = false;
+            input.isActive = false;
             return;
         }
         else
         {
+            input.isActive = true;
             gameObject.layer = lTemp;
         }
 
@@ -90,6 +95,11 @@ public class EnemyEntity : SavingEntity, ReInitAfterRePlay
 public class ShooterAI : IInputProvider
 {
     public InputState inputState;
+
+    public ShooterAI()
+    {
+    }
+
     public InputState GetState() => inputState;
 
     public void Initialize(Entity obj)

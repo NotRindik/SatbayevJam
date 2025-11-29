@@ -1,78 +1,115 @@
+using System.Collections;
 using Systems;
 using UnityEngine;
+using UnityEngine.Windows;
 
-[RequireComponent(typeof(Rigidbody))]
-public class SimpleShooterAI : SavingEntity, ReInitAfterRePlay
+public class SimpleShooterAI : EnemyEntity
 {
-    public float moveSpeed = 3f;         // �������� ��������
-    public float rotationSpeed = 10f;    // �������� ��������
-    public float attackDistance = 5f;    // ��������� �����
-    public float attackCooldown = 1f;    // �����������
-    private HealthComponent healthComponent;
-
-    private Transform player;
-    private Rigidbody rb;
-    private float cooldownTimer = 0f;
-
-    void Start()
+    private ShootData shootData;
+    public override void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        healthComponent = GetControllerComponent<HealthComponent>();
-
-        GameObject p = GameObject.FindGameObjectWithTag("Player");
-        if (p != null)
-            player = p.transform;
+        base.Start();
+        input = GetControllerSystem<SimpleShooter>();
+        shootData = GetControllerComponent<ShootData>();
     }
-    public void ReInit()
+
+    public override void Update()
     {
-        EntitySetup();
-        healthComponent = GetControllerComponent<HealthComponent>();
-    }
-    void FixedUpdate()
-    {
-        if (!player)
-            return;
-
-        cooldownTimer -= Time.fixedDeltaTime;
-
-        Vector3 toPlayer = player.position - transform.position;
-        float distance = toPlayer.magnitude;
-
-        // ������� � ������
-        if (toPlayer != Vector3.zero)
+        base.Update();
+        for (int i = 0; i < shootData.hits.Length; i++)
         {
-            Quaternion targetRot = Quaternion.LookRotation(toPlayer.normalized);
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRot, rotationSpeed * Time.fixedDeltaTime);
+            shootData.hits[i] = null;
         }
-
-        // ���� ������ � ���
-        if (distance > attackDistance)
-        {
-            MoveTowardsPlayer(toPlayer.normalized);
-        }
-        else
-        {
-            rb.linearVelocity = new Vector3(0, rb.linearVelocity.y, 0); // ���������
-            TryShoot();
-        }
+        Physics.OverlapSphereNonAlloc(transform.position, shootData.radiusToShoot,shootData.hits,shootData.TragetLayer);
+        shootData.Traget = shootData.hits[0]?.gameObject;
     }
+}
+public struct PatrolData : IComponent
+{
+    public Transform[] patrolTrack;
+}
 
-    private void MoveTowardsPlayer(Vector3 direction)
+public class SimpleShooter : BaseInputProvider
+{
+    private PatrolData shooterData;
+    private int nextPatrolPoint;
+    private Coroutine loop;
+    public ShootData shootData;
+    public override void Initialize(Entity obj)
     {
-        Vector3 velocity = direction * moveSpeed;
-        velocity.y = rb.linearVelocity.y; // ����� ���������� �������� ���������
-        rb.linearVelocity = velocity;
+        base.Initialize(obj);
+        shootData = obj.GetControllerComponent<ShootData>();
+        shooterData = obj.GetControllerComponent<PatrolData>();
+        nextPatrolPoint = 0;
+        StartLoop();
     }
 
-    private void TryShoot()
+    public void StartLoop()
     {
-        if (cooldownTimer > 0f)
-            return;
-
-        cooldownTimer = attackCooldown;
-
-        // TODO: SHOOT HERE
-        // ����� �� ��������� ���� ��������: Instantiate(����), Raycast, ���� � ��� ������.
-        Debug.Log("AI SHOOTS!");
+        if(loop == null) 
+            loop = Entity.StartCoroutine(AILoop());
     }
+    public void StopLoop()
+    {
+        Entity.StopCoroutine(loop);
+        loop = null;
+    }
+
+    public IEnumerator AILoop()
+    {
+        while (true)
+        {
+            if (!isActive)
+            {
+                yield return null;
+                continue;
+            }
+
+            if (shootData.Traget != null)
+            {
+                Vector3 dir = shootData.Traget.transform.position - Entity.transform.position;
+                dir.y = 0;
+                InputState.Move.Update<Vector3>(true, Vector3.zero);
+                if (dir.sqrMagnitude > 0.001f)
+                {
+                    Quaternion targetRot = Quaternion.LookRotation(dir);
+                    Entity.transform.rotation = Quaternion.Slerp(
+                        Entity.transform.rotation,
+                        targetRot,
+                        shootData.rotateSpeed * Time.deltaTime
+                    );
+                }
+
+                shootData.pist.Shoot();
+            }
+            else
+            {
+                var currTrack = shooterData.patrolTrack[nextPatrolPoint];
+                Vector3 dir = (currTrack.position - Entity.transform.position).normalized;
+                dir.y = 0;
+                InputState.Move.Update<Vector3>(true, dir);
+                Vector3 a = Entity.transform.position;
+                Vector3 b = currTrack.position;
+
+                a.y = 0;
+                b.y = 0;
+
+                if (Vector3.Distance(a, b) < 1)
+                {
+                    nextPatrolPoint = (nextPatrolPoint + 1) % shooterData.patrolTrack.Length;
+                }
+            }
+            yield return null;
+        }
+    }
+}
+
+public class ShootData : IComponent
+{
+    public GameObject Traget;
+    public Collider[] hits = new Collider[10];
+    public float radiusToShoot;
+    public LayerMask TragetLayer;
+    public Pistol pist;
+    public float rotateSpeed = 2;
 }

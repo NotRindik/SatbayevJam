@@ -538,6 +538,37 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 183227314}
   m_SourcePrefab: {fileID: 100100000, guid: 8a6e46806f0b9614c8916a9740e1316a, type: 3}
+--- !u!1 &261532924
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 261532925}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &261532925
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 261532924}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.623, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1313808265}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &294652974 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7081824967882074937, guid: 8a6e46806f0b9614c8916a9740e1316a, type: 3}
@@ -730,29 +761,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 981577012009138523, guid: b9652c667ee8ff54ab860ba5f5f57868, type: 3}
   m_PrefabInstance: {fileID: 1502401605}
   m_PrefabAsset: {fileID: 0}
---- !u!136 &525798560
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 525798559}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2.0056312
-  m_Direction: 1
-  m_Center: {x: 0, y: 1.0134382, z: 0}
 --- !u!114 &525798561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -768,7 +776,11 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 525798563}
+    - {fileID: 1601603816}
+    - {fileID: 740486797}
+    - {fileID: 1313808267}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -779,16 +791,55 @@ MonoBehaviour:
       Data: 0|System.Collections.Generic.List`1[[IComponent, Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
-      Data: 1
+      Data: 6
     - Name: 
       Entry: 7
-      Data: 1|Systems.HealthComponent, Assembly-CSharp
+      Data: 1|GravityComponent, Assembly-CSharp
+    - Name: gravity
+      Entry: 4
+      Data: -9
+    - Name: multiplier
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 2|MoveComponent, Assembly-CSharp
+    - Name: speed
+      Entry: 4
+      Data: 4
+    - Name: dir
+      Entry: 7
+      Data: UnityEngine.Vector3, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: isTimeNotScale
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 3|Systems.HealthComponent, Assembly-CSharp
     - Name: _maxHealth
       Entry: 4
-      Data: 0
+      Data: 1
     - Name: _currHealth
       Entry: 4
-      Data: 0
+      Data: 1
     - Name: OnCurrHealthDataChanged
       Entry: 6
       Data: 
@@ -808,6 +859,114 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
+      Entry: 7
+      Data: 4|Systems.AnimationComponent, Assembly-CSharp
+    - Name: currentState
+      Entry: 6
+      Data: 
+    - Name: animator
+      Entry: 10
+      Data: 0
+    - Name: OnAnimationStateChange
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 5|PatrolData, Assembly-CSharp
+    - Name: patrolTrack
+      Entry: 7
+      Data: 6|UnityEngine.Transform[], UnityEngine.CoreModule
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 10
+      Data: 1
+    - Name: 
+      Entry: 10
+      Data: 2
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 7|ShootData, Assembly-CSharp
+    - Name: Traget
+      Entry: 6
+      Data: 
+    - Name: hits
+      Entry: 7
+      Data: 8|UnityEngine.Collider[], UnityEngine.PhysicsModule
+    - Name: 
+      Entry: 12
+      Data: 10
+    - Name: 
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: radiusToShoot
+      Entry: 4
+      Data: 30
+    - Name: TragetLayer
+      Entry: 7
+      Data: UnityEngine.LayerMask, UnityEngine.CoreModule
+    - Name: 
+      Entry: 3
+      Data: 256
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: pist
+      Entry: 10
+      Data: 3
+    - Name: rotateSpeed
+      Entry: 4
+      Data: 4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
       Entry: 13
       Data: 
     - Name: 
@@ -815,13 +974,85 @@ MonoBehaviour:
       Data: 
     - Name: Systems
       Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[ISystem, Assembly-CSharp]], mscorlib
+      Data: 9|System.Collections.Generic.List`1[[ISystem, Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
-      Data: 1
+      Data: 5
     - Name: 
       Entry: 7
-      Data: 3|Systems.HealthSystem, Assembly-CSharp
+      Data: 10|SimpleShooter, Assembly-CSharp
+    - Name: InputState
+      Entry: 6
+      Data: 
+    - Name: isActive
+      Entry: 5
+      Data: true
+    - Name: shootData
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 11|Movement, Assembly-CSharp
+    - Name: transform
+      Entry: 6
+      Data: 
+    - Name: gameObject
+      Entry: 6
+      Data: 
+    - Name: moveContext
+      Entry: 6
+      Data: 
+    - Name: dashContext
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 12|Systems.HealthSystem, Assembly-CSharp
+    - Name: transform
+      Entry: 6
+      Data: 
+    - Name: gameObject
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 13|GravitySystem, Assembly-CSharp
+    - Name: transform
+      Entry: 6
+      Data: 
+    - Name: gameObject
+      Entry: 6
+      Data: 
+    - Name: gravityComponent
+      Entry: 7
+      Data: GravityComponent, Assembly-CSharp
+    - Name: gravity
+      Entry: 4
+      Data: 0
+    - Name: multiplier
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: isGround
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 14|RotateFaceTo, Assembly-CSharp
     - Name: transform
       Entry: 6
       Data: 
@@ -846,37 +1077,37 @@ MonoBehaviour:
     - Name: OnLateUpdate
       Entry: 6
       Data: 
-  moveSpeed: 3
-  rotationSpeed: 10
-  attackDistance: 5
-  attackCooldown: 1
---- !u!54 &525798562
-Rigidbody:
+  meshTrail: {fileID: 0}
+--- !u!95 &525798563 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4255832107123262043, guid: b9652c667ee8ff54ab860ba5f5f57868, type: 3}
+  m_PrefabInstance: {fileID: 1502401605}
+  m_PrefabAsset: {fileID: 0}
+--- !u!143 &525798565
+CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 525798559}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 36
-  m_CollisionDetection: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2.14
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &536821123
 GameObject:
   m_ObjectHideFlags: 0
@@ -1001,7 +1232,7 @@ GameObject:
   - component: {fileID: 620858768}
   - component: {fileID: 620858771}
   - component: {fileID: 620858770}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1835,6 +2066,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 685905771}
   m_CullTransparentMesh: 1
+--- !u!1 &740486796
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 740486797}
+  m_Layer: 0
+  m_Name: Patrol (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &740486797
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740486796}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.7, y: 1.71, z: 27.67}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &834243460
 GameObject:
   m_ObjectHideFlags: 0
@@ -2539,6 +2801,49 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1313808264 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7731155539152048432, guid: b9652c667ee8ff54ab860ba5f5f57868, type: 3}
+  m_PrefabInstance: {fileID: 1502401605}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1313808265 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 469217119303761715, guid: b9652c667ee8ff54ab860ba5f5f57868, type: 3}
+  m_PrefabInstance: {fileID: 1502401605}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1313808267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1313808264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f659271eb23fb464e86b4df7d9b49e7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shotPos: {fileID: 261532925}
+  ps:
+    delay: 0.6
+    BulletPrefab: {fileID: 3291958365060735898, guid: 2269f1410fcede04f8b4c6ed8397fef1, type: 3}
+    bc:
+      speed: 20
+      lifeTime: 5
+      dir: {x: 0, y: 0, z: 0}
+      DestroyLayer:
+        serializedVersion: 2
+        m_Bits: 119
+      DamageLayer:
+        serializedVersion: 2
+        m_Bits: 256
+      damage:
+        BaseDamage: 1
+        CritChance: 1
+        CritMultiplier: 1
+        Penetration: 1
+  targetPoint: {x: 0, y: 0, z: 0}
+  isPlayer: 0
 --- !u!4 &1348097292 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: afb3ac15a8d4e4f4abf73ac7bf1b179c, type: 3}
@@ -2568,9 +2873,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shotPos: {fileID: 1740325248}
   ps:
-    delay: 0.3
+    delay: 0.2
     BulletPrefab: {fileID: 3291958365060735898, guid: 2269f1410fcede04f8b4c6ed8397fef1, type: 3}
+    bc:
+      speed: 30
+      lifeTime: 10
+      dir: {x: 0, y: 0, z: 0}
+      DestroyLayer:
+        serializedVersion: 2
+        m_Bits: 118
+      DamageLayer:
+        serializedVersion: 2
+        m_Bits: 128
+      damage:
+        BaseDamage: 1
+        CritChance: 1
+        CritMultiplier: 1
+        Penetration: 1
   targetPoint: {x: 0, y: 0, z: 0}
+  isPlayer: 1
 --- !u!1001 &1468217343
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2721,256 +3042,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 981577012009138523, guid: b9652c667ee8ff54ab860ba5f5f57868, type: 3}
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 469217119303761715, guid: b9652c667ee8ff54ab860ba5f5f57868, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 525798562}
+      addedObject: {fileID: 261532925}
+    m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 981577012009138523, guid: b9652c667ee8ff54ab860ba5f5f57868, type: 3}
       insertIndex: -1
       addedObject: {fileID: 525798561}
     - targetCorrespondingSourceObject: {fileID: 981577012009138523, guid: b9652c667ee8ff54ab860ba5f5f57868, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 525798560}
+      addedObject: {fileID: 525798565}
+    - targetCorrespondingSourceObject: {fileID: 7731155539152048432, guid: b9652c667ee8ff54ab860ba5f5f57868, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1313808267}
   m_SourcePrefab: {fileID: 100100000, guid: b9652c667ee8ff54ab860ba5f5f57868, type: 3}
---- !u!1 &1570894313 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 981577012009138523, guid: b9652c667ee8ff54ab860ba5f5f57868, type: 3}
-  m_PrefabInstance: {fileID: 1639231019}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1570894314 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 4255832107123262043, guid: b9652c667ee8ff54ab860ba5f5f57868, type: 3}
-  m_PrefabInstance: {fileID: 1639231019}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1570894316
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1570894313}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f2946408dd9fc44281b1c022a193bdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 1570894314}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: Components
-      Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[IComponent, Assembly-CSharp]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 4
-    - Name: 
-      Entry: 7
-      Data: 1|GravityComponent, Assembly-CSharp
-    - Name: gravity
-      Entry: 4
-      Data: -9
-    - Name: multiplier
-      Entry: 4
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 2|MoveComponent, Assembly-CSharp
-    - Name: speed
-      Entry: 4
-      Data: 4
-    - Name: dir
-      Entry: 7
-      Data: UnityEngine.Vector3, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: isTimeNotScale
-      Entry: 5
-      Data: false
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 3|Systems.HealthComponent, Assembly-CSharp
-    - Name: _maxHealth
-      Entry: 4
-      Data: 1
-    - Name: _currHealth
-      Entry: 4
-      Data: 1
-    - Name: OnCurrHealthDataChanged
-      Entry: 6
-      Data: 
-    - Name: OnMaxHealthDataChanged
-      Entry: 6
-      Data: 
-    - Name: OnTakeHit
-      Entry: 6
-      Data: 
-    - Name: OnDie
-      Entry: 6
-      Data: 
-    - Name: OnHeal
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 4|Systems.AnimationComponent, Assembly-CSharp
-    - Name: currentState
-      Entry: 6
-      Data: 
-    - Name: animator
-      Entry: 10
-      Data: 0
-    - Name: OnAnimationStateChange
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: Systems
-      Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[ISystem, Assembly-CSharp]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 4
-    - Name: 
-      Entry: 7
-      Data: 6|ShooterAI, Assembly-CSharp
-    - Name: inputState
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 7|Movement, Assembly-CSharp
-    - Name: transform
-      Entry: 6
-      Data: 
-    - Name: gameObject
-      Entry: 6
-      Data: 
-    - Name: moveContext
-      Entry: 6
-      Data: 
-    - Name: dashContext
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 8|Systems.HealthSystem, Assembly-CSharp
-    - Name: transform
-      Entry: 6
-      Data: 
-    - Name: gameObject
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 9|GravitySystem, Assembly-CSharp
-    - Name: transform
-      Entry: 6
-      Data: 
-    - Name: gameObject
-      Entry: 6
-      Data: 
-    - Name: gravityComponent
-      Entry: 7
-      Data: GravityComponent, Assembly-CSharp
-    - Name: gravity
-      Entry: 4
-      Data: 0
-    - Name: multiplier
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: isGround
-      Entry: 5
-      Data: false
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: OnUpdate
-      Entry: 6
-      Data: 
-    - Name: OnFixedUpdate
-      Entry: 6
-      Data: 
-    - Name: OnLateUpdate
-      Entry: 6
-      Data: 
-  meshTrail: {fileID: 0}
---- !u!143 &1570894317
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1570894313}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 2.14
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &1578447215
 GameObject:
   m_ObjectHideFlags: 0
@@ -3046,93 +3132,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1578447215}
   m_CullTransparentMesh: 1
---- !u!1001 &1639231019
-PrefabInstance:
+--- !u!1 &1601603815
+GameObject:
   m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1601603816}
+  m_Layer: 0
+  m_Name: Patrol
+  m_TagString: Untagged
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1601603816
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601603815}
   serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 981577012009138523, guid: b9652c667ee8ff54ab860ba5f5f57868, type: 3}
-      propertyPath: m_Name
-      value: Space_Soldier_A_LOD1
-      objectReference: {fileID: 0}
-    - target: {fileID: 981577012009138523, guid: b9652c667ee8ff54ab860ba5f5f57868, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4255832107123262043, guid: b9652c667ee8ff54ab860ba5f5f57868, type: 3}
-      propertyPath: m_ApplyRootMotion
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8538728399747659171, guid: b9652c667ee8ff54ab860ba5f5f57868, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8538728399747659171, guid: b9652c667ee8ff54ab860ba5f5f57868, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8538728399747659171, guid: b9652c667ee8ff54ab860ba5f5f57868, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8538728399747659171, guid: b9652c667ee8ff54ab860ba5f5f57868, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.6565745
-      objectReference: {fileID: 0}
-    - target: {fileID: 8538728399747659171, guid: b9652c667ee8ff54ab860ba5f5f57868, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8538728399747659171, guid: b9652c667ee8ff54ab860ba5f5f57868, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 17.204674
-      objectReference: {fileID: 0}
-    - target: {fileID: 8538728399747659171, guid: b9652c667ee8ff54ab860ba5f5f57868, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8538728399747659171, guid: b9652c667ee8ff54ab860ba5f5f57868, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8538728399747659171, guid: b9652c667ee8ff54ab860ba5f5f57868, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8538728399747659171, guid: b9652c667ee8ff54ab860ba5f5f57868, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8538728399747659171, guid: b9652c667ee8ff54ab860ba5f5f57868, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8538728399747659171, guid: b9652c667ee8ff54ab860ba5f5f57868, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8538728399747659171, guid: b9652c667ee8ff54ab860ba5f5f57868, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8538728399747659171, guid: b9652c667ee8ff54ab860ba5f5f57868, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 981577012009138523, guid: b9652c667ee8ff54ab860ba5f5f57868, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1570894316}
-    - targetCorrespondingSourceObject: {fileID: 981577012009138523, guid: b9652c667ee8ff54ab860ba5f5f57868, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1570894317}
-  m_SourcePrefab: {fileID: 100100000, guid: b9652c667ee8ff54ab860ba5f5f57868, type: 3}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 23.66, y: 1.71, z: 15.02}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1740325247
 GameObject:
   m_ObjectHideFlags: 0
@@ -3828,9 +3858,10 @@ SceneRoots:
   - {fileID: 1176437474}
   - {fileID: 2065651795}
   - {fileID: 2093257944}
-  - {fileID: 1639231019}
   - {fileID: 1502401605}
   - {fileID: 834243464}
   - {fileID: 1305665272}
   - {fileID: 620858769}
   - {fileID: 427745804}
+  - {fileID: 1601603816}
+  - {fileID: 740486797}

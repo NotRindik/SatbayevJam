@@ -6,6 +6,7 @@ public class Pistol : MonoBehaviour
     [SerializeField] PistolComponent ps;
     [SerializeField] public Vector3 targetPoint;
     float lastShootTime;
+    public bool isPlayer;
     public void Shoot()
     {
         if (Time.time < lastShootTime + ps.delay)
@@ -29,8 +30,13 @@ public class Pistol : MonoBehaviour
         }
         targetPoint = new Vector3(targetPoint.x, shotPos.position.y, targetPoint.z);
         Vector3 dir = (targetPoint - shotPos.position).normalized;
-
-        Instantiate(ps.BulletPrefab, shotPos.position, Quaternion.LookRotation(dir));
+        if(isPlayer == false)
+        {
+            dir = (shotPos.position - transform.position ).normalized;
+            dir.y = 0;
+        }
+        var inst = Instantiate(ps.BulletPrefab, shotPos.position, Quaternion.LookRotation(dir));
+        inst.bc = ps.bc;
     }
 
 }
@@ -39,4 +45,5 @@ public struct PistolComponent
 {
     public float delay;
     public  Bullet BulletPrefab;
+    public BulletComponent bc;
 }

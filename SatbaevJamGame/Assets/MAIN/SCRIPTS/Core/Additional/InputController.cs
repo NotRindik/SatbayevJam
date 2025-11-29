@@ -20,6 +20,24 @@ public interface IInputProvider: ISystem, IDisposable
     }
 }
 
+public class BaseInputProvider : IInputProvider
+{
+    public InputState InputState;
+    public InputState GetState() => InputState;
+    protected Entity Entity;
+    public bool isActive = true;
+    public virtual void Initialize(Entity obj)
+    {
+        InputState = new InputState();
+        Entity = obj;
+    }
+
+    void IDisposable.Dispose()
+    {
+        GetState().Dispose();
+    }
+}
+
 public class InputState : IDisposable
 {
     public Dictionary<string, InputActionState> actionState = new();
