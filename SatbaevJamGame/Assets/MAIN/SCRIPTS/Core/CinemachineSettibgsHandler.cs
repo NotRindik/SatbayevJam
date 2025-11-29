@@ -1,16 +1,17 @@
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class CinemachineSettibgsHandler : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    CinemachineCamera cinemachineCamera;
+
+    private void Awake()
     {
-        
+        cinemachineCamera = GetComponent<CinemachineCamera>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ManualUpdate()
     {
-        
+        cinemachineCamera.PreviousStateIsValid = false;
     }
 }

@@ -7,6 +7,7 @@ public class GravitySystem : BaseSystem,IDisposable
     private CharacterController characterController;
     public GravityComponent gravityComponent;
     Vector3 velocity;
+    public bool isGround;
 
     public override void Initialize(Entity owner)
     {
@@ -22,6 +23,7 @@ public class GravitySystem : BaseSystem,IDisposable
         if (characterController.isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
+            isGround = characterController.isGrounded;
         }
     }
 

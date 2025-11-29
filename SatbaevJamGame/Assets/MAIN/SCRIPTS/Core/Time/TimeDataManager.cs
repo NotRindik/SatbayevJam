@@ -4,16 +4,21 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Systems;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class TimeDataManager : MonoBehaviour
+interface IStopCoroutineSafely
+{
+    public void StopCoroutineSafe();
+}
+
+public class TimeDataManager : MonoBehaviour, IStopCoroutineSafely
 {
 
     private static TimeDataManager instance;
     public static TimeDataManager Instance { get { return instance; } set { instance = value; } }
-    public Dictionary<Entity,List<SaveTimeData>> saveTimeDatas = new(100);
+    public Dictionary<Entity,List<SaveTimeData>> saveTimeDatas;
+    public Dictionary<Entity,Coroutine> entityReplayProcess = new(10);
 
     public List<Entity> entities = new List<Entity>();
 
@@ -21,28 +26,33 @@ public class TimeDataManager : MonoBehaviour
     private Coroutine _rePlayProcess;
     private Action<Entity> onFinish;
     public bool isReplay => _rePlayProcess != null;
-    public bool preFinish;
     public float maxTime,timeReplayCooldown;
     Action<InputAction.CallbackContext> replayStart;
     Action<InputAction.CallbackContext> replayEnd;
+    public int maxEntries => (int)Mathf.Ceil(maxTime / saveDelay);
+    private Dictionary<Entity, TimeTrailRenderer> trails = new();
+    public Material trailMaterial;
+    public float trailWidth = 0.1f;
+    private bool canReplay = true;
     private void Awake()
     {
         if (Instance == null)
             Instance = this;
-
+        saveTimeDatas = new(maxEntries);
         replayStart = c =>
         {
             RePlay();
         };
         replayEnd = c =>
         {
-            preFinish = true;
+            if(canReplay)
+                StopCoroutineSafe();
         };
     }
     public void Start()
     {
         InputManager.inputActions.Player.Replay.started += replayStart;
-        //InputManager.inputActions.Player.Replay.canceled += replayEnd;
+        InputManager.inputActions.Player.Replay.canceled += replayEnd;
 
         StartCoroutine(std.Utilities.InvokeRepeatedly(() =>
         {
@@ -57,10 +67,17 @@ public class TimeDataManager : MonoBehaviour
     [Button]
     public void RePlay()
     {
-        if(isReplay == false)
+        if(isReplay == false && canReplay)
         {
             _rePlayProcess = StartCoroutine(RePlaySavesProcess());
         }
+    }
+
+    public IEnumerator ReplayCoolDown()
+    {
+        canReplay = false;
+        yield return new WaitForSeconds(timeReplayCooldown);
+        canReplay = true;
     }
     private IEnumerator RePlaySavesProcess()
     {
@@ -76,7 +93,13 @@ public class TimeDataManager : MonoBehaviour
             var act = entities[i].GetControllerComponent<ReplayActions>();
             act?.OnReplayStart?.Invoke();
         }
-        Coroutine stopTime = null;
+        for (int i = 0; i < entities.Count; i++)
+        {
+            var ent = entities[i];
+            var data = saveTimeDatas[ent];
+            trails[ent] = new TimeTrailRenderer(ent, data, trailMaterial, trailWidth);
+        }
+
         int finishes = 0;
         onFinish = e =>
         {
@@ -92,32 +115,27 @@ public class TimeDataManager : MonoBehaviour
 
             saveTimeDatas[e].Clear();
             finishes++;
-            preFinish = false;
-            if(stopTime != null) 
-                StopCoroutine(stopTime);
-
-            stopTime = null;
+            if (trails.ContainsKey(e))
+            {
+                trails[e].Destroy();
+                trails.Remove(e);
+            }
         };
         for (int i = 0; i < entities.Count; i++)
         {
-            StartCoroutine(EntityPosReplay(entities[i], onFinish));
+            if(!entityReplayProcess.ContainsKey(entities[i])) 
+                entityReplayProcess.Add(entities[i], StartCoroutine(EntityPosReplay(entities[i], onFinish)));
         }
-        stopTime = StartCoroutine(AutoStop());
         yield return new WaitUntil(() => finishes == entities.Count);
 
-        yield return ReplayCoolDown();
-    }
-    
-    public IEnumerator ReplayCoolDown()
-    {
-        yield return new WaitForSeconds(timeReplayCooldown);
         _rePlayProcess = null;
+        yield return ReplayCoolDown();
     }
 
     public IEnumerator AutoStop()
     {
         yield return new WaitForSecondsRealtime(maxTime);
-        preFinish = true;
+        StopCoroutineSafe();
         print("AutoStop");
     }
 
@@ -125,15 +143,16 @@ public class TimeDataManager : MonoBehaviour
     {
         List<SaveTimeData> data = saveTimeDatas[ent];
         int count = data.Count;
-
-        float duration = 0.2f;
+        if (count == 0)
+        {
+            finish?.Invoke(ent);
+            yield break;
+        }
+        float duration = maxTime / (count - 1);
 
         // »дЄм с конца к началу
         for (int j = count - 1; j >= 0; j--)
         {
-            if (preFinish)
-                break;
-
             Vector3 startPos = ent.transform.position;
             Quaternion startRot = ent.transform.rotation;
 
@@ -145,32 +164,35 @@ public class TimeDataManager : MonoBehaviour
             // ѕлавна€ интерпол€ци€ руками
             while (t < duration)
             {
-                if (preFinish)
-                    break;
-
                 t += Time.unscaledDeltaTime;
                 float lerp = t / duration;
 
                 ent.transform.position = Vector3.Lerp(startPos, targetPos, lerp);
                 ent.transform.rotation = Quaternion.Lerp(startRot, targetRot, lerp);
 
+                if (trails.TryGetValue(ent, out var trail))
+                    trail.FollowEntity(ent);
+
                 yield return null;
             }
 
-            // Ќа вс€кий случай Ч зафиксировать точное значение
             ent.transform.position = targetPos;
             ent.transform.rotation = targetRot;
-            Debug.Log(ent.name + " Was Moved");
-            // —ледующий кадр истории
+            ent.transform.DOKill();
+            if (trails.TryGetValue(ent, out var trail2))
+                trail2.FollowEntity(ent);
         }
 
         finish?.Invoke(ent);
     }
-
-
-    private void Save(Entity who,SaveTimeData saveTimeData)
+    void Save(Entity who, SaveTimeData data)
     {
-        saveTimeDatas[who].Add(saveTimeData);
+        var list = saveTimeDatas[who];
+
+        if (list.Count > maxEntries)
+            list.RemoveAt(0);
+
+        list.Add(data);
     }
 
     public void RegisterEntity(Entity entity)
@@ -182,6 +204,26 @@ public class TimeDataManager : MonoBehaviour
     private void OnDestroy()
     {
         Instance = null;
+    }
+
+    public void StopCoroutineSafe()
+    {
+        if (_rePlayProcess != null)
+        {
+            StopCoroutine(_rePlayProcess);
+            _rePlayProcess = null;
+        }
+
+        foreach (var kvp in entityReplayProcess)
+        {
+            if (kvp.Value != null)
+                StopCoroutine(kvp.Value);
+
+            onFinish?.Invoke(kvp.Key);
+        }
+
+        entityReplayProcess.Clear();
+        StartCoroutine(ReplayCoolDown());
     }
 }
 [System.Serializable]
@@ -200,5 +242,46 @@ public struct SaveTimeData : IComponent
         {
             this.component.Add(c); // если есть Clone()
         }
+    }
+}
+
+public class TimeTrailRenderer
+{
+    public LineRenderer line;
+    public Vector3[] points;
+
+    public TimeTrailRenderer(Entity ent, List<SaveTimeData> data, Material mat, float width)
+    {
+        int count = data.Count;
+        points = new Vector3[count];
+
+        for (int i = 0; i < count; i++)
+            points[i] = data[i].position;
+
+        GameObject go = new GameObject("Trail_" + ent.name);
+        line = go.AddComponent<LineRenderer>();
+        line.positionCount = count;
+        line.SetPositions(points);
+        line.material = mat;
+        line.startWidth = line.endWidth = width;
+        line.useWorldSpace = true;
+    }
+    
+    public void FollowEntity(Entity ent)
+    {
+        for (int i = 0; i < points.Length; i++)
+        {
+            if (Vector3.Distance(points[i], ent.transform.position) < 5)
+            {
+                points[i] = ent.transform.position;
+                line.SetPosition(i, points[i]);
+            }
+        }
+    }
+
+    public void Destroy()
+    {
+        if (line)
+            UnityEngine.Object.Destroy(line.gameObject);
     }
 }

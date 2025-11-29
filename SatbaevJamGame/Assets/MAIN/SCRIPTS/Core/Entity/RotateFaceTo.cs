@@ -21,11 +21,14 @@ public class RotateFaceTo : BaseSystem
 
         if (dir.sqrMagnitude < 0.0001f)
             return;
-        if (temp != dir)
-        {
-            rotateTween?.Kill();
-            rotateTween = owner.transform.DORotateQuaternion(Quaternion.LookRotation(dir, Vector3.up), 0.1f);
-            temp = dir;
-        }
+
+        // целевая ротация
+        Quaternion targetRot = Quaternion.LookRotation(dir, Vector3.up);
+
+        // скорость поворота (в градусах в секунду)
+        float speed = 720f;
+
+        owner.transform.rotation =
+            Quaternion.RotateTowards(owner.transform.rotation, targetRot, speed * Time.deltaTime);
     }
 }

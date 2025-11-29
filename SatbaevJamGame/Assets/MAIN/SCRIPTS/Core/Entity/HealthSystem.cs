@@ -13,7 +13,7 @@ namespace Systems
             _healthComponent.OnTakeHit?.Invoke(who);
             if (_healthComponent.currHealth <= 0)
             {
-                _healthComponent?.OnDie.Invoke(who);
+                _healthComponent.OnDie?.Invoke(who);
             }
         }
 
