@@ -63,16 +63,27 @@ public unsafe class Movement : BaseSystem, IDisposable
 
     public void Dispose()
     {
+        provider.GetState().Move.performed -= moveContext;
+        provider.GetState().Move.canceled -= moveContext;
+        provider.GetState().Dash.started -= dashContext;
         owner.OnUpdate -= Update;
     }
 }
-
-public class MoveComponent : IComponent
+public interface NotCopy { }
+public class MoveComponent : IComponent, ICopyable
 {
     public float speed;
     public Vector3 dir;
     public bool isTimeNotScale;
     public float deltaTime => isTimeNotScale ? Time.unscaledDeltaTime : Time.deltaTime;
+
+    public IComponent Copy()
+    {
+        var copy = new MoveComponent();
+        copy.speed = speed;
+        copy.isTimeNotScale = isTimeNotScale;
+        return copy;
+    }
 }
 public struct DashComponent : IComponent
 {

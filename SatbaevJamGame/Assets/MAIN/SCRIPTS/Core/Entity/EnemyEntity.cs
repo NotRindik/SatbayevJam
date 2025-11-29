@@ -87,6 +87,7 @@ public class EnemyEntity : SavingEntity, ReInitAfterRePlay
 
     public void ReInit()
     {
+        DisposeSystems();
         EntitySetup();
         healthComponent = GetControllerComponent<HealthComponent>();
     }
