@@ -4230,8 +4230,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -390.60242, y: 86.833}
-  m_SizeDelta: {x: 378.7951, y: 142}
+  m_AnchoredPosition: {x: -105.66101, y: 86.833}
+  m_SizeDelta: {x: 948.678, y: 142}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &353973080
 CanvasRenderer:
@@ -4262,7 +4262,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 217e8571984ae794fa3110916678243e, type: 3}
     m_FontSize: 55
     m_FontStyle: 0
     m_BestFit: 0
@@ -18873,19 +18873,24 @@ MonoBehaviour:
   portraitUI: {fileID: 1561023795}
   speakerUI: {fileID: 353973081}
   textPrinter: {fileID: 1486783756}
-  lines:
-  - speaker: Knight
-    text: "\u0427\u0451\u0440\u0442 .... \u0433\u043E\u043B\u043E\u0432\u0430...
-      \u041A\u0430\u043A \u044F \u0441\u044E\u0434\u0430\u2026"
-    portrait: {fileID: 21300000, guid: ee88c3e3e842bad4bbf30c4678f02ad3, type: 3}
-  - speaker: Knight
-    text: "   \u042D\u0442\u0438 \u0434\u043E\u0441\u043F\u0435\u0445\u0438... \u041A\u0442\u043E
-      \u0438\u0445 \u043D\u0430 \u043C\u0435\u043D\u044F \u043D\u0430\u0434\u0435\u043B?"
-    portrait: {fileID: 21300000, guid: ee88c3e3e842bad4bbf30c4678f02ad3, type: 3}
-  - speaker: Knight
-    text: " \u041F\u043E\u0445\u043E\u0436\u0435, \u044F \u043E\u043F\u044F\u0442\u044C
-      \u0447\u0442\u043E-\u0442\u043E \u043F\u0440\u043E\u043F\u0443\u0441\u0442\u0438\u043B."
-    portrait: {fileID: 21300000, guid: ee88c3e3e842bad4bbf30c4678f02ad3, type: 3}
+  phases:
+  - phaseName: 1
+    lines:
+    - speaker: Knight
+      text: "Shit .... My head... How did i\u2026"
+      portrait: {fileID: 21300000, guid: ee88c3e3e842bad4bbf30c4678f02ad3, type: 3}
+    - speaker: Knight
+      text: Armor ... Who put it on me?
+      portrait: {fileID: 21300000, guid: ee88c3e3e842bad4bbf30c4678f02ad3, type: 3}
+    - speaker: <Strange Sounds>
+      text: Sounds of gunfight and brawl.
+      portrait: {fileID: 21300000, guid: ee88c3e3e842bad4bbf30c4678f02ad3, type: 3}
+    - speaker: Knight
+      text: 'Looks like i missed the party again.
+
+'
+      portrait: {fileID: 21300000, guid: ee88c3e3e842bad4bbf30c4678f02ad3, type: 3}
+  objectToDisableAfterPhase: {fileID: 327175304}
 --- !u!114 &1386094127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20622,8 +20627,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4f7b1ed8b215c8c4493ae2cff99048ce, type: 2}
+  m_sharedMaterial: {fileID: 101487495333030077, guid: 4f7b1ed8b215c8c4493ae2cff99048ce, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

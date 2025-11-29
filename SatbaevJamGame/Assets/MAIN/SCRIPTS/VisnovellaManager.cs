@@ -30,8 +30,18 @@ public class VisnovellaManager : MonoBehaviour
     private int currentPhaseIndex = -1;
     private int currentLineIndex = 0;
     private Coroutine printRoutine;
+
     [Header("Optional Objects to Disable After Phase")]
     public GameObject objectToDisableAfterPhase;
+
+    // ? Автозапуск первой фазы
+    private void Start()
+    {
+        if (phases != null && phases.Length > 0)
+            StartPhase(0);
+        else
+            Debug.LogWarning("No phases assigned!");
+    }
 
     /// <summary>
     /// Запуск указанной фазы
@@ -46,30 +56,32 @@ public class VisnovellaManager : MonoBehaviour
 
         currentPhaseIndex = phaseIndex;
         currentLineIndex = 0;
-        gameObject.SetActive(true); // включаем UI
+
+        gameObject.SetActive(true);
         ShowCurrentLine();
     }
 
     void ShowCurrentLine()
     {
         var lines = phases[currentPhaseIndex].lines;
-        if (currentLineIndex >= lines.Length)
+
+        if (lines == null || lines.Length == 0)
         {
-            // Фаза закончена
-            gameObject.SetActive(false); // твой основной UI диалога
-            if (objectToDisableAfterPhase != null)
-                objectToDisableAfterPhase.SetActive(false); // отключаем дополнительный объект
-            printRoutine = null;
+            EndPhase();
             return;
         }
 
+        if (currentLineIndex >= lines.Length)
+        {
+            EndPhase();
+            return;
+        }
 
         var line = lines[currentLineIndex];
 
         if (portraitUI != null) portraitUI.sprite = line.portrait;
         if (speakerUI != null) speakerUI.text = line.speaker;
 
-        // Прерываем старую печать, если есть
         if (printRoutine != null)
             StopCoroutine(printRoutine);
 
@@ -80,7 +92,18 @@ public class VisnovellaManager : MonoBehaviour
     {
         textPrinter.Clear();
         textPrinter.Set(text);
+
         yield return new WaitUntil(() => textPrinter.rawText == textPrinter.processedText);
+        printRoutine = null;
+    }
+
+    void EndPhase()
+    {
+        gameObject.SetActive(false);
+
+        if (objectToDisableAfterPhase != null)
+            objectToDisableAfterPhase.SetActive(false);
+
         printRoutine = null;
     }
 
@@ -91,11 +114,10 @@ public class VisnovellaManager : MonoBehaviour
     {
         if (printRoutine != null)
         {
-            // досрочно выводим текст текущей линии
             textPrinter.FinishInstantly();
             StopCoroutine(printRoutine);
             printRoutine = null;
-            return; // нужно второе нажатие для перехода
+            return;
         }
 
         currentLineIndex++;
