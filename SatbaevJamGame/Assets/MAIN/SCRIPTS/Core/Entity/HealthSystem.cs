@@ -91,7 +91,7 @@ namespace Systems
 
 
     [System.Serializable]
-    public class HealthComponent : IComponent
+    public class HealthComponent : IComponent, ICopyable
     {
         [SerializeField] private float _maxHealth;
         [SerializeField] private float _currHealth;
@@ -120,6 +120,19 @@ namespace Systems
         public Action<HitInfo> OnTakeHit;
         public Action<HitInfo> OnDie;
         public Action<float> OnHeal;
+
+        IComponent ICopyable.Copy()
+        {
+            var copy = new HealthComponent();
+            copy.maxHealth = maxHealth;
+            copy.currHealth = currHealth;
+            copy.OnCurrHealthDataChanged = OnCurrHealthDataChanged;
+            copy.OnMaxHealthDataChanged = OnMaxHealthDataChanged;
+            copy.OnTakeHit = OnTakeHit;
+            copy.OnDie = OnDie;
+            copy.OnHeal = OnHeal;
+            return copy;
+        }
     }
 
     public struct Damage : IDamager

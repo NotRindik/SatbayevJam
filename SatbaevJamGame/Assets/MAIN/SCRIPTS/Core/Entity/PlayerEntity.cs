@@ -1,5 +1,4 @@
 using Systems;
-using static UnityEngine.UI.GridLayoutGroup;
 using UnityEngine;
 
 public class PlayerEntity : SavingEntity
@@ -9,6 +8,7 @@ public class PlayerEntity : SavingEntity
     private GravitySystem gvS;
     private MoveComponent movC;
     private AttackSystem atkSys;
+    private HealthComponent healthComponent;
 
     private IInputProvider input;
     private int _combo;
@@ -18,6 +18,7 @@ public class PlayerEntity : SavingEntity
         input = GetControllerSystem<IInputProvider>();
         atkSys = GetControllerSystem<AttackSystem>();
         animationComponent = GetControllerComponent<AnimationComponent>();
+        healthComponent = GetControllerComponent<HealthComponent>();
         movC = GetControllerComponent<MoveComponent>();
         gvS = GetControllerSystem<GravitySystem>();
 
@@ -53,6 +54,11 @@ public class PlayerEntity : SavingEntity
 
     private void AnimSates()
     {
+        if(healthComponent.currHealth <= 0)
+        {
+            animationComponent.CrossFade("Death", 0.3f);
+        }
+
         if (atkSys.isAttacking)
             return;
         if (movC.dir != Vector3.zero)
