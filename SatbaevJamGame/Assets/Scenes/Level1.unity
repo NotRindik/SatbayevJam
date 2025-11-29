@@ -19720,6 +19720,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ___ Managers
       objectReference: {fileID: 0}
+    - target: {fileID: 1381805273518247400, guid: 83fd1740ba91dc446b537c997b7c4a8a, type: 3}
+      propertyPath: reversetime
+      value: 
+      objectReference: {fileID: 8300000, guid: 69903a03bb022de43866ae3276e8eb70, type: 3}
     - target: {fileID: 2156008709649349220, guid: 83fd1740ba91dc446b537c997b7c4a8a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.259857

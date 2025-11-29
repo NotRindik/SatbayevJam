@@ -1,4 +1,5 @@
 using DG.Tweening;
+using DG.Tweening.Core.Easing;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections;
@@ -7,6 +8,8 @@ using System.ComponentModel;
 using Systems;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 interface IStopCoroutineSafely
 {
@@ -15,12 +18,14 @@ interface IStopCoroutineSafely
 
 public class TimeDataManager : MonoBehaviour, IStopCoroutineSafely
 {
+    public Volume volume;
+    public ColorAdjustments colorAdj;
 
     private static TimeDataManager instance;
     public static TimeDataManager Instance { get { return instance; } set { instance = value; } }
     public Dictionary<Entity,List<SaveTimeData>> saveTimeDatas;
     public Dictionary<Entity,Coroutine> entityReplayProcess = new(10);
-
+    public AudioClip reversetime;
     public List<Entity> entities = new List<Entity>();
 
     public float saveDelay = 1;
@@ -54,6 +59,7 @@ public class TimeDataManager : MonoBehaviour, IStopCoroutineSafely
     {
         InputManager.inputActions.Player.Replay.started += replayStart;
         InputManager.inputActions.Player.Replay.canceled += replayEnd;
+        volume.profile.TryGet(out colorAdj);
 
         StartCoroutine(std.Utilities.InvokeRepeatedly(() =>
         {
@@ -82,7 +88,10 @@ public class TimeDataManager : MonoBehaviour, IStopCoroutineSafely
     }
     private IEnumerator RePlaySavesProcess()
     {
-        for(int i = 0;i < entities.Count; i++)
+        AudioManager.instance.PlaySoundEffect(reversetime);
+        colorAdj.saturation.value = -100;
+
+        for (int i = 0;i < entities.Count; i++)
         {
             for (int j = 0; j < entities[i].Systems.Count; j++)
             {
@@ -131,6 +140,10 @@ public class TimeDataManager : MonoBehaviour, IStopCoroutineSafely
         yield return new WaitUntil(() => finishes == entities.Count);
 
         _rePlayProcess = null;
+        colorAdj.saturation.value = 100;
+
+        AudioManager.instance.StopSoundEffect(reversetime);
+
         yield return ReplayCoolDown();
     }
 

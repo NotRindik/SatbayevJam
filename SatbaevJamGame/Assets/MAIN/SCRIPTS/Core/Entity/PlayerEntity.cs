@@ -15,7 +15,7 @@ public class PlayerEntity : SavingEntity
     public Pistol pistol;
     public AudioClip slash;
     public AudioClip dash;
-
+    public AudioClip walk;
     public float animationLen;
     private bool shootAble;
     private IInputProvider input;
@@ -103,7 +103,11 @@ public class PlayerEntity : SavingEntity
             return;
         if (movC.dir != Vector3.zero)
         {
-            animationComponent.CrossFade("Walk", 0.3f);
+            if (animationComponent.currentState != "Walk")
+            {
+                animationComponent.CrossFade("Walk", 0.3f);
+                StartCoroutine(std.Utilities.InvokeRepeatedly(()=> AudioManager.instance.PlayAudioClip(walk), 0.3f,() => animationComponent.currentState != "Walk"));
+            }
         }
         else
         {
