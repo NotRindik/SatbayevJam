@@ -20,6 +20,7 @@ public class TimeDataManager : MonoBehaviour, IStopCoroutineSafely
 {
     public Volume volume;
     public ColorAdjustments colorAdj;
+    public FilmGrain grain;
 
     private static TimeDataManager instance;
     public static TimeDataManager Instance { get { return instance; } set { instance = value; } }
@@ -60,7 +61,7 @@ public class TimeDataManager : MonoBehaviour, IStopCoroutineSafely
         InputManager.inputActions.Player.Replay.started += replayStart;
         InputManager.inputActions.Player.Replay.canceled += replayEnd;
         volume.profile.TryGet(out colorAdj);
-
+        volume.profile.TryGet(out grain);
         StartCoroutine(std.Utilities.InvokeRepeatedly(() =>
         {
             if(isReplay)
@@ -90,7 +91,7 @@ public class TimeDataManager : MonoBehaviour, IStopCoroutineSafely
     {
         AudioManager.instance.PlaySoundEffect(reversetime);
         colorAdj.saturation.value = -100;
-
+        grain.intensity.value = 0.250f;
         for (int i = 0;i < entities.Count; i++)
         {
             for (int j = 0; j < entities[i].Systems.Count; j++)
@@ -132,6 +133,7 @@ public class TimeDataManager : MonoBehaviour, IStopCoroutineSafely
             }
             entityReplayProcess.Remove(e);
             colorAdj.saturation.value = 100;
+            grain.intensity.value = 0;
 
             AudioManager.instance.StopSoundEffect(reversetime);
         };
