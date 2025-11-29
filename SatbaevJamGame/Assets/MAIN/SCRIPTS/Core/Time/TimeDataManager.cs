@@ -3,6 +3,7 @@ using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using Systems;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -120,6 +121,7 @@ public class TimeDataManager : MonoBehaviour, IStopCoroutineSafely
                 trails[e].Destroy();
                 trails.Remove(e);
             }
+            entityReplayProcess.Remove(e);
         };
         for (int i = 0; i < entities.Count; i++)
         {
@@ -175,6 +177,13 @@ public class TimeDataManager : MonoBehaviour, IStopCoroutineSafely
 
                 yield return null;
             }
+            ent.Components.Clear();
+            foreach (var c in saveTimeDatas[ent][j].component)
+            {
+                ent.Components.Add(c);
+            }
+            if (ent is ReInitAfterRePlay re)
+                re.ReInit();
 
             ent.transform.position = targetPos;
             ent.transform.rotation = targetRot;
@@ -214,15 +223,15 @@ public class TimeDataManager : MonoBehaviour, IStopCoroutineSafely
             _rePlayProcess = null;
         }
 
-        foreach (var kvp in entityReplayProcess)
+        var keys = new List<Entity>(entityReplayProcess.Keys);
+
+        foreach (var key in keys)
         {
-            if (kvp.Value != null)
-                StopCoroutine(kvp.Value);
+            if (entityReplayProcess.TryGetValue(key, out var coroutine))
+                StopCoroutine(coroutine);
 
-            onFinish?.Invoke(kvp.Key);
+            onFinish?.Invoke(key);
         }
-
-        entityReplayProcess.Clear();
         StartCoroutine(ReplayCoolDown());
     }
 }
@@ -240,7 +249,10 @@ public struct SaveTimeData : IComponent
         this.component = new List<IComponent>(component.Count);
         foreach (var c in component)
         {
-            this.component.Add(c); // если есть Clone()
+            if (c is ICopyable copyable)
+                this.component.Add(copyable.Copy());
+            else
+                this.component.Add(c);
         }
     }
 }
