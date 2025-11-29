@@ -128,6 +128,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1173297866}
     m_Modifications:
     - target: {fileID: 2014601609957867827, guid: 3f0f4cc067414d14ca02903f131d4886, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2014601609957867827, guid: 3f0f4cc067414d14ca02903f131d4886, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 2f3a12a2eacad744e9f44a066430adeb, type: 2}
@@ -6707,6 +6711,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 327175304}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!65 &471361602
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8982,6 +8998,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1173297866}
     m_Modifications:
     - target: {fileID: 2014601609957867827, guid: 3f0f4cc067414d14ca02903f131d4886, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2014601609957867827, guid: 3f0f4cc067414d14ca02903f131d4886, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: efb101f1204cb65419c010da16e42a2c, type: 2}
@@ -9385,6 +9405,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1173297866}
     m_Modifications:
+    - target: {fileID: 2014601609957867827, guid: 3f0f4cc067414d14ca02903f131d4886, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2014601609957867827, guid: 3f0f4cc067414d14ca02903f131d4886, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -11821,6 +11845,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1173297866}
     m_Modifications:
+    - target: {fileID: 2014601609957867827, guid: 3f0f4cc067414d14ca02903f131d4886, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2014601609957867827, guid: 3f0f4cc067414d14ca02903f131d4886, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -16025,6 +16053,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1173297866}
     m_Modifications:
     - target: {fileID: 2014601609957867827, guid: 3f0f4cc067414d14ca02903f131d4886, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2014601609957867827, guid: 3f0f4cc067414d14ca02903f131d4886, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 2f3a12a2eacad744e9f44a066430adeb, type: 2}
@@ -16296,6 +16328,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1173297866}
     m_Modifications:
+    - target: {fileID: 2014601609957867827, guid: 3f0f4cc067414d14ca02903f131d4886, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2014601609957867827, guid: 3f0f4cc067414d14ca02903f131d4886, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -20188,8 +20224,29 @@ MonoBehaviour:
     - speaker: Knight
       text: ....
       portrait: {fileID: 21300000, guid: ee88c3e3e842bad4bbf30c4678f02ad3, type: 3}
-    - speaker: 
+    - speaker: Knight
       text: You are deadman
+      portrait: {fileID: 21300000, guid: ee88c3e3e842bad4bbf30c4678f02ad3, type: 3}
+    - speaker: 
+      text: 
+      portrait: {fileID: 0}
+    - speaker: 
+      text: 
+      portrait: {fileID: 0}
+  - phaseName: 3
+    lines:
+    - speaker: Boss
+      text: Damn G.O.? Nobody warned us about you. They said grabbing the core would
+        be a walk in the park
+      portrait: {fileID: 0}
+    - speaker: Knight
+      text: 
+      portrait: {fileID: 21300000, guid: ee88c3e3e842bad4bbf30c4678f02ad3, type: 3}
+    - speaker: Boss
+      text: "Forget it \u2014 you\u2019re about to get wiped out."
+      portrait: {fileID: 0}
+    - speaker: Knight
+      text: "We\u2019ll see about that."
       portrait: {fileID: 21300000, guid: ee88c3e3e842bad4bbf30c4678f02ad3, type: 3}
   objectToDisableAfterPhase: {fileID: 327175304}
 --- !u!114 &1386094127
@@ -22698,6 +22755,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1173297866}
     m_Modifications:
+    - target: {fileID: 2014601609957867827, guid: 3f0f4cc067414d14ca02903f131d4886, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2014601609957867827, guid: 3f0f4cc067414d14ca02903f131d4886, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -26302,6 +26363,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1173297866}
     m_Modifications:
     - target: {fileID: 2014601609957867827, guid: 3f0f4cc067414d14ca02903f131d4886, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2014601609957867827, guid: 3f0f4cc067414d14ca02903f131d4886, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 495022f817298a54691908cd3e2c46cc, type: 2}
@@ -28281,6 +28346,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1173297866}
     m_Modifications:
     - target: {fileID: 2014601609957867827, guid: 3f0f4cc067414d14ca02903f131d4886, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2014601609957867827, guid: 3f0f4cc067414d14ca02903f131d4886, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: efb101f1204cb65419c010da16e42a2c, type: 2}
@@ -29106,6 +29175,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1173297866}
     m_Modifications:
     - target: {fileID: 2014601609957867827, guid: 3f0f4cc067414d14ca02903f131d4886, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2014601609957867827, guid: 3f0f4cc067414d14ca02903f131d4886, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 495022f817298a54691908cd3e2c46cc, type: 2}
@@ -29586,6 +29659,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1173297866}
     m_Modifications:
+    - target: {fileID: 2014601609957867827, guid: 3f0f4cc067414d14ca02903f131d4886, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2014601609957867827, guid: 3f0f4cc067414d14ca02903f131d4886, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -30562,6 +30639,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1173297866}
     m_Modifications:
+    - target: {fileID: 2014601609957867827, guid: 3f0f4cc067414d14ca02903f131d4886, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2014601609957867827, guid: 3f0f4cc067414d14ca02903f131d4886, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
