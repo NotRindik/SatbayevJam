@@ -272,6 +272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a557ca547cb72ee4e9bbe6c471e88043, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shot: {fileID: 8300000, guid: 3a3351d91a8b6b44f9d5265b265dab2f, type: 3}
   bc:
     speed: 30
     lifeTime: 10

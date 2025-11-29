@@ -20292,7 +20292,7 @@ MonoBehaviour:
       text: Armor ... Who put it on me?
       portrait: {fileID: 21300000, guid: ee88c3e3e842bad4bbf30c4678f02ad3, type: 3}
     - speaker: 
-      text: Sounds of gunfight and brawl.
+      text: Sounds of gunfight and brawl echoes behind the door.
       portrait: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
     - speaker: Knight
       text: 'Looks like i missed the party again.
