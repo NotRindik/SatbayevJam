@@ -4,10 +4,10 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class SimpleShooterAI : SavingEntity, ReInitAfterRePlay
 {
-    public float moveSpeed = 3f;         // скорость движения
-    public float rotationSpeed = 10f;    // скорость поворота
-    public float attackDistance = 5f;    // дистанция атаки
-    public float attackCooldown = 1f;    // перезарядка
+    public float moveSpeed = 3f;         // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    public float rotationSpeed = 10f;    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    public float attackDistance = 5f;    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+    public float attackCooldown = 1f;    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     private HealthComponent healthComponent;
 
     private Transform player;
@@ -38,21 +38,21 @@ public class SimpleShooterAI : SavingEntity, ReInitAfterRePlay
         Vector3 toPlayer = player.position - transform.position;
         float distance = toPlayer.magnitude;
 
-        // Поворот к игроку
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         if (toPlayer != Vector3.zero)
         {
             Quaternion targetRot = Quaternion.LookRotation(toPlayer.normalized);
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRot, rotationSpeed * Time.fixedDeltaTime);
         }
 
-        // Если далеко — идём
+        // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ
         if (distance > attackDistance)
         {
             MoveTowardsPlayer(toPlayer.normalized);
         }
         else
         {
-            rb.velocity = new Vector3(0, rb.velocity.y, 0); // остановка
+            rb.linearVelocity = new Vector3(0, rb.linearVelocity.y, 0); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             TryShoot();
         }
     }
@@ -60,8 +60,8 @@ public class SimpleShooterAI : SavingEntity, ReInitAfterRePlay
     private void MoveTowardsPlayer(Vector3 direction)
     {
         Vector3 velocity = direction * moveSpeed;
-        velocity.y = rb.velocity.y; // чтобы гравитация работала нормально
-        rb.velocity = velocity;
+        velocity.y = rb.linearVelocity.y; // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+        rb.linearVelocity = velocity;
     }
 
     private void TryShoot()
@@ -72,7 +72,7 @@ public class SimpleShooterAI : SavingEntity, ReInitAfterRePlay
         cooldownTimer = attackCooldown;
 
         // TODO: SHOOT HERE
-        // Здесь ты вызываешь свою стрельбу: Instantiate(пуля), Raycast, урон — что угодно.
+        // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: Instantiate(пїЅпїЅпїЅпїЅ), Raycast, пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
         Debug.Log("AI SHOOTS!");
     }
 }
