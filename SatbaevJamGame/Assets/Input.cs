@@ -85,7 +85,7 @@ public partial class @Input: IInputActionCollection2, IDisposable
                     ""name"": ""Previous"",
                     ""type"": ""Button"",
                     ""id"": ""2776c80d-3c14-4091-8c56-d04ced07a2b0"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -130,6 +130,15 @@ public partial class @Input: IInputActionCollection2, IDisposable
                     ""name"": ""Shoot"",
                     ""type"": ""Button"",
                     ""id"": ""c2e6d0d3-c6df-4cb5-9e16-02f143fcd611"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Entr"",
+                    ""type"": ""Button"",
+                    ""id"": ""07103f0b-9ea1-4583-b2a0-8f99912b1664"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -508,6 +517,17 @@ public partial class @Input: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""417aeaa5-5707-4114-b684-80de40417978"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Entr"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1107,6 +1127,7 @@ public partial class @Input: IInputActionCollection2, IDisposable
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_Replay = m_Player.FindAction("Replay", throwIfNotFound: true);
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
+        m_Player_Entr = m_Player.FindAction("Entr", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1198,6 +1219,7 @@ public partial class @Input: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_Replay;
     private readonly InputAction m_Player_Shoot;
+    private readonly InputAction m_Player_Entr;
     public struct PlayerActions
     {
         private @Input m_Wrapper;
@@ -1214,6 +1236,7 @@ public partial class @Input: IInputActionCollection2, IDisposable
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputAction @Replay => m_Wrapper.m_Player_Replay;
         public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
+        public InputAction @Entr => m_Wrapper.m_Player_Entr;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1259,6 +1282,9 @@ public partial class @Input: IInputActionCollection2, IDisposable
             @Shoot.started += instance.OnShoot;
             @Shoot.performed += instance.OnShoot;
             @Shoot.canceled += instance.OnShoot;
+            @Entr.started += instance.OnEntr;
+            @Entr.performed += instance.OnEntr;
+            @Entr.canceled += instance.OnEntr;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1299,6 +1325,9 @@ public partial class @Input: IInputActionCollection2, IDisposable
             @Shoot.started -= instance.OnShoot;
             @Shoot.performed -= instance.OnShoot;
             @Shoot.canceled -= instance.OnShoot;
+            @Entr.started -= instance.OnEntr;
+            @Entr.performed -= instance.OnEntr;
+            @Entr.canceled -= instance.OnEntr;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1493,6 +1522,7 @@ public partial class @Input: IInputActionCollection2, IDisposable
         void OnDash(InputAction.CallbackContext context);
         void OnReplay(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
+        void OnEntr(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
