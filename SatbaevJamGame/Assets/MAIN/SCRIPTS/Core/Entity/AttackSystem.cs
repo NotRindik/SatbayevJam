@@ -5,7 +5,7 @@ using Systems;
 using Unity.VisualScripting.Antlr3.Runtime.Collections;
 using UnityEngine;
 using UnityEngine.Events;
-
+using UnityEngine.UI;
 public class AttackSystem : BaseSystem, IDisposable
 {
     private AttackComponent attackComponent;
@@ -18,7 +18,8 @@ public class AttackSystem : BaseSystem, IDisposable
     private Collider[] entities = new Collider[10];
     public bool canAttack = true;
     public bool isAttacking => attkProcess != null;
-
+    public PlayerUIManager timor;
+    public AudioClip slash;
     public override void Initialize(Entity owner)
     {
         attackComponent = owner.GetControllerComponent<AttackComponent>();
@@ -92,6 +93,8 @@ public class AttackSystem : BaseSystem, IDisposable
             {
                 Debug.Log(nearestEnemy.gameObject.name);
                 new Damage(attackComponent.damage).ApplyDamage(healthSystem, new HitInfo(owner));
+                AudioManager.instance.PlayAudioClip(slash);
+                timor.AddTime(30);
             }
         }
 

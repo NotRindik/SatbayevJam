@@ -4257,8 +4257,8 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 320208133}
-  m_LocalRotation: {x: 0.38268343, y: -0, z: -0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 0, z: -1176}
+  m_LocalRotation: {x: -0.00000025331974, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 37}
   m_LocalScale: {x: 0.0026999998, y: 0.0027, z: 0.0027}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4267,7 +4267,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -930, y: 408}
+  m_AnchoredPosition: {x: -987, y: 580}
   m_SizeDelta: {x: -0.00024414062, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &320208135
@@ -4514,7 +4514,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 327175304}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4523,7 +4523,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.99993896, y: 3.5}
+  m_AnchoredPosition: {x: 0.9998779, y: 3.5}
   m_SizeDelta: {x: 1912, y: 1075}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &327175306
@@ -4570,7 +4570,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1386094126}
+      - m_Target: {fileID: 910438264}
         m_TargetAssemblyTypeName: VisnovellaManager, Assembly-CSharp
         m_MethodName: AdvanceDialogue
         m_Mode: 1
@@ -6108,8 +6108,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 113422, y: -36833}
-  m_SizeDelta: {x: 628.99, y: 120}
+  m_AnchoredPosition: {x: 179571.95, y: -36833}
+  m_SizeDelta: {x: 1070, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &454326048
 MonoBehaviour:
@@ -6750,7 +6750,7 @@ MonoBehaviour:
   onTriggerEnterEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1386094126}
+      - m_Target: {fileID: 910438264}
         m_TargetAssemblyTypeName: VisnovellaManager, Assembly-CSharp
         m_MethodName: StartPhase
         m_Mode: 3
@@ -12869,6 +12869,7 @@ GameObject:
   - component: {fileID: 910438261}
   - component: {fileID: 910438263}
   - component: {fileID: 910438262}
+  - component: {fileID: 910438264}
   m_Layer: 0
   m_Name: Image
   m_TagString: Untagged
@@ -12936,6 +12937,71 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 910438260}
   m_CullTransparentMesh: 1
+--- !u!114 &910438264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 910438260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3045620aaa2f4e4295f6bb798481368, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  portraitUI: {fileID: 1561023795}
+  speakerUI: {fileID: 353973081}
+  textPrinter: {fileID: 1486783756}
+  phases:
+  - phaseName: 1
+    lines:
+    - speaker: Knight
+      text: "Shit .... My head... How did i\u2026"
+      portrait: {fileID: 21300000, guid: ee88c3e3e842bad4bbf30c4678f02ad3, type: 3}
+    - speaker: Knight
+      text: Armor ... Who put it on me?
+      portrait: {fileID: 21300000, guid: ee88c3e3e842bad4bbf30c4678f02ad3, type: 3}
+    - speaker: 
+      text: Sounds of gunfight and brawl echoes behind the door.
+      portrait: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+    - speaker: Knight
+      text: 'Looks like i missed the party again.
+
+'
+      portrait: {fileID: 21300000, guid: ee88c3e3e842bad4bbf30c4678f02ad3, type: 3}
+  - phaseName: 2
+    lines:
+    - speaker: Knight
+      text: PRIEST!
+      portrait: {fileID: 21300000, guid: ee88c3e3e842bad4bbf30c4678f02ad3, type: 3}
+    - speaker: Knight
+      text: ....
+      portrait: {fileID: 21300000, guid: ee88c3e3e842bad4bbf30c4678f02ad3, type: 3}
+    - speaker: Knight
+      text: You are deadman
+      portrait: {fileID: 21300000, guid: ee88c3e3e842bad4bbf30c4678f02ad3, type: 3}
+    - speaker: 
+      text: 
+      portrait: {fileID: 0}
+    - speaker: 
+      text: 
+      portrait: {fileID: 0}
+  - phaseName: 3
+    lines:
+    - speaker: Boss
+      text: Damn G.O.? Nobody warned us about you. They said grabbing the core would
+        be a walk in the park
+      portrait: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+    - speaker: Knight
+      text: 
+      portrait: {fileID: 21300000, guid: ee88c3e3e842bad4bbf30c4678f02ad3, type: 3}
+    - speaker: Boss
+      text: "Forget it \u2014 you\u2019re about to get wiped out."
+      portrait: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+    - speaker: Knight
+      text: "We\u2019ll see about that."
+      portrait: {fileID: 21300000, guid: ee88c3e3e842bad4bbf30c4678f02ad3, type: 3}
+  objectToDisableAfterPhase: {fileID: 327175304}
 --- !u!1001 &911591019
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20208,7 +20274,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -302.6, y: -1.7}
+  m_AnchoredPosition: {x: -516, y: -1.7}
   m_SizeDelta: {x: 33.44, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1384187280
@@ -20262,6 +20328,7 @@ GameObject:
   - component: {fileID: 1386094128}
   - component: {fileID: 1386094127}
   - component: {fileID: 1386094126}
+  - component: {fileID: 1386094131}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -20276,7 +20343,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1386094125}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a3045620aaa2f4e4295f6bb798481368, type: 3}
   m_Name: 
@@ -20410,8 +20477,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 327175305}
-  - {fileID: 910438261}
   - {fileID: 320208134}
+  - {fileID: 910438261}
   - {fileID: 1938879002}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -20420,6 +20487,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1386094131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386094125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced8a85360ea6e14284b28ee36934469, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entity: {fileID: 1971971839}
+  maxTime: 100
+  startTime: 50
+  timeLossRate: 5
+  TimeSlider: {fileID: 454326048}
 --- !u!1001 &1387048482
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28949,7 +29033,7 @@ PrefabInstance:
       objectReference: {fileID: 4687479352247659502, guid: 091af8c8945fde34c955ada51799214d, type: 3}
     - target: {fileID: 4687479352247659502, guid: 091af8c8945fde34c955ada51799214d, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4687479352247659502, guid: 091af8c8945fde34c955ada51799214d, type: 3}
       propertyPath: 'serializationData.PrefabModifications.Array.data[0]'
@@ -28973,8 +29057,16 @@ PrefabInstance:
         UnityEngine","m_IntArgument":0,"m_FloatArgument":0,"m_StringArgument":"","m_BoolArgument":false},"m_CallState":2}]}}}}'
       objectReference: {fileID: 0}
     - target: {fileID: 4687479352247659502, guid: 091af8c8945fde34c955ada51799214d, type: 3}
+      propertyPath: 'serializationData.PrefabModifications.Array.data[1]'
+      value: '"path":"Systems.[5].slash","value":$eref:3'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687479352247659502, guid: 091af8c8945fde34c955ada51799214d, type: 3}
+      propertyPath: 'serializationData.PrefabModifications.Array.data[2]'
+      value: '"path":"Systems.[5].timor","value":$eref:4'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687479352247659502, guid: 091af8c8945fde34c955ada51799214d, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4687479352247659502, guid: 091af8c8945fde34c955ada51799214d, type: 3}
       propertyPath: 'serializationData.PrefabModificationsReferencedUnityObjects.Array.data[0]'
@@ -28988,6 +29080,14 @@ PrefabInstance:
       propertyPath: 'serializationData.PrefabModificationsReferencedUnityObjects.Array.data[2]'
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4687479352247659502, guid: 091af8c8945fde34c955ada51799214d, type: 3}
+      propertyPath: 'serializationData.PrefabModificationsReferencedUnityObjects.Array.data[3]'
+      value: 
+      objectReference: {fileID: 8300000, guid: ebe140f62172c6b469c56ef1c1bd7ee6, type: 3}
+    - target: {fileID: 4687479352247659502, guid: 091af8c8945fde34c955ada51799214d, type: 3}
+      propertyPath: 'serializationData.PrefabModificationsReferencedUnityObjects.Array.data[4]'
+      value: 
+      objectReference: {fileID: 1386094131}
     - target: {fileID: 5817287578815503174, guid: 091af8c8945fde34c955ada51799214d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.365979
@@ -30415,6 +30515,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6633705336866326792, guid: 262f9d08c1c1f0e4cb854a1452ef57d0, type: 3}
   m_PrefabInstance: {fileID: 1961982318}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1971971839 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4687479352247659502, guid: 091af8c8945fde34c955ada51799214d, type: 3}
+  m_PrefabInstance: {fileID: 1888922812}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82e14111fd0127245b7de9661100643f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1974248738
 PrefabInstance:
   m_ObjectHideFlags: 0

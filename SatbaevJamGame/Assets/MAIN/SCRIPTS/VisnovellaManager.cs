@@ -37,6 +37,10 @@ public class VisnovellaManager : MonoBehaviour
     // ? Автозапуск первой фазы
     private void Start()
     {
+        // Если уже в игре — сразу выходим из новеллы
+        if (PlayerPrefs.GetInt("IsGaming", 0) == 1)
+            return;
+
         if (phases != null && phases.Length > 0)
             StartPhase(0);
         else
