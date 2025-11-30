@@ -166,7 +166,7 @@ MonoBehaviour:
   volume: {fileID: 137140176}
   colorAdj: {fileID: 0}
   grain: {fileID: 0}
-  uIManager: {fileID: 0}
+  uIManager: {fileID: 834243465}
   reversetime: {fileID: 8300000, guid: 69903a03bb022de43866ae3276e8eb70, type: 3}
   entities: []
   saveDelay: 0.1
@@ -1918,6 +1918,7 @@ MonoBehaviour:
   player: {fileID: 0}
   TimeSlider: {fileID: 1030386048}
   currentTime: 0
+  isTimerRunning: 0
   fadeImage: {fileID: 0}
   fadeDuration: 1
 --- !u!1 &954207243
@@ -2548,6 +2549,9 @@ MonoBehaviour:
       DamageLayer:
         serializedVersion: 2
         m_Bits: 128
+      PlayerLayer:
+        serializedVersion: 2
+        m_Bits: 0
       damage:
         BaseDamage: 1
         CritChance: 1

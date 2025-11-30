@@ -51,7 +51,9 @@ public class TimeDataManager : MonoBehaviour, IStopCoroutineSafely
         saveTimeDatas = new(maxEntries);
         replayStart = c =>
         {
-            RePlay();
+            if (!uIManager.isTimerRunning)
+                return;
+          RePlay();
         };
         replayEnd = c =>
         {
@@ -175,6 +177,7 @@ public class TimeDataManager : MonoBehaviour, IStopCoroutineSafely
         if (count == 0)
         {
             finish?.Invoke(ent);
+
             yield break;
         }
         float duration = maxTime / (count - 1);
@@ -189,7 +192,7 @@ public class TimeDataManager : MonoBehaviour, IStopCoroutineSafely
             Quaternion targetRot = data[j].rotation;
 
             float t = 0f;
-
+            uIManager.SpendTime(saveDelay);
             // Плавная интерполяция руками
             while (t < duration)
             {
