@@ -21,4 +21,5 @@ public class MenuMover : MonoBehaviour
     {
         Application.Quit();
     }
+    
 }
