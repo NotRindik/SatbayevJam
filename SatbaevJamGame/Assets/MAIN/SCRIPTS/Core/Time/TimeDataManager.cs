@@ -1,12 +1,9 @@
 using DG.Tweening;
-using DG.Tweening.Core.Easing;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using Systems;
-using UnityEditor.Overlays;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -63,7 +60,7 @@ public class TimeDataManager : MonoBehaviour, IStopCoroutineSafely
         {
 /*            if (!uIManager.isTimerRunning)
                 return;*/
-          RePlay();
+            RePlay();
         };
         replayEnd = c =>
         {

@@ -1,9 +1,6 @@
 using System;
 using System.Collections;
 using Systems;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
-using UnityEditor.Timeline.Actions;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -37,6 +34,7 @@ public class PlayerEntity : SavingEntity, ReInitAfterRePlay
     public UnityEvent onFirstTimeDie;
     public UnityEvent onDoActionFirsTime;
     UnityAction aboba;
+    public Coroutine shootAnim;
     //public GameObject timemana;
     public override void Start()
     {
@@ -85,7 +83,8 @@ public class PlayerEntity : SavingEntity, ReInitAfterRePlay
                 shootAble = false;
                 movSys.IsActive = false;
                 animationComponent.CrossFade($"Shoot", 0);
-                StartCoroutine(ShootAnim());
+                if(shootAnim == null) 
+                    shootAnim = StartCoroutine(ShootAnim());
             }
         };
 
@@ -101,6 +100,8 @@ public class PlayerEntity : SavingEntity, ReInitAfterRePlay
             gameObject.layer = 0;
             movSys.IsActive = false;
             RotateFaceTo.IsActive = false;
+            if(shootAnim != null) 
+                StopCoroutine(shootAnim);
 
             if (PlayerPrefs.GetInt("FirstTimeDie",0) == 0)
             {
@@ -151,6 +152,7 @@ public class PlayerEntity : SavingEntity, ReInitAfterRePlay
         RotateFaceTo.IsActive = true;
         shootAble = true;
         movSys.IsActive = true;
+        shootAnim = null;
     }
   
     private void AnimSates()
@@ -158,6 +160,8 @@ public class PlayerEntity : SavingEntity, ReInitAfterRePlay
 
         if (healthComponent.currHealth <= 0)
         {
+            movSys.IsActive = false;
+            RotateFaceTo.IsActive = false;
             return;
         }
         else
