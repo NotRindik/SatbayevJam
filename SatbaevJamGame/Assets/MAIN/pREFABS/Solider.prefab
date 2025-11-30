@@ -389,6 +389,9 @@ MonoBehaviour:
       DamageLayer:
         serializedVersion: 2
         m_Bits: 256
+      PlayerLayer:
+        serializedVersion: 2
+        m_Bits: 0
       damage:
         BaseDamage: 1
         CritChance: 1
@@ -775,6 +778,15 @@ MonoBehaviour:
     - Name: 
       Entry: 3
       Data: 256
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: WallLayer
+      Entry: 7
+      Data: UnityEngine.LayerMask, UnityEngine.CoreModule
+    - Name: 
+      Entry: 3
+      Data: 64
     - Name: 
       Entry: 8
       Data: 

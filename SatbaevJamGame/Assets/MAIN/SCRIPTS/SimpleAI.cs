@@ -47,8 +47,41 @@ public class SimpleShooterAI : EnemyEntity
         {
             shootData.hits[i] = null;
         }
-        Physics.OverlapSphereNonAlloc(transform.position, shootData.radiusToShoot,shootData.hits,shootData.TragetLayer);
-        shootData.Traget = shootData.hits[0]?.gameObject;
+        Physics.OverlapSphereNonAlloc(
+            transform.position,
+            shootData.radiusToShoot,
+            shootData.hits,
+            shootData.TragetLayer
+        );
+
+        shootData.Traget = null; 
+
+        for (int i = 0; i < shootData.hits.Length; i++)
+        {
+            Collider col = shootData.hits[i];
+            if (col == null) continue;
+
+            Vector3 dir = (col.transform.position - transform.position);
+            float dist = dir.magnitude;
+
+            // RAYCAST: проверяем, кто первый между вами и объектом
+            if (Physics.Raycast(
+                    transform.position,
+                    dir.normalized,
+                    out RaycastHit hit,
+                    dist,
+                    shootData.WallLayer | shootData.TragetLayer)) // маска стен + целей
+            {
+                // если первым попался именно таргет — значит нет стены
+                if (hit.collider == col)
+                {
+                    shootData.Traget = col.gameObject;
+                    break;
+                }
+
+                // если первым попалась стена — пропускаем эту цель
+            }
+        }
     }
 }
 public struct PatrolData : IComponent
@@ -177,7 +210,7 @@ public class ShootData : IComponent
     public GameObject Traget;
     public Collider[] hits = new Collider[10];
     public float radiusToShoot,delay,shotcount,delayPerShot;
-    public LayerMask TragetLayer;
+    public LayerMask TragetLayer,WallLayer;
     public Pistol pist;
     public float rotateSpeed = 2;
     public bool stopRotWhileFire;
