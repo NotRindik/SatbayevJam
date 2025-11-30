@@ -22,7 +22,6 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         int layer = other.gameObject.layer;
-
         if (((1 << layer) & bc.DestroyLayer) != 0)
         {
             Destroy(gameObject);
@@ -36,13 +35,15 @@ public class Bullet : MonoBehaviour
                 var hp = ent.GetControllerSystem<HealthSystem>();
 
                 new Damage(bc.damage).ApplyDamage(hp,new HitInfo(gameObject.transform.position));
+                FindAnyObjectByType<PlayerUIManager>().AddTime(15);
+
             }
             Destroy(gameObject);
         }
     }
 }
 [System.Serializable]
-public struct BulletComponent : IComponent
+public struct   BulletComponent : IComponent
 {
     public float speed;
     public float lifeTime;
