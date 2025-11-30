@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections;
+using Sirenix.OdinInspector;
 
 public class PlayerUIManager : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class PlayerUIManager : MonoBehaviour
     public Slider TimeSlider;
 
     public float currentTime;
-    private bool isTimerRunning = false;
+    public bool isTimerRunning = false;
     public Image fadeImage; // Image, который будет затемняться
     public float fadeDuration = 1f; // Длительность эффекта в секундах
     private void Start()
@@ -53,6 +54,7 @@ public class PlayerUIManager : MonoBehaviour
 
     // --- МЕТОД ЗАПУСКА ТАЙМЕРА ---
 
+    [Button]
     public void StartTimer()
     {
         if (isTimerRunning) return;   // уже работает — не запускаем повторно
