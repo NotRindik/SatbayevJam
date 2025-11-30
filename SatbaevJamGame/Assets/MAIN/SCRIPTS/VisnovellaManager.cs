@@ -1,6 +1,7 @@
-using UnityEngine;
-using UnityEngine.UI;
 using System.Collections;
+using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class VisnovellaManager : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class VisnovellaManager : MonoBehaviour
     {
         public string phaseName;
         public Line[] lines;
+        public UnityEvent onTriggerEnterEvent;
+
     }
 
     [Header("UI Components")]
@@ -39,7 +42,11 @@ public class VisnovellaManager : MonoBehaviour
     {
         // Если уже в игре — сразу выходим из новеллы
         if (PlayerPrefs.GetInt("IsGaming", 0) == 1)
-            return;
+        {
+            portraitUI.gameObject.SetActive(false);
+            speakerUI.gameObject.SetActive(false);
+            textPrinter.gameObject.SetActive(false);
+        }
 
         if (phases != null && phases.Length > 0)
             StartPhase(0);
@@ -103,13 +110,19 @@ public class VisnovellaManager : MonoBehaviour
 
     void EndPhase()
     {
+        // вызываем события фазы, если они есть
+        phases[currentPhaseIndex].onTriggerEnterEvent?.Invoke();
+
+        // отключаем диалог
         gameObject.SetActive(false);
 
+        // выключаем объект если надо
         if (objectToDisableAfterPhase != null)
             objectToDisableAfterPhase.SetActive(false);
 
         printRoutine = null;
     }
+
 
     /// <summary>
     /// Переход к следующей линии

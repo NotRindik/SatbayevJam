@@ -1,5 +1,6 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerUIManager : MonoBehaviour
@@ -15,17 +16,24 @@ public class PlayerUIManager : MonoBehaviour
     public Slider TimeSlider;
 
     private float currentTime;
+    private bool isTimerRunning = false;
 
     private void Start()
     {
-        currentTime = startTime;
+        if (PlayerPrefs.GetInt("IsGaming", 0) == 0)
+        {
+            currentTime = startTime;
 
-        TimeSlider.maxValue = maxTime;
-        TimeSlider.value = currentTime;
+            TimeSlider.maxValue = maxTime;
+            TimeSlider.value = currentTime;
+            StartTimer();
+        }
     }
 
     private void Update()
     {
+        if (!isTimerRunning) return; // таймер выключен ? не считаем
+
         // Постоянная потеря времени (управляемая)
         currentTime -= timeLossRate * Time.deltaTime;
 
@@ -39,6 +47,21 @@ public class PlayerUIManager : MonoBehaviour
         {
             OnTimeOut();
         }
+    }
+
+    // --- МЕТОД ЗАПУСКА ТАЙМЕРА ---
+
+    public void StartTimer()
+    {
+        if (isTimerRunning) return;   // уже работает — не запускаем повторно
+
+        isTimerRunning = true;
+        currentTime = startTime;
+
+        TimeSlider.maxValue = maxTime;
+        TimeSlider.value = currentTime;
+
+        Debug.Log("Timer started!");
     }
 
     // --- Методы изменения времени вручную ---
@@ -57,18 +80,12 @@ public class PlayerUIManager : MonoBehaviour
 
     // --- Методы изменения скорости потери времени ---
 
-    /// <summary>
-    /// Изменяет скорость постоянной потери времени (положительное = быстрее убывает).
-    /// </summary>
     public void ModifyTimeLossRate(float amount)
     {
         timeLossRate += amount;
-        timeLossRate = Mathf.Max(0f, timeLossRate); // Чтобы не ушло в отрицательное
+        timeLossRate = Mathf.Max(0f, timeLossRate);
     }
 
-    /// <summary>
-    /// Устанавливает конкретную скорость убывания.
-    /// </summary>
     public void SetTimeLossRate(float newRate)
     {
         timeLossRate = Mathf.Max(0f, newRate);
@@ -77,6 +94,12 @@ public class PlayerUIManager : MonoBehaviour
     private void OnTimeOut()
     {
         Debug.Log("TIME IS OVER!");
-        // сюда вставишь смерть или переход в меню
+
+        // Фиксируем, что игрок теперь "в игре"
+        PlayerPrefs.SetInt("IsGaming", 1);
+        PlayerPrefs.Save();
+
+        // Перезагружаем текущую сцену
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
