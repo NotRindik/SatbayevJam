@@ -8304,15 +8304,10 @@ PrefabInstance:
       objectReference: {fileID: 4687479352247659502, guid: 091af8c8945fde34c955ada51799214d, type: 3}
     - target: {fileID: 4687479352247659502, guid: 091af8c8945fde34c955ada51799214d, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4687479352247659502, guid: 091af8c8945fde34c955ada51799214d, type: 3}
       propertyPath: 'serializationData.PrefabModifications.Array.data[0]'
-      value: '"path":"Components.[3]._maxHealth","value":{"$id":0,"$type":"System.Single,
-        mscorlib",100}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 4687479352247659502, guid: 091af8c8945fde34c955ada51799214d, type: 3}
-      propertyPath: 'serializationData.PrefabModifications.Array.data[1]'
       value: '"path":"Components.[6]","value":{"$id":0,"$type":"AttackComponent,
         Assembly-CSharp","attackRange":5,"timeBefHit":1.3,"delay":0.3,"dashDist":3,"damage":{"$type":"Systems.DamageComponent,
         Assembly-CSharp","BaseDamage":1,"CritChance":0.2,"CritMultiplier":2,"Penetration":12},"layerMask":{"$type":"UnityEngine.LayerMask,
@@ -8333,11 +8328,11 @@ PrefabInstance:
         UnityEngine","m_IntArgument":0,"m_FloatArgument":0,"m_StringArgument":"","m_BoolArgument":false},"m_CallState":2}]}}}}'
       objectReference: {fileID: 0}
     - target: {fileID: 4687479352247659502, guid: 091af8c8945fde34c955ada51799214d, type: 3}
-      propertyPath: 'serializationData.PrefabModifications.Array.data[2]'
+      propertyPath: 'serializationData.PrefabModifications.Array.data[1]'
       value: '"path":"Systems.[5].slash","value":$eref:3'
       objectReference: {fileID: 0}
     - target: {fileID: 4687479352247659502, guid: 091af8c8945fde34c955ada51799214d, type: 3}
-      propertyPath: 'serializationData.PrefabModifications.Array.data[3]'
+      propertyPath: 'serializationData.PrefabModifications.Array.data[2]'
       value: '"path":"Systems.[5].timor","value":$eref:4'
       objectReference: {fileID: 0}
     - target: {fileID: 4687479352247659502, guid: 091af8c8945fde34c955ada51799214d, type: 3}
