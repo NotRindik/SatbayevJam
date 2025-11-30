@@ -13,7 +13,7 @@ public class AudioTrack
     public GameObject root => source.gameObject;
 
     private AudioChannel channel;
-    private AudioSource source;
+    public AudioSource source;
 
     public bool loop => source.loop;
     public float volumeCap { get; private set;}

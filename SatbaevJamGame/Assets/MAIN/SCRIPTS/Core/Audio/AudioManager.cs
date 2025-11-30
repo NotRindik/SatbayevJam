@@ -11,7 +11,7 @@ public class AudioManager : MonoBehaviour
     public const float TRACK_TRANSITION_SPEED = 1f;
     public static AudioManager instance { get; private set; }
 
-    private Dictionary<int, AudioChannel> _channels = new Dictionary<int, AudioChannel>();
+    public Dictionary<int, AudioChannel> _channels = new Dictionary<int, AudioChannel>();
     private List<AudioSource> _soundEffects = new List<AudioSource>();
 
     public AudioMixerGroup musicMixer;

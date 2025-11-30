@@ -15,6 +15,8 @@ public class Entity : SerializedMonoBehaviour
     [HideInInspector] public Action OnLateUpdate;
     [HideInInspector] public event Action OnGizmosUpdate;
 
+   
+
     protected virtual void OnValidate() { }
     protected virtual void OnDrawGizmos()
     {
