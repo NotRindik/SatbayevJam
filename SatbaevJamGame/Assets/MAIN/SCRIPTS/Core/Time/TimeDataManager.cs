@@ -48,6 +48,10 @@ public class TimeDataManager : MonoBehaviour, IStopCoroutineSafely
     {
         if (Instance == null)
             Instance = this;
+        else
+        {
+            Instance = this;
+        }
         saveTimeDatas = new(maxEntries);
         replayStart = c =>
         {
@@ -224,6 +228,17 @@ public class TimeDataManager : MonoBehaviour, IStopCoroutineSafely
 
         finish?.Invoke(ent);
     }
+    private void OnDestroy()
+    {
+        if (InputManager.inputActions != null)
+        {
+            InputManager.inputActions.Player.Replay.started -= replayStart;
+            InputManager.inputActions.Player.Replay.canceled -= replayEnd;
+        }
+
+        Instance = null;
+    }
+
     void Save(Entity who, SaveTimeData data)
     {
         var list = saveTimeDatas[who];
@@ -240,13 +255,10 @@ public class TimeDataManager : MonoBehaviour, IStopCoroutineSafely
         saveTimeDatas.Add(entity,new List<SaveTimeData>());
     }
 
-    private void OnDestroy()
-    {
-        Instance = null;
-    }
-
     public void StopCoroutineSafe()
     {
+        if (this == null) return;
+
         if (_rePlayProcess != null)
         {
             StopCoroutine(_rePlayProcess);

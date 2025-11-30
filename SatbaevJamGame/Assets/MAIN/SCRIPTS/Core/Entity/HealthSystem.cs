@@ -9,6 +9,8 @@ namespace Systems
 
         public void TakeHit(HitInfo who)
         {
+            if(!IsActive)
+                return;
             _healthComponent.currHealth -= who.dmg;
             _healthComponent.OnTakeHit?.Invoke(who);
             if (_healthComponent.currHealth <= 0)

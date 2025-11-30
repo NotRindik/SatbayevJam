@@ -47,6 +47,7 @@ public class VisnovellaManager : MonoBehaviour
             speakerUI.gameObject.SetActive(false);
             textPrinter.gameObject.SetActive(false);
         }
+        InputManager.inputActions.Player.Jump.performed += c => AdvanceDialogue();
 
         if (phases != null && phases.Length > 0)
             StartPhase(0);
@@ -129,6 +130,7 @@ public class VisnovellaManager : MonoBehaviour
     /// </summary>
     public void AdvanceDialogue()
     {
+        Debug.Log("ABOBA");
         if (printRoutine != null)
         {
             textPrinter.FinishInstantly();

@@ -47,7 +47,7 @@ public class SimpleShooterAI : EnemyEntity
         {
             shootData.hits[i] = null;
         }
-        Physics.OverlapSphereNonAlloc(
+        int hits = Physics.OverlapSphereNonAlloc(
             transform.position,
             shootData.radiusToShoot,
             shootData.hits,
@@ -56,30 +56,18 @@ public class SimpleShooterAI : EnemyEntity
 
         shootData.Traget = null; 
 
-        for (int i = 0; i < shootData.hits.Length; i++)
+        for (int i = 0; i < hits; i++)
         {
             Collider col = shootData.hits[i];
             if (col == null) continue;
 
-            Vector3 dir = (col.transform.position - transform.position);
-            float dist = dir.magnitude;
 
-            // RAYCAST: проверяем, кто первый между вами и объектом
-            if (Physics.Raycast(
+            if (!Physics.Linecast(
                     transform.position,
-                    dir.normalized,
-                    out RaycastHit hit,
-                    dist,
-                    shootData.WallLayer | shootData.TragetLayer)) // маска стен + целей
+                    col.transform.position,
+                    shootData.WallLayer)) // маска стен + целей
             {
-                // если первым попался именно таргет — значит нет стены
-                if (hit.collider == col)
-                {
-                    shootData.Traget = col.gameObject;
-                    break;
-                }
-
-                // если первым попалась стена — пропускаем эту цель
+                shootData.Traget = col.gameObject;
             }
         }
     }
@@ -95,11 +83,13 @@ public class SimpleShooter : BaseInputProvider
     private int nextPatrolPoint;
     private Coroutine loop,rotate;
     public ShootData shootData;
+    public HealthComponent healthComponent;
     private bool isFire;
     public override void Initialize(Entity obj)
     {
         base.Initialize(obj);
         shootData = obj.GetControllerComponent<ShootData>();
+        healthComponent = obj.GetControllerComponent<HealthComponent>();
         shooterData = obj.GetControllerComponent<PatrolData>();
         nextPatrolPoint = 0;
         StartLoop();
@@ -176,8 +166,12 @@ public class SimpleShooter : BaseInputProvider
                     goto restart;
                 }
                 yield return new WaitForSeconds(shootData.delay);
+                if (healthComponent.currHealth <= 0)
+                    continue;
                 for (int i = 0; i < shootData.shotcount; i++)
                 {
+                    if (healthComponent.currHealth <= 0)
+                        continue;
                     isFire = true;
                     InputState.Shoot.Update(true, true);
                     yield return new WaitForSeconds(shootData.delayPerShot);

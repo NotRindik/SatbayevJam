@@ -1,8 +1,9 @@
 using System.Collections;
 using Systems;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerEntity : SavingEntity
+public class PlayerEntity : SavingEntity, ReInitAfterRePlay
 {
     private AnimationComponent animationComponent;
     public MeshTrail_Script meshTrail;
@@ -12,6 +13,7 @@ public class PlayerEntity : SavingEntity
     private RotateFaceTo RotateFaceTo;
     private AttackSystem atkSys;
     private HealthComponent healthComponent;
+    private HealthSystem hsSys;
     public Pistol pistol;
     public AudioClip slash;
     public AudioClip dash;
@@ -21,21 +23,28 @@ public class PlayerEntity : SavingEntity
     private IInputProvider input;
     private int _combo;
     public float dashtimeconsume = 15f;
+
+    public bool Died;
+    public LayerMask tempLayer;
     //public GameObject timemana;
     public override void Start()
     {
         base.Start();
         input = GetControllerSystem<IInputProvider>();
+        hsSys = GetControllerSystem<HealthSystem>();
         atkSys = GetControllerSystem<AttackSystem>();
         RotateFaceTo = GetControllerSystem<RotateFaceTo>();
         movSys = GetControllerSystem<Movement>();
         animationComponent = GetControllerComponent<AnimationComponent>();
         healthComponent = GetControllerComponent<HealthComponent>();
         movC = GetControllerComponent<MoveComponent>();
+        tempLayer = gameObject.layer;
         gvS = GetControllerSystem<GravitySystem>();
         shootAble = true;
         input.GetState().Dash.started += c =>
         {
+            if (Died)
+                return;
             AudioManager.instance.PlayAudioClip(dash);
             FindAnyObjectByType<PlayerUIManager>().SpendTime(dashtimeconsume);
             meshTrail.Activate(0.2f);
@@ -43,6 +52,8 @@ public class PlayerEntity : SavingEntity
         _combo = 1;
         input.GetState().Attack.started += c =>
         {
+            if (Died)
+                return;
             if (!atkSys.canAttack)
                 return;
             atkSys.OnAttack();
@@ -56,6 +67,8 @@ public class PlayerEntity : SavingEntity
 
         input.GetState().Shoot.started += c =>
         {
+            if (Died)
+                return;
             if (shootAble)
             {
                 shootAble = false;
@@ -94,12 +107,33 @@ public class PlayerEntity : SavingEntity
   
     private void AnimSates()
     {
-        if (!shootAble)
-            return;
-        if(healthComponent.currHealth <= 0)
+
+        if (healthComponent.currHealth <= 0)
         {
-            animationComponent.CrossFade("Death", 0.3f);
+            if (animationComponent.currentState != "Death")
+            {
+                Died = true;
+                animationComponent.CrossFade($"Death", 0);
+                gameObject.layer = 0;
+                movSys.IsActive = false;
+                RotateFaceTo.IsActive = false;
+            }
+            return;
         }
+        else
+        {
+            if(animationComponent.currentState == "Death")
+            {
+                hsSys.IsActive = false;
+                StartCoroutine(std.Utilities.Invoke(() => { hsSys.IsActive = true; gameObject.layer = tempLayer; }, 4));
+                Died = false;
+                movSys.IsActive = true;
+                RotateFaceTo.IsActive = true;
+            }
+        }
+
+            if (!shootAble)
+            return;
 
         if (atkSys.isAttacking)
             return;
@@ -115,5 +149,11 @@ public class PlayerEntity : SavingEntity
         {
             animationComponent.CrossFade("Idle", 0.3f);
         }
+    }
+
+    public void ReInit()
+    {
+        hsSys.Initialize(this);
+        healthComponent = GetControllerComponent<HealthComponent>();
     }
 }
