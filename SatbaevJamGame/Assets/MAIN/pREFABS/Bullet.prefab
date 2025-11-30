@@ -279,7 +279,7 @@ MonoBehaviour:
     dir: {x: 0, y: 0, z: 0}
     DestroyLayer:
       serializedVersion: 2
-      m_Bits: 118
+      m_Bits: 119
     DamageLayer:
       serializedVersion: 2
       m_Bits: 384
