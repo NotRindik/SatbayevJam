@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-
+using UnityEngine.SceneManagement;
 public class DoorWithActivator : MonoBehaviour
 {
     [SerializeField] private Animator doorAnimator;
@@ -39,6 +39,10 @@ public class DoorWithActivator : MonoBehaviour
 
         if (IsValidLayer(other.gameObject.layer))
             TryOpen(true);
+        PlayerPrefs.SetInt("IsGaming", 0);
+        PlayerPrefs.Save();
+
+        SceneManager.LoadScene("Level2");
     }
     public void ActivateA()
     {
