@@ -205,12 +205,6 @@ MonoBehaviour:
     - Name: OnMaxHealthDataChanged
       Entry: 6
       Data: 
-    - Name: OnTakeHit
-      Entry: 6
-      Data: 
-    - Name: OnDie
-      Entry: 6
-      Data: 
     - Name: OnHeal
       Entry: 6
       Data: 
@@ -349,6 +343,12 @@ MonoBehaviour:
     - Name: gameObject
       Entry: 6
       Data: 
+    - Name: OnTakeHit
+      Entry: 6
+      Data: 
+    - Name: OnDie
+      Entry: 6
+      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -403,6 +403,7 @@ MonoBehaviour:
   meshTrail: {fileID: 0}
   SkinnedMeshRenderer: {fileID: 8454797239761381291}
   ExplodeSphere: {fileID: 8754416462790847353}
+  boomsound: {fileID: 8300000, guid: 5de11fcd218ce1b4e91e42c24ec9b740, type: 3}
 --- !u!143 &7452371932305227125
 CharacterController:
   m_ObjectHideFlags: 0

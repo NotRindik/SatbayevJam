@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 public class DoorWithActivator : MonoBehaviour
 {
     [SerializeField] private Animator doorAnimator;
@@ -9,6 +10,7 @@ public class DoorWithActivator : MonoBehaviour
     [Header("Activation Conditions")]
     public bool conditionA = false;
     public bool conditionB = false;
+    public UnityEvent ConditionFinish;
 
     private bool isUnlocked = false;   // дверь активируется навсегда
     private bool isOpen = false;
@@ -22,12 +24,17 @@ public class DoorWithActivator : MonoBehaviour
         playerLayer = LayerMask.NameToLayer("Player");
         enemyLayer = LayerMask.NameToLayer("Enemy");
     }
-
+    public bool once;
     private void Update()
     {
         // как только оба условия стали true — дверь активируется
         if (!isUnlocked && conditionA && conditionB)
         {
+            if (!once)
+            {
+                ConditionFinish?.Invoke();
+                once = true;    
+            }
             isUnlocked = true;
         }
     }
@@ -39,6 +46,10 @@ public class DoorWithActivator : MonoBehaviour
 
         if (IsValidLayer(other.gameObject.layer))
             TryOpen(true);
+    }
+
+    public void LoadScene2()
+    {
         PlayerPrefs.SetInt("IsGaming", 0);
         PlayerPrefs.Save();
 

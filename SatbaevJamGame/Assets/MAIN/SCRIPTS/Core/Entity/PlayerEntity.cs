@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.Timeline.Actions;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerEntity : SavingEntity, ReInitAfterRePlay
 {
@@ -32,6 +33,10 @@ public class PlayerEntity : SavingEntity, ReInitAfterRePlay
 
     private Action<InputContext> dashAction,attackAction,shootAction;
     private Action<HitInfo> onDie;
+
+    public UnityEvent onFirstTimeDie;
+    public UnityEvent onDoActionFirsTime;
+    UnityAction aboba;
     //public GameObject timemana;
     public override void Start()
     {
@@ -86,11 +91,35 @@ public class PlayerEntity : SavingEntity, ReInitAfterRePlay
 
         onDie = c => 
         {
+            foreach (var item in Systems)
+            {
+                if (item is IStopCoroutineSafely safely)
+                    safely.StopCoroutineSafe();
+            }
             Died = true;
             animationComponent.CrossFade($"Death", 0);
             gameObject.layer = 0;
             movSys.IsActive = false;
             RotateFaceTo.IsActive = false;
+
+            if (PlayerPrefs.GetInt("FirstTimeDie",0) == 0)
+            {
+                PlayerPrefs.SetInt("FirstTimeDie", 1);
+                onFirstTimeDie?.Invoke();
+                Time.timeScale = 0;
+                TimeDataManager.Instance.saveData = false;
+                TimeDataManager.Instance.uIManager.isTimerRunning = false;
+                aboba = () =>
+                {
+                    Time.timeScale = 1;
+                    onDoActionFirsTime?.Invoke();
+                    TimeDataManager.Instance.uIManager.AddTime(30);
+                    TimeDataManager.Instance.saveData = true;
+                    TimeDataManager.Instance.uIManager.isTimerRunning = true;
+                    TimeDataManager.Instance.OnStartReplay.RemoveListener(aboba);
+                };
+                TimeDataManager.Instance.OnStartReplay.AddListener(aboba);
+            }
         };
 
         hsSys.OnDie += onDie;
@@ -135,6 +164,7 @@ public class PlayerEntity : SavingEntity, ReInitAfterRePlay
         {
             if(animationComponent.currentState == "Death")
             {
+                Debug.Log("abiba");
                 hsSys.IsActive = false;
 /*                StartCoroutine(std.Utilities.Invoke(() => { hsSys.IsActive = true; gameObject.layer = tempLayer; }, 4));*/
                 hsSys.IsActive = true; gameObject.layer = tempLayer;

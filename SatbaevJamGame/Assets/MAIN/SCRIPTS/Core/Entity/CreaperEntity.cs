@@ -9,6 +9,7 @@ public class CreaperEntity : EnemyEntity
     public SkinnedMeshRenderer SkinnedMeshRenderer;
     public GameObject ExplodeSphere;
     public CreeperAI creap;
+    public AudioClip boomsound;
     public override void Start()
     {
         base.Start();
@@ -54,6 +55,7 @@ public class CreaperEntity : EnemyEntity
                     .OnComplete(() =>
                     {
                         ExplodeSphere.transform.DOScale(Vector3.zero, 0.2f).SetEase(Ease.InBounce);
+                        AudioManager.instance.PlaySoundEffect(boomsound, volume: 1);
                     });
                 healthComponent.currHealth = 0;
             }

@@ -6,7 +6,7 @@ using Unity.VisualScripting.Antlr3.Runtime.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-public class AttackSystem : BaseSystem, IDisposable
+public class AttackSystem : BaseSystem, IDisposable, IStopCoroutineSafely
 {
     private AttackComponent attackComponent;
     private CharacterController chC;
@@ -14,7 +14,7 @@ public class AttackSystem : BaseSystem, IDisposable
     private Movement movSys;
     private RotateFaceTo rotSys;
     private MoveComponent movC;
-    private Coroutine attkProcess;
+    private Coroutine attkProcess,delay;
     private Collider[] entities = new Collider[10];
     public bool canAttack = true;
     public bool isAttacking => attkProcess != null;
@@ -84,7 +84,7 @@ public class AttackSystem : BaseSystem, IDisposable
 
         owner.StartCoroutine(DashCoroutine(chC, dashTarget, attackComponent.timeBefHit / 2));
 
-        yield return new WaitForSecondsRealtime(attackComponent.timeBefHit/3);
+        yield return new WaitForSecondsRealtime(attackComponent.timeBefHit / 3);
 
         if (nearestEnemy != null)
         {
@@ -93,7 +93,7 @@ public class AttackSystem : BaseSystem, IDisposable
             {
                 Debug.Log(nearestEnemy.gameObject.name);
                 new Damage(attackComponent.damage).ApplyDamage(healthSystem, new HitInfo(owner));
-                AudioManager.instance.PlaySoundEffect(slash,volume:1);
+                AudioManager.instance.PlaySoundEffect(slash, volume: 1);
                 timor.AddTime(30);
             }
         }
@@ -102,9 +102,16 @@ public class AttackSystem : BaseSystem, IDisposable
         movSys.IsActive = true;
         rotSys.IsActive = true;
         attackComponent.OnAttackEnd?.Invoke();
+        delay = owner.StartCoroutine(Delay());
+    }
+
+    private IEnumerator Delay()
+    {
         yield return new WaitForSecondsRealtime(attackComponent.delay);
         canAttack = true;
+        delay = null;
     }
+
     private IEnumerator DashCoroutine(CharacterController cc, Vector3 target, float duration)
     {
         Vector3 startPos = cc.transform.position;
@@ -133,6 +140,20 @@ public class AttackSystem : BaseSystem, IDisposable
     public void Dispose()
     {
         owner.OnGizmosUpdate -= OnDrawGizmos;
+    }
+
+    public void StopCoroutineSafe()
+    {
+        if(attkProcess != null)
+            owner.StopCoroutine(attkProcess);
+        if (delay == null)
+        {
+            delay = owner.StartCoroutine(Delay());
+        }
+        attkProcess = null;
+        movSys.IsActive = true;
+        rotSys.IsActive = true;
+        attackComponent.OnAttackEnd?.Invoke();
     }
 }
 

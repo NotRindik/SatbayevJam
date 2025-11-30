@@ -8,6 +8,7 @@ public class EntitiesHealthMonitor : MonoBehaviour
     public CanvasGroup canvasGroup;
     public AudioClip finalMusica;
 
+    public bool once;
     private void Update()
     {
         bool allDead = true;
@@ -26,9 +27,15 @@ public class EntitiesHealthMonitor : MonoBehaviour
             }
         }
 
-        TimeDataManager.Instance.uIManager.isTimerRunning = false;
-        
-        AudioManager.instance.PlayMusic(finalMusica);
-        canvasGroup.alpha = allDead ? 1f : 0f;
+        if(allDead )
+        {
+            canvasGroup.alpha = 1f;
+            TimeDataManager.Instance.uIManager.isTimerRunning = false;
+            if (!once)
+            {
+                once = true;
+                AudioManager.instance.PlayMusic(finalMusica);
+            }
+        }
     }
 }

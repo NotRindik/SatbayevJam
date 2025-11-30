@@ -6,7 +6,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using Systems;
+using UnityEditor.Overlays;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -34,6 +36,8 @@ public class TimeDataManager : MonoBehaviour, IStopCoroutineSafely
     private Action<Entity> onFinish;
     public bool isReplay => _rePlayProcess != null;
     public float maxTime,timeReplayCooldown;
+
+    public UnityEvent OnStartReplay;
     Action<InputAction.CallbackContext> replayStart;
     Action<InputAction.CallbackContext> replayEnd;
     public int maxEntries => (int)Mathf.Ceil(maxTime / saveDelay);
@@ -43,6 +47,8 @@ public class TimeDataManager : MonoBehaviour, IStopCoroutineSafely
     private bool canReplay = true;
     public float ReverseTimeSpend;
     private Coroutine perSecondCoroutine;
+
+    public bool saveData;
 
     private void Awake()
     {
@@ -55,8 +61,8 @@ public class TimeDataManager : MonoBehaviour, IStopCoroutineSafely
         saveTimeDatas = new(maxEntries);
         replayStart = c =>
         {
-            if (!uIManager.isTimerRunning)
-                return;
+/*            if (!uIManager.isTimerRunning)
+                return;*/
           RePlay();
         };
         replayEnd = c =>
@@ -67,13 +73,14 @@ public class TimeDataManager : MonoBehaviour, IStopCoroutineSafely
     }
     public void Start()
     {
+        saveData = true;
         InputManager.inputActions.Player.Replay.started += replayStart;
         InputManager.inputActions.Player.Replay.canceled += replayEnd;
         volume.profile.TryGet(out colorAdj);
         volume.profile.TryGet(out grain);
         StartCoroutine(std.Utilities.InvokeRepeatedly(() =>
         {
-            if(isReplay)
+            if(isReplay || !saveData)
                 return;
             for (int i = 0; i < entities.Count; i++)
             {
@@ -99,6 +106,7 @@ public class TimeDataManager : MonoBehaviour, IStopCoroutineSafely
     private IEnumerator RePlaySavesProcess()
     {
         AudioManager.instance.PlaySoundEffect(reversetime);
+        OnStartReplay.Invoke();
         colorAdj.saturation.value = -100;
         grain.intensity.value = 0.250f;
         for (int i = 0;i < entities.Count; i++)
