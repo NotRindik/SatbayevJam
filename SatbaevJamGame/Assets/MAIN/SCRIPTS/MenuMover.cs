@@ -9,6 +9,9 @@ public class MenuMover : MonoBehaviour
     /// <param name="sceneName">The name of the scene to load.</param>
     public void LoadScene(string sceneName)
     {
+        PlayerPrefs.SetInt("IsGaming", 0);
+        PlayerPrefs.Save();
+
         SceneManager.LoadScene(sceneName);
     }
     /// <summary>

@@ -20,7 +20,8 @@ public class PlayerEntity : SavingEntity
     private bool shootAble;
     private IInputProvider input;
     private int _combo;
-    
+    public float dashtimeconsume = 15f;
+    //public GameObject timemana;
     public override void Start()
     {
         base.Start();
@@ -36,7 +37,7 @@ public class PlayerEntity : SavingEntity
         input.GetState().Dash.started += c =>
         {
             AudioManager.instance.PlayAudioClip(dash);
-
+            FindAnyObjectByType<PlayerUIManager>().SpendTime(dashtimeconsume);
             meshTrail.Activate(0.2f);
         };
         _combo = 1;
@@ -90,6 +91,7 @@ public class PlayerEntity : SavingEntity
         shootAble = true;
         movSys.IsActive = true;
     }
+  
     private void AnimSates()
     {
         if (!shootAble)
