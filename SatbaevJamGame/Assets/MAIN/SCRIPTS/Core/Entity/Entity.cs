@@ -4,6 +4,7 @@ using System.Reflection;
 using System;
 using UnityEngine;
 using Systems;
+using Unity.VisualScripting;
 [DefaultExecutionOrder(10)]
 public class Entity : SerializedMonoBehaviour
 {
@@ -15,7 +16,27 @@ public class Entity : SerializedMonoBehaviour
     [HideInInspector] public Action OnLateUpdate;
     [HideInInspector] public event Action OnGizmosUpdate;
 
-   
+   public virtual void OnEnable()
+    {
+        SetActiveAllSys(true);
+    }
+
+    public void SetActiveAllSys(bool active)
+    {
+        for (int i = 0; i < Systems.Count; i++)
+        {
+            if (Systems[i] is BaseSystem bs)
+            {
+                bs.IsActive = active;
+            }
+        }
+    }
+
+    public virtual void OnDisable()
+    {
+        SetActiveAllSys(false);
+    }
+
 
     protected virtual void OnValidate() { }
     protected virtual void OnDrawGizmos()

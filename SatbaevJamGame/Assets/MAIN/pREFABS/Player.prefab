@@ -81,6 +81,7 @@ MonoBehaviour:
     - {fileID: 5762057394381820137}
     - {fileID: 0}
     - {fileID: 0}
+    - {fileID: 8300000, guid: 23eaea8d512adb84a9fa6592017b83bf, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -154,7 +155,7 @@ MonoBehaviour:
       Data: 4|Systems.HealthComponent, Assembly-CSharp
     - Name: _maxHealth
       Entry: 4
-      Data: 10
+      Data: 1
     - Name: _currHealth
       Entry: 4
       Data: 0
@@ -631,8 +632,8 @@ MonoBehaviour:
       Entry: 6
       Data: 
     - Name: slash
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 6
     - Name: 
       Entry: 8
       Data: 
@@ -653,11 +654,15 @@ MonoBehaviour:
       Data: 
   meshTrail: {fileID: 404493141452909694}
   pistol: {fileID: 5343914830086424558}
-  slash: {fileID: 8300000, guid: 9ce0817f69c392943bf0f05686f3cf0c, type: 3}
+  slash: {fileID: 8300000, guid: 398f7fe2e578a904aa2537b62427c0fa, type: 3}
   dash: {fileID: 8300000, guid: b5cc542f32e662d41ba78cffd90f206c, type: 3}
   walk: {fileID: 8300000, guid: 414c48b16d3bf9044801cfb735850e3f, type: 3}
   animationLen: 0.2
-  dashtimeconsume: 15
+  dashtimeconsume: 10
+  Died: 0
+  tempLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &7632995724652437947
 GameObject:
   m_ObjectHideFlags: 0

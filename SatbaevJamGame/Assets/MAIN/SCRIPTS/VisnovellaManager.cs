@@ -36,6 +36,7 @@ public class VisnovellaManager : MonoBehaviour
 
     [Header("Optional Objects to Disable After Phase")]
     public GameObject objectToDisableAfterPhase;
+    public Entity entity;
 
     // ? Автозапуск первой фазы
     private void Start()
@@ -49,7 +50,7 @@ public class VisnovellaManager : MonoBehaviour
         }
         InputManager.inputActions.Player.Jump.performed += c => AdvanceDialogue();
 
-        if (phases != null && phases.Length > 0)
+        if (phases != null && phases.Length > 0 && PlayerPrefs.GetInt("IsGaming", 0) != 1)
             StartPhase(0);
         else
             Debug.LogWarning("No phases assigned!");
@@ -68,7 +69,7 @@ public class VisnovellaManager : MonoBehaviour
 
         currentPhaseIndex = phaseIndex;
         currentLineIndex = 0;
-
+        entity.SetActiveAllSys(false);
         gameObject.SetActive(true);
         ShowCurrentLine();
     }
@@ -97,7 +98,7 @@ public class VisnovellaManager : MonoBehaviour
         if (printRoutine != null)
             StopCoroutine(printRoutine);
 
-        if(enabled)
+        if(enabled && gameObject.activeSelf)
             printRoutine = StartCoroutine(PrintRoutine(line.text));
     }
 
@@ -115,6 +116,7 @@ public class VisnovellaManager : MonoBehaviour
         // вызываем события фазы, если они есть
         phases[currentPhaseIndex].onTriggerEnterEvent?.Invoke();
 
+        entity.SetActiveAllSys(true);
         // отключаем диалог
         gameObject.SetActive(false);
 

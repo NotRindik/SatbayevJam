@@ -93,7 +93,7 @@ public class AttackSystem : BaseSystem, IDisposable
             {
                 Debug.Log(nearestEnemy.gameObject.name);
                 new Damage(attackComponent.damage).ApplyDamage(healthSystem, new HitInfo(owner));
-                AudioManager.instance.PlayAudioClip(slash);
+                AudioManager.instance.PlaySoundEffect(slash,volume:1);
                 timor.AddTime(30);
             }
         }

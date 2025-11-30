@@ -6,16 +6,17 @@ namespace Systems
     public class HealthSystem: BaseSystem
     {
         private HealthComponent _healthComponent;
-
+        public Action<HitInfo> OnTakeHit;
+        public Action<HitInfo> OnDie;
         public void TakeHit(HitInfo who)
         {
             if(!IsActive)
                 return;
             _healthComponent.currHealth -= who.dmg;
-            _healthComponent.OnTakeHit?.Invoke(who);
+            OnTakeHit?.Invoke(who);
             if (_healthComponent.currHealth <= 0)
             {
-                _healthComponent.OnDie?.Invoke(who);
+                OnDie?.Invoke(who);
             }
         }
 
@@ -119,8 +120,6 @@ namespace Systems
         }
         public Action<float> OnCurrHealthDataChanged;
         public Action<float> OnMaxHealthDataChanged;
-        public Action<HitInfo> OnTakeHit;
-        public Action<HitInfo> OnDie;
         public Action<float> OnHeal;
 
         IComponent ICopyable.Copy()
@@ -130,8 +129,6 @@ namespace Systems
             copy.currHealth = currHealth;
             copy.OnCurrHealthDataChanged = OnCurrHealthDataChanged;
             copy.OnMaxHealthDataChanged = OnMaxHealthDataChanged;
-            copy.OnTakeHit = OnTakeHit;
-            copy.OnDie = OnDie;
             copy.OnHeal = OnHeal;
             return copy;
         }

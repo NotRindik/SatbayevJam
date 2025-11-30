@@ -19,14 +19,17 @@ public class Pistol : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(screenPoint);
 
         // Если попали во что-то — стреляем туда
-        if (Physics.Raycast(ray, out RaycastHit hit, 200f))
+        Plane plane = new Plane(Vector3.up, shotPos.position.y);
+
+        // 2. Пересечение луча с плоскостью
+        if (plane.Raycast(ray, out float enter))
         {
-            targetPoint = hit.point;
+            targetPoint = ray.GetPoint(enter);
         }
         else
         {
-            // Если нет коллизии — берём точку далеко по лучу
-            targetPoint = ray.GetPoint(100f);
+            // fallback, очень редко нужен
+            targetPoint = shotPos.position + transform.forward * 10f;
         }
         targetPoint = new Vector3(targetPoint.x, shotPos.position.y, targetPoint.z);
         Vector3 dir = (targetPoint - shotPos.position).normalized;

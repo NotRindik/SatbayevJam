@@ -57,7 +57,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6512452641265674901}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.7, y: 2.9, z: 27.67}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -146,12 +146,6 @@ MonoBehaviour:
       Entry: 6
       Data: 
     - Name: OnMaxHealthDataChanged
-      Entry: 6
-      Data: 
-    - Name: OnTakeHit
-      Entry: 6
-      Data: 
-    - Name: OnDie
       Entry: 6
       Data: 
     - Name: OnHeal
@@ -268,6 +262,15 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+    - Name: WallLayer
+      Entry: 7
+      Data: UnityEngine.LayerMask, UnityEngine.CoreModule
+    - Name: 
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: pist
       Entry: 10
       Data: 1
@@ -304,6 +307,9 @@ MonoBehaviour:
     - Name: shootData
       Entry: 6
       Data: 
+    - Name: healthComponent
+      Entry: 6
+      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -332,6 +338,12 @@ MonoBehaviour:
       Entry: 6
       Data: 
     - Name: gameObject
+      Entry: 6
+      Data: 
+    - Name: OnTakeHit
+      Entry: 6
+      Data: 
+    - Name: OnDie
       Entry: 6
       Data: 
     - Name: 
@@ -410,13 +422,13 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 2.14
-  m_Radius: 0.5
+  m_Height: 4.01
+  m_Radius: 0.68
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 1.83, z: 0}
 --- !u!1001 &3847832293843976601
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using Systems;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
+using UnityEditor.Timeline.Actions;
 using UnityEngine;
 
 public class PlayerEntity : SavingEntity, ReInitAfterRePlay
@@ -26,6 +29,9 @@ public class PlayerEntity : SavingEntity, ReInitAfterRePlay
 
     public bool Died;
     public LayerMask tempLayer;
+
+    private Action<InputContext> dashAction,attackAction,shootAction;
+    private Action<HitInfo> onDie;
     //public GameObject timemana;
     public override void Start()
     {
@@ -41,7 +47,8 @@ public class PlayerEntity : SavingEntity, ReInitAfterRePlay
         tempLayer = gameObject.layer;
         gvS = GetControllerSystem<GravitySystem>();
         shootAble = true;
-        input.GetState().Dash.started += c =>
+
+        dashAction = c =>
         {
             if (Died)
                 return;
@@ -49,15 +56,14 @@ public class PlayerEntity : SavingEntity, ReInitAfterRePlay
             FindAnyObjectByType<PlayerUIManager>().SpendTime(dashtimeconsume);
             meshTrail.Activate(0.2f);
         };
-        _combo = 1;
-        input.GetState().Attack.started += c =>
+        attackAction = c =>
         {
             if (Died)
                 return;
             if (!atkSys.canAttack)
                 return;
             atkSys.OnAttack();
-            
+
             animationComponent.CrossFade($"Attack{_combo}", 0.1f);
             AudioManager.instance.PlayAudioClip(slash);
             _combo++;
@@ -65,7 +71,7 @@ public class PlayerEntity : SavingEntity, ReInitAfterRePlay
                 _combo = 1;
         };
 
-        input.GetState().Shoot.started += c =>
+        shootAction = c =>
         {
             if (Died)
                 return;
@@ -78,6 +84,23 @@ public class PlayerEntity : SavingEntity, ReInitAfterRePlay
             }
         };
 
+        onDie = c => 
+        {
+            Died = true;
+            animationComponent.CrossFade($"Death", 0);
+            gameObject.layer = 0;
+            movSys.IsActive = false;
+            RotateFaceTo.IsActive = false;
+        };
+
+        hsSys.OnDie += onDie;
+        input.GetState().Dash.started += dashAction;
+        _combo = 1;
+
+        input.GetState().Attack.started += attackAction;
+
+        input.GetState().Shoot.started += shootAction;
+
         animationComponent.CrossFade("Idle", 0);
     }
 
@@ -85,10 +108,6 @@ public class PlayerEntity : SavingEntity, ReInitAfterRePlay
     {
         base.Update();
         AnimSates();
-        /*        if (!gvS.isGround)
-                {
-                    animationComponent.CrossFade("Fall", 0);
-                }*/
     }
 
     public IEnumerator ShootAnim()
@@ -110,14 +129,6 @@ public class PlayerEntity : SavingEntity, ReInitAfterRePlay
 
         if (healthComponent.currHealth <= 0)
         {
-            if (animationComponent.currentState != "Death")
-            {
-                Died = true;
-                animationComponent.CrossFade($"Death", 0);
-                gameObject.layer = 0;
-                movSys.IsActive = false;
-                RotateFaceTo.IsActive = false;
-            }
             return;
         }
         else
@@ -125,7 +136,8 @@ public class PlayerEntity : SavingEntity, ReInitAfterRePlay
             if(animationComponent.currentState == "Death")
             {
                 hsSys.IsActive = false;
-                StartCoroutine(std.Utilities.Invoke(() => { hsSys.IsActive = true; gameObject.layer = tempLayer; }, 4));
+/*                StartCoroutine(std.Utilities.Invoke(() => { hsSys.IsActive = true; gameObject.layer = tempLayer; }, 4));*/
+                hsSys.IsActive = true; gameObject.layer = tempLayer;
                 Died = false;
                 movSys.IsActive = true;
                 RotateFaceTo.IsActive = true;
@@ -149,6 +161,16 @@ public class PlayerEntity : SavingEntity, ReInitAfterRePlay
         {
             animationComponent.CrossFade("Idle", 0.3f);
         }
+    }
+
+    protected override void ReferenceClean()
+    {
+        input.GetState().Dash.started -= dashAction;
+
+        input.GetState().Attack.started -= attackAction;
+
+        input.GetState().Shoot.started -= shootAction;
+        base.ReferenceClean();
     }
 
     public void ReInit()
