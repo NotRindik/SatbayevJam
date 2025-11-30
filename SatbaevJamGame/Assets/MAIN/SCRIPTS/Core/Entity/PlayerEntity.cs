@@ -21,7 +21,7 @@ public class PlayerEntity : SavingEntity
     private IInputProvider input;
     private int _combo;
     public float dashtimeconsume = 15f;
-
+    //public GameObject timemana;
     public override void Start()
     {
         base.Start();
@@ -91,10 +91,7 @@ public class PlayerEntity : SavingEntity
         shootAble = true;
         movSys.IsActive = true;
     }
-    public void SetDeathAnim()
-    {
-        animationComponent.CrossFade("Death", 0.3f);
-    }
+  
     private void AnimSates()
     {
         if (!shootAble)

@@ -21,7 +21,7 @@ public class TimeDataManager : MonoBehaviour, IStopCoroutineSafely
     public Volume volume;
     public ColorAdjustments colorAdj;
     public FilmGrain grain;
-
+    public PlayerUIManager uIManager;
     private static TimeDataManager instance;
     public static TimeDataManager Instance { get { return instance; } set { instance = value; } }
     public Dictionary<Entity,List<SaveTimeData>> saveTimeDatas;
@@ -42,6 +42,8 @@ public class TimeDataManager : MonoBehaviour, IStopCoroutineSafely
     public float trailWidth = 0.1f;
     private bool canReplay = true;
     public float ReverseTimeSpend;
+    private Coroutine perSecondCoroutine;
+
     private void Awake()
     {
         if (Instance == null)
@@ -151,6 +153,14 @@ public class TimeDataManager : MonoBehaviour, IStopCoroutineSafely
         yield return ReplayCoolDown();
     }
 
+    IEnumerator PerSecondCallback()
+    {
+        while (_rePlayProcess != null)
+        {
+            uIManager.SpendTime(ReverseTimeSpend);
+            yield return new WaitForSeconds(1f);
+        }
+    }
     public IEnumerator AutoStop()
     {
         yield return new WaitForSecondsRealtime(maxTime);

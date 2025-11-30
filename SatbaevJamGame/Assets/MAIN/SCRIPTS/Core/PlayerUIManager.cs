@@ -2,6 +2,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections;
 
 public class PlayerUIManager : MonoBehaviour
 {
@@ -15,9 +16,10 @@ public class PlayerUIManager : MonoBehaviour
     [Header("UI")]
     public Slider TimeSlider;
 
-    private float currentTime;
+    public float currentTime;
     private bool isTimerRunning = false;
-
+    public Image fadeImage; // Image, который будет затемняться
+    public float fadeDuration = 1f; // Длительность эффекта в секундах
     private void Start()
     {
         if (PlayerPrefs.GetInt("IsGaming", 0) == 1)
@@ -90,16 +92,39 @@ public class PlayerUIManager : MonoBehaviour
     {
         timeLossRate = Mathf.Max(0f, newRate);
     }
-
+    
     private void OnTimeOut()
     {
         Debug.Log("TIME IS OVER!");
-        player.GetComponent<PlayerEntity>().SetDeathAnim();
+
         // Фиксируем, что игрок теперь "в игре"
         PlayerPrefs.SetInt("IsGaming", 1);
         PlayerPrefs.Save();
 
-        // Перезагружаем текущую сцену
+        // Запускаем плавное затемнение и перезагрузку сцены
+        StartCoroutine(FadeAndReload());
+    }
+
+    private IEnumerator FadeAndReload()
+    {
+        if (fadeImage != null)
+        {
+            Color c = fadeImage.color;
+            float elapsed = 0f;
+
+            while (elapsed < fadeDuration)
+            {
+                elapsed += Time.deltaTime;
+                float alpha = Mathf.Clamp01(elapsed / fadeDuration);
+                fadeImage.color = new Color(c.r, c.g, c.b, alpha);
+                yield return null;
+            }
+
+            // Убедимся, что полностью непрозрачно
+            fadeImage.color = new Color(c.r, c.g, c.b, 1f);
+        }
+
+        // Перезагрузка сцены после завершения fade
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
