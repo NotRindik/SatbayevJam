@@ -32,9 +32,14 @@ public class BaseInputProvider : IInputProvider
         Entity = obj;
     }
 
+    public virtual void Dispose()
+    {
+
+    }
     void IDisposable.Dispose()
     {
         GetState().Dispose();
+        Dispose();
     }
 }
 

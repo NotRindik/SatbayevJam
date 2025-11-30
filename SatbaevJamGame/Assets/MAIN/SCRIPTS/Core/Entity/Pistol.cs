@@ -36,7 +36,10 @@ public class Pistol : MonoBehaviour
             dir.y = 0;
         }
         var inst = Instantiate(ps.BulletPrefab, shotPos.position, Quaternion.LookRotation(dir));
-        inst.bc = ps.bc;
+        var temp = inst.bc;
+        temp.DamageLayer = ps.bc.DamageLayer;
+        temp.DestroyLayer = ps.bc.DestroyLayer;
+        inst.bc = temp;
     }
 
 }
