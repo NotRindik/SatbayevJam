@@ -34,8 +34,13 @@ public class Bullet : MonoBehaviour
             {
                 var hp = ent.GetControllerSystem<HealthSystem>();
 
-                new Damage(bc.damage).ApplyDamage(hp,new HitInfo(gameObject.transform.position));
-                FindAnyObjectByType<PlayerUIManager>().AddTime(15);
+                new Damage(bc.damage).ApplyDamage(hp, new HitInfo(gameObject.transform.position));
+                // ѕроверка, что столкнулись именно с игроком (или любым слоем PlayerLayer)
+                if (((1 << layer) & bc.PlayerLayer) != 0)
+                {
+                    // ƒобавл€ем врем€ игроку
+                    FindAnyObjectByType<PlayerUIManager>().AddTime(15);
+                }
 
             }
             Destroy(gameObject);
@@ -50,5 +55,7 @@ public struct   BulletComponent : IComponent
     public Vector3 dir;
     public LayerMask DestroyLayer;
     public LayerMask DamageLayer;
+           public LayerMask PlayerLayer;
+
     public DamageComponent damage;
 }
