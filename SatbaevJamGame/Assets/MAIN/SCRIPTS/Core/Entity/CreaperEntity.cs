@@ -8,10 +8,12 @@ public class CreaperEntity : EnemyEntity
     private CreeperData creeperData;
     public SkinnedMeshRenderer SkinnedMeshRenderer;
     public GameObject ExplodeSphere;
+    public CreeperAI creap;
     public override void Start()
     {
         base.Start();
         creeperData = GetControllerComponent<CreeperData>();
+        creap = GetControllerSystem<CreeperAI>();
     }
     public override void Update()
     {
@@ -27,6 +29,9 @@ public class CreaperEntity : EnemyEntity
     {
         base.ReInit();
         creeperData = GetControllerComponent<CreeperData>();
+        creap.creeperData = creeperData;
+        creap.hp = healthComponent;
+
     }
     public override void AnimSates()
     {
@@ -44,7 +49,7 @@ public class CreaperEntity : EnemyEntity
             {
                 animationComponent.CrossFade("Explode", 0.2f);
                 ExplodeSphere.transform
-                    .DOScale(Vector3.one * creeperData.explodeDistance, 0.2f)
+                    .DOScale(Vector3.one * creeperData.explodeDistance, 0.5f)
                     .SetEase(Ease.InBounce)
                     .OnComplete(() =>
                     {
@@ -53,7 +58,11 @@ public class CreaperEntity : EnemyEntity
             }
             return;
         }
-        base.AnimSates();
+        if (healthComponent.currHealth <= 0)
+        {
+            return;
+        }
+            base.AnimSates();
     }
 }
 public class CreeperData : IComponent, ICopyable
@@ -80,7 +89,7 @@ public class CreeperData : IComponent, ICopyable
         a.explodeDistance = explodeDistance;
         a.OnExplode = OnExplode;
         a.dmg = dmg;
-        a.isExplode = isExplode;
+
         return a;
     }
 }
@@ -88,7 +97,8 @@ public class CreeperData : IComponent, ICopyable
 public class CreeperAI : BaseInputProvider
 {
     private PatrolData patrolData;
-    private CreeperData creeperData;
+    public CreeperData creeperData;
+    public HealthComponent hp;
 
     private int nextPatrolPoint;
 
@@ -103,6 +113,7 @@ public class CreeperAI : BaseInputProvider
 
         patrolData = obj.GetControllerComponent<PatrolData>();
         creeperData = obj.GetControllerComponent<CreeperData>();
+        hp = obj.GetControllerComponent<HealthComponent>();
 
         nextPatrolPoint = 0;
         StartLoop();
@@ -153,7 +164,7 @@ public class CreeperAI : BaseInputProvider
                 isChasing = true;
 
                 // Если в радиусе детонации — взрываемся
-                if (dist <= creeperData.explodeDistance/2)
+                if (dist <= creeperData.explodeDistance/3 || hp.currHealth <= 0)
                 {
                     InputState.Move.Update<Vector3>(true, Vector3.zero);
                     creeperData.isExploding = true;
