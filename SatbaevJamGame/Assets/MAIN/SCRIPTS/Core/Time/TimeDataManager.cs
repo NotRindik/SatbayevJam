@@ -41,6 +41,7 @@ public class TimeDataManager : MonoBehaviour, IStopCoroutineSafely
     public Material trailMaterial;
     public float trailWidth = 0.1f;
     private bool canReplay = true;
+    public float ReverseTimeSpend;
     private void Awake()
     {
         if (Instance == null)

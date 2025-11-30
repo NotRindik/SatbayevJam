@@ -11,7 +11,7 @@ public class PlayerUIManager : MonoBehaviour
     public float maxTime = 100f;       // Максимальное время
     public float startTime = 600f;     // Стартовое значение
     public float timeLossRate = 5f;    // Сколько времени теряется в секунду
-
+    public GameObject player;
     [Header("UI")]
     public Slider TimeSlider;
 
@@ -20,7 +20,7 @@ public class PlayerUIManager : MonoBehaviour
 
     private void Start()
     {
-        if (PlayerPrefs.GetInt("IsGaming", 0) == 0)
+        if (PlayerPrefs.GetInt("IsGaming", 0) == 1)
         {
             currentTime = startTime;
 
@@ -94,7 +94,7 @@ public class PlayerUIManager : MonoBehaviour
     private void OnTimeOut()
     {
         Debug.Log("TIME IS OVER!");
-
+        player.GetComponent<PlayerEntity>().SetDeathAnim();
         // Фиксируем, что игрок теперь "в игре"
         PlayerPrefs.SetInt("IsGaming", 1);
         PlayerPrefs.Save();
