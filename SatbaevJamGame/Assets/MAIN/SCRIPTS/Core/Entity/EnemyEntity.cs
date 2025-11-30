@@ -11,6 +11,7 @@ public class EnemyEntity : SavingEntity, ReInitAfterRePlay
     protected GravitySystem gvS;
     protected MoveComponent movC;
     protected Movement movSys;
+    protected HealthSystem healthSys;
     protected AttackSystem atkSys;
     protected HealthComponent healthComponent;
     protected CharacterController chC;
@@ -22,6 +23,7 @@ public class EnemyEntity : SavingEntity, ReInitAfterRePlay
     {
         base.Start();
         input = GetControllerSystem<BaseInputProvider>();
+        healthSys = GetControllerSystem<HealthSystem>();
         movSys = GetControllerSystem<Movement>();
         atkSys = GetControllerSystem<AttackSystem>();
         animationComponent = GetControllerComponent<AnimationComponent>();
@@ -70,10 +72,9 @@ public class EnemyEntity : SavingEntity, ReInitAfterRePlay
         }
     }
 
-    public void ReInit()
+    public virtual void ReInit()
     {
-        DisposeSystems();
-        EntitySetup();
+        healthSys.Initialize(this);
         healthComponent = GetControllerComponent<HealthComponent>();
     }
 }

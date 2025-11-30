@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Systems;
 using UnityEngine;
@@ -59,7 +60,7 @@ public class SimpleShooter : BaseInputProvider
 {
     private PatrolData shooterData;
     private int nextPatrolPoint;
-    private Coroutine loop;
+    private Coroutine loop,rotate;
     public ShootData shootData;
     private bool isFire;
     public override void Initialize(Entity obj)
@@ -70,15 +71,22 @@ public class SimpleShooter : BaseInputProvider
         nextPatrolPoint = 0;
         StartLoop();
     }
-
+    public override void Dispose()
+    {
+        StopLoop();
+    }
     public void StartLoop()
     {
         if(loop == null) 
             loop = Entity.StartCoroutine(AILoop());
+        if(rotate == null)
+            rotate = Entity.StartCoroutine(RotationProcess());
     }
     public void StopLoop()
     {
         Entity.StopCoroutine(loop);
+        Entity.StopCoroutine(rotate);
+        rotate = null;
         loop = null;
     }
 
@@ -111,10 +119,10 @@ public class SimpleShooter : BaseInputProvider
 
     public IEnumerator AILoop()
     {
-        Entity.StartCoroutine(RotationProcess());
         while (true)
         {
         restart:;
+            yield return null;
             if (!isActive)
             {
                 yield return null;
@@ -160,7 +168,6 @@ public class SimpleShooter : BaseInputProvider
                     nextPatrolPoint = (nextPatrolPoint + 1) % shooterData.patrolTrack.Length;
                 }
             }
-            yield return null;
         }
     }
 }
