@@ -97,7 +97,8 @@ public class VisnovellaManager : MonoBehaviour
         if (printRoutine != null)
             StopCoroutine(printRoutine);
 
-        printRoutine = StartCoroutine(PrintRoutine(line.text));
+        if(enabled)
+            printRoutine = StartCoroutine(PrintRoutine(line.text));
     }
 
     IEnumerator PrintRoutine(string text)

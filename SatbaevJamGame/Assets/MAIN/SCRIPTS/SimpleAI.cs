@@ -180,6 +180,8 @@ public class SimpleShooter : BaseInputProvider
             }
             else
             {
+                if (shooterData.patrolTrack.Length == 0)
+                    continue;
                 var currTrack = shooterData.patrolTrack[nextPatrolPoint];
                 Vector3 dir = (currTrack.position - Entity.transform.position).normalized;
                 dir.y = 0;

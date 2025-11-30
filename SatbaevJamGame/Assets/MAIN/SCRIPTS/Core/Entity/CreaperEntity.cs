@@ -55,6 +55,7 @@ public class CreaperEntity : EnemyEntity
                     {
                         ExplodeSphere.transform.DOScale(Vector3.zero, 0.2f).SetEase(Ease.InBounce);
                     });
+                healthComponent.currHealth = 0;
             }
             return;
         }

@@ -2693,7 +2693,7 @@ MonoBehaviour:
         m_MethodName: PlayMusic
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: c241dfac604dca7459d830e13e8b542e, type: 3}
+          m_ObjectArgument: {fileID: 8300000, guid: 651acdb4d5df4d54e87a9443117f73cf, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
