@@ -282,6 +282,9 @@ MonoBehaviour:
       m_Bits: 118
     DamageLayer:
       serializedVersion: 2
+      m_Bits: 384
+    PlayerLayer:
+      serializedVersion: 2
       m_Bits: 128
     damage:
       BaseDamage: 1
