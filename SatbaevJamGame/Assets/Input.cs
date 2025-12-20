@@ -143,6 +143,33 @@ public partial class @Input: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Restart"",
+                    ""type"": ""Button"",
+                    ""id"": ""e2558691-fb31-489f-9ca7-c0a12cecf68b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SlowDownTime"",
+                    ""type"": ""Button"",
+                    ""id"": ""7944d365-a559-4a04-958a-54a24cf6204b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Point"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""4debab5b-a4ef-486f-a68f-a5ec9feca774"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -530,6 +557,61 @@ public partial class @Input: IInputActionCollection2, IDisposable
                     ""action"": ""Entr"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""959d3f95-7232-406d-a9da-dd8880cd9d58"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Restart"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""93e4cd59-d36d-4719-afd5-366d64b86486"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SlowDownTime"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0560c1df-c041-475b-8b66-7e2800609d4e"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Point"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""13dac554-98af-433e-ab1c-fbe0c3a0f5ea"",
+                    ""path"": ""<Pen>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Point"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""101154e0-c65f-4ba2-bb87-2ca1e4804587"",
+                    ""path"": ""<Touchscreen>/touch*/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Touch"",
+                    ""action"": ""Point"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -623,6 +705,15 @@ public partial class @Input: IInputActionCollection2, IDisposable
                     ""type"": ""PassThrough"",
                     ""id"": ""9caa3d8a-6b2f-4e8e-8bad-6ede561bd9be"",
                     ""expectedControlType"": ""Quaternion"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Next"",
+                    ""type"": ""Button"",
+                    ""id"": ""0f98ae13-7900-4d40-9f08-dda8d8e1fae3"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -1046,6 +1137,17 @@ public partial class @Input: IInputActionCollection2, IDisposable
                     ""action"": ""TrackedDeviceOrientation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""25da8d49-a464-4157-b1b8-ff663de39e38"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Next"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -1128,6 +1230,9 @@ public partial class @Input: IInputActionCollection2, IDisposable
         m_Player_Replay = m_Player.FindAction("Replay", throwIfNotFound: true);
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
         m_Player_Entr = m_Player.FindAction("Entr", throwIfNotFound: true);
+        m_Player_Restart = m_Player.FindAction("Restart", throwIfNotFound: true);
+        m_Player_SlowDownTime = m_Player.FindAction("SlowDownTime", throwIfNotFound: true);
+        m_Player_Point = m_Player.FindAction("Point", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1140,6 +1245,7 @@ public partial class @Input: IInputActionCollection2, IDisposable
         m_UI_ScrollWheel = m_UI.FindAction("ScrollWheel", throwIfNotFound: true);
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
+        m_UI_Next = m_UI.FindAction("Next", throwIfNotFound: true);
     }
 
     ~@Input()
@@ -1220,6 +1326,9 @@ public partial class @Input: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Replay;
     private readonly InputAction m_Player_Shoot;
     private readonly InputAction m_Player_Entr;
+    private readonly InputAction m_Player_Restart;
+    private readonly InputAction m_Player_SlowDownTime;
+    private readonly InputAction m_Player_Point;
     public struct PlayerActions
     {
         private @Input m_Wrapper;
@@ -1237,6 +1346,9 @@ public partial class @Input: IInputActionCollection2, IDisposable
         public InputAction @Replay => m_Wrapper.m_Player_Replay;
         public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
         public InputAction @Entr => m_Wrapper.m_Player_Entr;
+        public InputAction @Restart => m_Wrapper.m_Player_Restart;
+        public InputAction @SlowDownTime => m_Wrapper.m_Player_SlowDownTime;
+        public InputAction @Point => m_Wrapper.m_Player_Point;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1285,6 +1397,15 @@ public partial class @Input: IInputActionCollection2, IDisposable
             @Entr.started += instance.OnEntr;
             @Entr.performed += instance.OnEntr;
             @Entr.canceled += instance.OnEntr;
+            @Restart.started += instance.OnRestart;
+            @Restart.performed += instance.OnRestart;
+            @Restart.canceled += instance.OnRestart;
+            @SlowDownTime.started += instance.OnSlowDownTime;
+            @SlowDownTime.performed += instance.OnSlowDownTime;
+            @SlowDownTime.canceled += instance.OnSlowDownTime;
+            @Point.started += instance.OnPoint;
+            @Point.performed += instance.OnPoint;
+            @Point.canceled += instance.OnPoint;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1328,6 +1449,15 @@ public partial class @Input: IInputActionCollection2, IDisposable
             @Entr.started -= instance.OnEntr;
             @Entr.performed -= instance.OnEntr;
             @Entr.canceled -= instance.OnEntr;
+            @Restart.started -= instance.OnRestart;
+            @Restart.performed -= instance.OnRestart;
+            @Restart.canceled -= instance.OnRestart;
+            @SlowDownTime.started -= instance.OnSlowDownTime;
+            @SlowDownTime.performed -= instance.OnSlowDownTime;
+            @SlowDownTime.canceled -= instance.OnSlowDownTime;
+            @Point.started -= instance.OnPoint;
+            @Point.performed -= instance.OnPoint;
+            @Point.canceled -= instance.OnPoint;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1359,6 +1489,7 @@ public partial class @Input: IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_ScrollWheel;
     private readonly InputAction m_UI_TrackedDevicePosition;
     private readonly InputAction m_UI_TrackedDeviceOrientation;
+    private readonly InputAction m_UI_Next;
     public struct UIActions
     {
         private @Input m_Wrapper;
@@ -1373,6 +1504,7 @@ public partial class @Input: IInputActionCollection2, IDisposable
         public InputAction @ScrollWheel => m_Wrapper.m_UI_ScrollWheel;
         public InputAction @TrackedDevicePosition => m_Wrapper.m_UI_TrackedDevicePosition;
         public InputAction @TrackedDeviceOrientation => m_Wrapper.m_UI_TrackedDeviceOrientation;
+        public InputAction @Next => m_Wrapper.m_UI_Next;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1412,6 +1544,9 @@ public partial class @Input: IInputActionCollection2, IDisposable
             @TrackedDeviceOrientation.started += instance.OnTrackedDeviceOrientation;
             @TrackedDeviceOrientation.performed += instance.OnTrackedDeviceOrientation;
             @TrackedDeviceOrientation.canceled += instance.OnTrackedDeviceOrientation;
+            @Next.started += instance.OnNext;
+            @Next.performed += instance.OnNext;
+            @Next.canceled += instance.OnNext;
         }
 
         private void UnregisterCallbacks(IUIActions instance)
@@ -1446,6 +1581,9 @@ public partial class @Input: IInputActionCollection2, IDisposable
             @TrackedDeviceOrientation.started -= instance.OnTrackedDeviceOrientation;
             @TrackedDeviceOrientation.performed -= instance.OnTrackedDeviceOrientation;
             @TrackedDeviceOrientation.canceled -= instance.OnTrackedDeviceOrientation;
+            @Next.started -= instance.OnNext;
+            @Next.performed -= instance.OnNext;
+            @Next.canceled -= instance.OnNext;
         }
 
         public void RemoveCallbacks(IUIActions instance)
@@ -1523,6 +1661,9 @@ public partial class @Input: IInputActionCollection2, IDisposable
         void OnReplay(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
         void OnEntr(InputAction.CallbackContext context);
+        void OnRestart(InputAction.CallbackContext context);
+        void OnSlowDownTime(InputAction.CallbackContext context);
+        void OnPoint(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
@@ -1536,5 +1677,6 @@ public partial class @Input: IInputActionCollection2, IDisposable
         void OnScrollWheel(InputAction.CallbackContext context);
         void OnTrackedDevicePosition(InputAction.CallbackContext context);
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
+        void OnNext(InputAction.CallbackContext context);
     }
 }

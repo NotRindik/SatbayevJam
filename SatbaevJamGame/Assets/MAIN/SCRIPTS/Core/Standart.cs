@@ -24,7 +24,7 @@ namespace std
                 yield return new WaitForSeconds(interval);
             }
         }
-        public static IEnumerator InvokeRepeatedly(Action action, float interval, Func<bool> stopCondition, float delay = 0f)
+        public static IEnumerator InvokeRepeatedly(Action action, float interval, Func<bool> stopCondition, float delay = 0f, Action onEnd = null)
         {
             if (delay > 0f)
                 yield return new WaitForSeconds(delay);
@@ -32,11 +32,15 @@ namespace std
             while (true)
             {
                 if (stopCondition != null && stopCondition())
+                {
+                    onEnd?.Invoke();
                     yield break;
+                }
 
                 action?.Invoke();
                 yield return new WaitForSeconds(interval);
             }
+
         }
         public static Dictionary<string, string> ParseArgs(string data)
         {

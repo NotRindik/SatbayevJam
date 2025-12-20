@@ -1,8 +1,11 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using Systems;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class PlayerEntity : SavingEntity, ReInitAfterRePlay
 {
@@ -28,13 +31,15 @@ public class PlayerEntity : SavingEntity, ReInitAfterRePlay
     public bool Died;
     public LayerMask tempLayer;
 
-    private Action<InputContext> dashAction,attackAction,shootAction;
+    private Action<InputContext> dashAction,attackAction,shootAction,restart,timeSlow,timeUnslow;
     private Action<HitInfo> onDie;
 
     public UnityEvent onFirstTimeDie;
     public UnityEvent onDoActionFirsTime;
     UnityAction aboba;
-    public Coroutine shootAnim;
+    public Coroutine shootAnim,slowProcess;
+
+    public Coroutine walkSoundProcess;
     //public GameObject timemana;
     public override void Start()
     {
@@ -74,6 +79,31 @@ public class PlayerEntity : SavingEntity, ReInitAfterRePlay
                 _combo = 1;
         };
 
+        restart = c =>
+        {
+            TimeManager.TimeScale = 1;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        };
+        timeSlow = c =>
+        {
+            TimeManager.TimeScale = 0.2f;
+            meshTrail.Activate(true);
+            TimeDataManager.Instance.uIManager.TIMEMAMA.DOColor(new Color(0,0,0,0.8f),0.1f);
+            if (slowProcess == null)
+                slowProcess = StartCoroutine(TimeSlowDownProcess());
+        };
+        timeUnslow = c =>
+        {
+            if(slowProcess != null)
+            {
+                StopCoroutine(slowProcess);
+                meshTrail.Activate(false);
+                slowProcess = null;
+            }
+            TimeDataManager.Instance.uIManager.TIMEMAMA.DOKill();
+            TimeDataManager.Instance.uIManager.TIMEMAMA.DOColor(new Color(0, 0, 0, 0), 0.1f);
+            TimeManager.TimeScale = 1;
+        };
         shootAction = c =>
         {
             if (Died)
@@ -130,8 +160,20 @@ public class PlayerEntity : SavingEntity, ReInitAfterRePlay
         input.GetState().Attack.started += attackAction;
 
         input.GetState().Shoot.started += shootAction;
+        input.GetState().Restart.started += restart;
+        input.GetState().TimeSlow.started += timeSlow;
+        input.GetState().TimeSlow.canceled += timeUnslow;
 
         animationComponent.CrossFade("Idle", 0);
+    }
+
+    public IEnumerator TimeSlowDownProcess()
+    {
+        while (true)
+        {
+            TimeDataManager.Instance.uIManager.AddTime(-4);
+            yield return new WaitForSecondsRealtime(0.1f);
+        }
     }
 
     public override void Update()
@@ -170,8 +212,7 @@ public class PlayerEntity : SavingEntity, ReInitAfterRePlay
             {
                 Debug.Log("abiba");
                 hsSys.IsActive = false;
-/*                StartCoroutine(std.Utilities.Invoke(() => { hsSys.IsActive = true; gameObject.layer = tempLayer; }, 4));*/
-                hsSys.IsActive = true; gameObject.layer = tempLayer;
+                StartCoroutine(std.Utilities.Invoke(() => { hsSys.IsActive = true; gameObject.layer = tempLayer; }, 4));
                 Died = false;
                 movSys.IsActive = true;
                 RotateFaceTo.IsActive = true;
@@ -188,7 +229,8 @@ public class PlayerEntity : SavingEntity, ReInitAfterRePlay
             if (animationComponent.currentState != "Walk")
             {
                 animationComponent.CrossFade("Walk", 0.3f);
-                StartCoroutine(std.Utilities.InvokeRepeatedly(()=> AudioManager.instance.PlayAudioClip(walk), 0.3f,() => animationComponent.currentState != "Walk"));
+                if(walkSoundProcess == null) 
+                    walkSoundProcess = StartCoroutine(std.Utilities.InvokeRepeatedly(()=> AudioManager.instance.PlayAudioClip(walk), 0.3f,() => animationComponent.currentState != "Walk",onEnd: () => walkSoundProcess = null));
             }
         }
         else
@@ -199,11 +241,16 @@ public class PlayerEntity : SavingEntity, ReInitAfterRePlay
 
     protected override void ReferenceClean()
     {
+        timeUnslow?.Invoke(default);
         input.GetState().Dash.started -= dashAction;
 
         input.GetState().Attack.started -= attackAction;
 
         input.GetState().Shoot.started -= shootAction;
+
+        input.GetState().Restart.started -= restart;
+        input.GetState().TimeSlow.started -= timeSlow;
+        input.GetState().TimeSlow.canceled -= timeUnslow;
         base.ReferenceClean();
     }
 

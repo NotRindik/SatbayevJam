@@ -165,12 +165,6 @@ MonoBehaviour:
     - Name: OnMaxHealthDataChanged
       Entry: 6
       Data: 
-    - Name: OnTakeHit
-      Entry: 6
-      Data: 
-    - Name: OnDie
-      Entry: 6
-      Data: 
     - Name: OnHeal
       Entry: 6
       Data: 
@@ -601,6 +595,12 @@ MonoBehaviour:
     - Name: gameObject
       Entry: 6
       Data: 
+    - Name: OnTakeHit
+      Entry: 6
+      Data: 
+    - Name: OnDie
+      Entry: 6
+      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -652,6 +652,15 @@ MonoBehaviour:
     - Name: OnLateUpdate
       Entry: 6
       Data: 
+    - Name: shootAnim
+      Entry: 6
+      Data: 
+    - Name: slowProcess
+      Entry: 6
+      Data: 
+    - Name: walkSoundProcess
+      Entry: 6
+      Data: 
   meshTrail: {fileID: 404493141452909694}
   pistol: {fileID: 5343914830086424558}
   slash: {fileID: 8300000, guid: 398f7fe2e578a904aa2537b62427c0fa, type: 3}
@@ -663,6 +672,12 @@ MonoBehaviour:
   tempLayer:
     serializedVersion: 2
     m_Bits: 0
+  onFirstTimeDie:
+    m_PersistentCalls:
+      m_Calls: []
+  onDoActionFirsTime:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7632995724652437947
 GameObject:
   m_ObjectHideFlags: 0
@@ -1198,6 +1213,7 @@ MonoBehaviour:
     bc:
       speed: 30
       lifeTime: 10
+      unscaleUpdate: 1
       dir: {x: 0, y: 0, z: 0}
       DestroyLayer:
         serializedVersion: 2

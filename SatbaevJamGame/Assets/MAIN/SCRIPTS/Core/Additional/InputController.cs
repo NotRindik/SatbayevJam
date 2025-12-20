@@ -64,6 +64,8 @@ public class InputState : IDisposable
     public InputActionState GrablingHook = new();
     public InputActionState Fly = new();
     public InputActionState Point = new();
+    public InputActionState Restart = new();
+    public InputActionState TimeSlow = new();
 
     // UI
     public InputActionState Book = new();
@@ -170,6 +172,8 @@ public class PlayerSourceInput : IInputProvider, IDisposable
         Bind<bool>(inputActions.Player.Next, InputState.Next);
         //Bind<bool>(inputActions.Player.OnDrop, InputState.OnDrop);
         Bind<bool>(inputActions.Player.Dash, InputState.Dash);
+        Bind<bool>(inputActions.Player.Restart, InputState.Restart);
+        Bind<bool>(inputActions.Player.SlowDownTime, InputState.TimeSlow);
         /*Bind<bool>(inputActions.Player.Slide, InputState.Slide);
         Bind<bool>(inputActions.Player.GrablingHook, InputState.GrablingHook);
         Bind<Vector2>(inputActions.Player.Point, InputState.Point);*/

@@ -19,7 +19,7 @@ public class PlayerUIManager : MonoBehaviour
 
     public float currentTime;
     public bool isTimerRunning = false;
-    public Image fadeImage; // Image, который будет затемняться
+    public Image fadeImage,TIMEMAMA; // Image, который будет затемняться
     public float fadeDuration = 1f; // Длительность эффекта в секундах
     private void Start()
     {
@@ -116,7 +116,12 @@ public class PlayerUIManager : MonoBehaviour
 
             while (elapsed < fadeDuration)
             {
-                elapsed += Time.deltaTime;
+                if (currentTime > 0f)
+                {
+                    fadeImage.color = new Color(c.r, c.g, c.b, 0);
+                    yield break;
+                }
+                elapsed += Time.unscaledDeltaTime;
                 float alpha = Mathf.Clamp01(elapsed / fadeDuration);
                 fadeImage.color = new Color(c.r, c.g, c.b, alpha);
                 yield return null;
@@ -127,6 +132,7 @@ public class PlayerUIManager : MonoBehaviour
         }
 
         // Перезагрузка сцены после завершения fade
+        TimeManager.TimeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

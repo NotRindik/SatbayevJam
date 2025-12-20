@@ -12,11 +12,15 @@ public class Bullet : MonoBehaviour
         AudioManager.instance.PlayAudioClip(shot);
 
         Destroy(gameObject, bc.lifeTime);
+        if (bc.unscaleUpdate)
+        {
+            gameObject.layer = 9;
+        }
 
     }
     private void Update()
     {
-        transform.position += transform.forward * bc.speed * Time.deltaTime;
+        transform.position += transform.forward * bc.speed * (bc.unscaleUpdate == false ? Time.deltaTime : Time.unscaledDeltaTime);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -52,6 +56,7 @@ public struct   BulletComponent : IComponent
 {
     public float speed;
     public float lifeTime;
+    public bool unscaleUpdate;
     public Vector3 dir;
     public LayerMask DestroyLayer;
     public LayerMask DamageLayer;

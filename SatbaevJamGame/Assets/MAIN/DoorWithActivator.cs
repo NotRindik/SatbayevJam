@@ -50,6 +50,7 @@ public class DoorWithActivator : MonoBehaviour
 
     public void LoadScene2()
     {
+        TimeManager.TimeScale = 1;
         PlayerPrefs.SetInt("IsGaming", 0);
         PlayerPrefs.Save();
 

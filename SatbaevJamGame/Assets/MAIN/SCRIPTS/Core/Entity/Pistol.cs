@@ -9,12 +9,22 @@ public class Pistol : MonoBehaviour
     public bool isPlayer;
     public void Shoot()
     {
-        if (Time.time < lastShootTime + ps.delay)
-            return;
+        if (!ps.bc.unscaleUpdate)
+        {
+            if (Time.time < lastShootTime + ps.delay)
+                return;
 
-        lastShootTime = Time.time;
+            lastShootTime = Time.time;
+        }
+        else
+        {
+            if (Time.unscaledTime < lastShootTime + ps.delay)
+                return;
 
-        Vector2 screenPoint = InputManager.inputActions.UI.Point.ReadValue<Vector2>();
+            lastShootTime = Time.unscaledTime;
+        }
+
+        Vector2 screenPoint = InputManager.inputActions.Player.Point.ReadValue<Vector2>();
 
         Ray ray = Camera.main.ScreenPointToRay(screenPoint);
 
@@ -42,6 +52,7 @@ public class Pistol : MonoBehaviour
         var temp = inst.bc;
         temp.DamageLayer = ps.bc.DamageLayer;
         temp.DestroyLayer = ps.bc.DestroyLayer;
+        temp.unscaleUpdate = ps.bc.unscaleUpdate;
         inst.bc = temp;
     }
 

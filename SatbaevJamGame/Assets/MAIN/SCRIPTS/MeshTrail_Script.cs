@@ -21,6 +21,8 @@ public class MeshTrail_Script : MonoBehaviour
     public Transform positionToSpawn;
     public SkinnedMeshRenderer[] skinnedMeshRenderers;
 
+    public Coroutine isDashActive;
+
     void Start()
     {
         
@@ -41,6 +43,54 @@ public class MeshTrail_Script : MonoBehaviour
             isTrailActive = true;
             StartCoroutine(ActiveTrail(time));
         }
+    }
+
+    public void Activate(bool isActive)
+    {
+        if (isActive)
+        {
+            if(isDashActive == null) 
+                isDashActive = StartCoroutine(ActiveTrail());
+        }
+        else
+        {
+            if (isDashActive != null)
+                StopCoroutine(isDashActive);
+        }
+    }
+
+    IEnumerator ActiveTrail()
+    {
+        while (true)
+        {
+
+            if (skinnedMeshRenderers == null)
+            {
+                skinnedMeshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
+            }
+
+            for (int i = 0; i < skinnedMeshRenderers.Length; i++)
+            {
+                GameObject gObj = new GameObject();
+
+                gObj.transform.SetPositionAndRotation(positionToSpawn.position, Quaternion.Euler(-90f, positionToSpawn.rotation.eulerAngles.y, positionToSpawn.rotation.eulerAngles.z));
+
+                MeshRenderer mr = gObj.AddComponent<MeshRenderer>();
+                MeshFilter mf = gObj.AddComponent<MeshFilter>();
+
+                Mesh mesh = new Mesh();
+                skinnedMeshRenderers[i].BakeMesh(mesh);
+
+                mf.mesh = mesh;
+                mr.material = mat;
+
+                StartCoroutine(AnimateMaterialFloat(mr.material, 0, shaderVarRate, shaderVarRefreshRate));
+                Destroy(gObj, meshDestroyDelay);
+            }
+
+            yield return new WaitForSeconds(meshRefreshRate);
+        }
+        isTrailActive = false;
     }
 
     IEnumerator ActiveTrail(float timeActive)

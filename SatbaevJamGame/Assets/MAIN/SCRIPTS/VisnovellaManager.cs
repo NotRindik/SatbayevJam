@@ -42,18 +42,25 @@ public class VisnovellaManager : MonoBehaviour
     private void Start()
     {
         // Если уже в игре — сразу выходим из новеллы
+
+        print($"ISGAMING {PlayerPrefs.GetInt("IsGaming", 0)}");
         if (PlayerPrefs.GetInt("IsGaming", 0) == 1)
         {
             portraitUI.gameObject.SetActive(false);
             speakerUI.gameObject.SetActive(false);
             textPrinter.gameObject.SetActive(false);
         }
-        InputManager.inputActions.Player.Jump.performed += c => AdvanceDialogue();
+        InputManager.inputActions.UI.Next.performed += c => AdvanceDialogue();
 
         if (phases != null && phases.Length > 0 && PlayerPrefs.GetInt("IsGaming", 0) != 1)
             StartPhase(0);
         else
             Debug.LogWarning("No phases assigned!");
+    }
+
+    private void OnDestroy()
+    {
+        InputManager.inputActions.UI.Next.performed -= c => AdvanceDialogue();
     }
 
     /// <summary>
@@ -66,16 +73,18 @@ public class VisnovellaManager : MonoBehaviour
             Debug.LogWarning("Phase index out of range");
             return;
         }
-
+        InputManager.inputActions.UI.Enable();
         currentPhaseIndex = phaseIndex;
         currentLineIndex = 0;
-        entity.SetActiveAllSys(false);
+        InputManager.inputActions.Player.Disable();
         gameObject.SetActive(true);
         ShowCurrentLine();
     }
 
     void ShowCurrentLine()
     {
+        if (currentPhaseIndex ==-1)
+            return;
         var lines = phases[currentPhaseIndex].lines;
 
         if (lines == null || lines.Length == 0)
@@ -116,10 +125,11 @@ public class VisnovellaManager : MonoBehaviour
         // вызываем события фазы, если они есть
         phases[currentPhaseIndex].onTriggerEnterEvent?.Invoke();
 
-        entity.SetActiveAllSys(true);
+        InputManager.inputActions.Player.Enable();
         // отключаем диалог
+        PlayerPrefs.SetInt("IsGaming", 1);
         gameObject.SetActive(false);
-
+        InputManager.inputActions.UI.Disable();
         // выключаем объект если надо
         if (objectToDisableAfterPhase != null)
             objectToDisableAfterPhase.SetActive(false);
@@ -133,7 +143,6 @@ public class VisnovellaManager : MonoBehaviour
     /// </summary>
     public void AdvanceDialogue()
     {
-        Debug.Log("ABOBA");
         if (printRoutine != null)
         {
             textPrinter.FinishInstantly();

@@ -119,7 +119,7 @@ public class AttackSystem : BaseSystem, IDisposable, IStopCoroutineSafely
 
         while (elapsed < duration)
         {
-            elapsed += Time.deltaTime;
+            elapsed += Time.unscaledDeltaTime;
             float t = Mathf.Clamp01(elapsed / duration);
             // Плавное перемещение с Ease Out
             Vector3 newPos = Vector3.Lerp(startPos, target, 1 - Mathf.Pow(1 - t, 2));

@@ -29,6 +29,6 @@ public class RotateFaceTo : BaseSystem
         float speed = 720f;
 
         owner.transform.rotation =
-            Quaternion.RotateTowards(owner.transform.rotation, targetRot, speed * Time.deltaTime);
+            Quaternion.RotateTowards(owner.transform.rotation, targetRot, speed * Time.unscaledDeltaTime);
     }
 }
