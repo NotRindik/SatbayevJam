@@ -382,6 +382,7 @@ MonoBehaviour:
     bc:
       speed: 20
       lifeTime: 5
+      unscaleUpdate: 0
       dir: {x: 0, y: 0, z: 0}
       DestroyLayer:
         serializedVersion: 2
@@ -554,6 +555,7 @@ Transform:
   - {fileID: 9115950908219346601}
   - {fileID: 431977314209493168}
   - {fileID: 7581912214950880392}
+  - {fileID: 5743786910726573272}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &2918558414856989310
@@ -596,6 +598,7 @@ MonoBehaviour:
     ReferencedUnityObjects:
     - {fileID: 2918558414856989310}
     - {fileID: 2165698583579490406}
+    - {fileID: 5373858453460928230}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -659,12 +662,6 @@ MonoBehaviour:
       Entry: 6
       Data: 
     - Name: OnMaxHealthDataChanged
-      Entry: 6
-      Data: 
-    - Name: OnTakeHit
-      Entry: 6
-      Data: 
-    - Name: OnDie
       Entry: 6
       Data: 
     - Name: OnHeal
@@ -795,7 +792,7 @@ MonoBehaviour:
       Data: 1
     - Name: rotateSpeed
       Entry: 4
-      Data: 4
+      Data: 6
     - Name: stopRotWhileFire
       Entry: 5
       Data: false
@@ -859,6 +856,15 @@ MonoBehaviour:
     - Name: gameObject
       Entry: 6
       Data: 
+    - Name: OnTakeHit
+      Entry: 6
+      Data: 
+    - Name: OnDie
+      Entry: 6
+      Data: 
+    - Name: hitEffect
+      Entry: 10
+      Data: 2
     - Name: 
       Entry: 8
       Data: 
@@ -974,3 +980,74 @@ Transform:
   - {fileID: 2754532741744071492}
   m_Father: {fileID: 3342570636832615179}
   m_LocalEulerAnglesHint: {x: -2.797, y: -7.117, z: 29.356}
+--- !u!1001 &8325841337170560713
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3342570636832615179}
+    m_Modifications:
+    - target: {fileID: 4114200299618713647, guid: e440d91404ffed14da081ede73e51fa5, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4340717244976056849, guid: e440d91404ffed14da081ede73e51fa5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.9082186
+      objectReference: {fileID: 0}
+    - target: {fileID: 4340717244976056849, guid: e440d91404ffed14da081ede73e51fa5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.46189687
+      objectReference: {fileID: 0}
+    - target: {fileID: 4340717244976056849, guid: e440d91404ffed14da081ede73e51fa5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.2010765
+      objectReference: {fileID: 0}
+    - target: {fileID: 4340717244976056849, guid: e440d91404ffed14da081ede73e51fa5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4340717244976056849, guid: e440d91404ffed14da081ede73e51fa5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4340717244976056849, guid: e440d91404ffed14da081ede73e51fa5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4340717244976056849, guid: e440d91404ffed14da081ede73e51fa5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4340717244976056849, guid: e440d91404ffed14da081ede73e51fa5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4340717244976056849, guid: e440d91404ffed14da081ede73e51fa5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4340717244976056849, guid: e440d91404ffed14da081ede73e51fa5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6239964040883870748, guid: e440d91404ffed14da081ede73e51fa5, type: 3}
+      propertyPath: m_Name
+      value: Explosion
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e440d91404ffed14da081ede73e51fa5, type: 3}
+--- !u!198 &5373858453460928230 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4114200299618713647, guid: e440d91404ffed14da081ede73e51fa5, type: 3}
+  m_PrefabInstance: {fileID: 8325841337170560713}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5743786910726573272 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4340717244976056849, guid: e440d91404ffed14da081ede73e51fa5, type: 3}
+  m_PrefabInstance: {fileID: 8325841337170560713}
+  m_PrefabAsset: {fileID: 0}

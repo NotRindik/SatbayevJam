@@ -178,8 +178,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: -1.0286, y: 5.7611, z: 20.34}
-  m_LocalScale: {x: 0.38, y: 0.26766005, z: 1.5689512}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 1, y: 0.26766005, z: 1.5689512}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 144468640653802591}
   m_Father: {fileID: 0}
@@ -276,13 +276,14 @@ MonoBehaviour:
   bc:
     speed: 200
     lifeTime: 1
+    unscaleUpdate: 0
     dir: {x: 0, y: 0, z: 0}
     DestroyLayer:
       serializedVersion: 2
       m_Bits: 118
     DamageLayer:
       serializedVersion: 2
-      m_Bits: 384
+      m_Bits: 448
     PlayerLayer:
       serializedVersion: 2
       m_Bits: 128
@@ -291,3 +292,4 @@ MonoBehaviour:
       CritChance: 1
       CritMultiplier: 1
       Penetration: 1
+  hitEffect: {fileID: 4114200299618713647, guid: e440d91404ffed14da081ede73e51fa5, type: 3}

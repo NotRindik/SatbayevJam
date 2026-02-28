@@ -56,7 +56,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5af26c53e7a0078428a396a923d7b85a, type: 2}
+  - {fileID: 2100000, guid: 2eb07c0d3b4d0c24dbc2d7d8acab10ab, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -274,8 +274,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shot: {fileID: 8300000, guid: 3a3351d91a8b6b44f9d5265b265dab2f, type: 3}
   bc:
-    speed: 30
+    speed: 60
     lifeTime: 5
+    unscaleUpdate: 0
     dir: {x: 0, y: 0, z: 0}
     DestroyLayer:
       serializedVersion: 2
@@ -291,3 +292,4 @@ MonoBehaviour:
       CritChance: 1
       CritMultiplier: 1
       Penetration: 1
+  hitEffect: {fileID: 4114200299618713647, guid: e440d91404ffed14da081ede73e51fa5, type: 3}

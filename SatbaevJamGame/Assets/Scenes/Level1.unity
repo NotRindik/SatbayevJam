@@ -749,7 +749,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 52658251}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Patrol2 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1012,6 +1012,10 @@ PrefabInstance:
     - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
       propertyPath: m_Name
       value: Duct Vent (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1549,7 +1553,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4339083227494973466, guid: 486d25b79980a4a4fb3a2bd38547f340, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1889101306}
   m_SourcePrefab: {fileID: 100100000, guid: 486d25b79980a4a4fb3a2bd38547f340, type: 3}
 --- !u!1001 &112598690
 PrefabInstance:
@@ -1615,6 +1622,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Duct Vent (47)
       objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1625,11 +1636,142 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1713100555195714247, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
   m_PrefabInstance: {fileID: 112598690}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &121903803 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 2918558414856989310, guid: 6bb263af168abb04f9f34236b4b1e8d7, type: 3}
-  m_PrefabInstance: {fileID: 626271280}
+--- !u!1 &118958912
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 118958913}
+  - component: {fileID: 118958915}
+  - component: {fileID: 118958914}
+  m_Layer: 5
+  m_Name: Text (TMP) (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &118958913
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118958912}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 33.99993}
+  m_LocalScale: {x: 0.99975944, y: 0.9997595, z: 0.9997595}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 166828656}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 51, y: 131}
+  m_SizeDelta: {x: -1191.7737, y: -830.6284}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &118958914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118958912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Hold R to reverse
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 4f7b1ed8b215c8c4493ae2cff99048ce, type: 2}
+  m_sharedMaterial: {fileID: 101487495333030077, guid: 4f7b1ed8b215c8c4493ae2cff99048ce, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 46
+  m_fontSizeBase: 46
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 0
+  m_fontSizeMax: 0
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 0
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &118958915
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118958912}
+  m_CullTransparentMesh: 1
 --- !u!1001 &127826481
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2106,6 +2248,83 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6633705336866326792, guid: 262f9d08c1c1f0e4cb854a1452ef57d0, type: 3}
   m_PrefabInstance: {fileID: 161101003}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &166828653
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 166828656}
+  - component: {fileID: 166828655}
+  - component: {fileID: 166828654}
+  m_Layer: 5
+  m_Name: Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &166828654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 166828653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0.4195919, b: 1, a: 0.392}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &166828655
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 166828653}
+  m_CullTransparentMesh: 1
+--- !u!224 &166828656
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 166828653}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 236192266}
+  - {fileID: 118958913}
+  m_Father: {fileID: 1797489439}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &167233937
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2596,6 +2815,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Duct Vent (28)
       objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2739,6 +2962,14 @@ PrefabInstance:
     - target: {fileID: 3163663986128208674, guid: 9faab88d9b9af9e4c8a39cccde709e94, type: 3}
       propertyPath: m_Name
       value: WarnLight (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3163663986128208674, guid: 9faab88d9b9af9e4c8a39cccde709e94, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6573256766522743058, guid: 9faab88d9b9af9e4c8a39cccde709e94, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3268,6 +3499,142 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6633705336866326792, guid: 262f9d08c1c1f0e4cb854a1452ef57d0, type: 3}
   m_PrefabInstance: {fileID: 227429310}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &236192265
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 236192266}
+  - component: {fileID: 236192268}
+  - component: {fileID: 236192267}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &236192266
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236192265}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -20.999834}
+  m_LocalScale: {x: 0.99975944, y: 0.9997595, z: 0.9997595}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 166828656}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 51, y: 186}
+  m_SizeDelta: {x: -1191.7737, y: -830.6284}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &236192267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236192265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: You died, reverse or die
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 4f7b1ed8b215c8c4493ae2cff99048ce, type: 2}
+  m_sharedMaterial: {fileID: 101487495333030077, guid: 4f7b1ed8b215c8c4493ae2cff99048ce, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 95
+  m_fontSizeBase: 95
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 0
+  m_fontSizeMax: 0
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 0
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &236192268
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236192265}
+  m_CullTransparentMesh: 1
 --- !u!1001 &237768567
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3669,6 +4036,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Duct Vent (43)
       objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3957,6 +4328,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fusebox 01
       objectReference: {fileID: 0}
+    - target: {fileID: 2644447273969536949, guid: 3c19fd38539b7f04b90d35983ebc23cc, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4030,6 +4405,10 @@ PrefabInstance:
     - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
       propertyPath: m_Name
       value: Duct Vent (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4525,6 +4904,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pipes 06
       objectReference: {fileID: 0}
+    - target: {fileID: 4551697137065323032, guid: 68b56f98a24210a4e82f6c092adcd68e, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4549,7 +4932,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1835881230559808018, guid: 207f61281715ab24f9899fdfa960ca48, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3396001746467026945, guid: 207f61281715ab24f9899fdfa960ca48, type: 3}
       propertyPath: m_LocalScale.x
@@ -4762,7 +5145,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 322645058}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Patrol2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4939,7 +5322,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1835881230559808018, guid: 207f61281715ab24f9899fdfa960ca48, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3396001746467026945, guid: 207f61281715ab24f9899fdfa960ca48, type: 3}
       propertyPath: m_LocalScale.x
@@ -5136,6 +5519,10 @@ PrefabInstance:
     - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
       propertyPath: m_Name
       value: Duct Vent (44)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5356,6 +5743,10 @@ PrefabInstance:
     - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
       propertyPath: m_Name
       value: Duct Vent (36)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5691,6 +6082,10 @@ PrefabInstance:
     - target: {fileID: 1125949228573653623, guid: 3021cfcaf0d4f714cbef1025851b7ce7, type: 3}
       propertyPath: m_Name
       value: Bottle (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125949228573653623, guid: 3021cfcaf0d4f714cbef1025851b7ce7, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6093,6 +6488,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Duct Vent (38)
       objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6382,6 +6781,10 @@ PrefabInstance:
     - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
       propertyPath: m_Name
       value: Duct Vent (40)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6909,6 +7312,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Duct Vent (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7310,6 +7717,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: WarnLight (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 3163663986128208674, guid: 9faab88d9b9af9e4c8a39cccde709e94, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6573256766522743058, guid: 9faab88d9b9af9e4c8a39cccde709e94, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7452,6 +7867,10 @@ PrefabInstance:
     - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
       propertyPath: m_Name
       value: Duct Vent (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7822,7 +8241,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 516371287}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Patrol2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8188,6 +8607,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Duct Vent (33)
       objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8261,6 +8684,10 @@ PrefabInstance:
     - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
       propertyPath: m_Name
       value: Duct Vent (48)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8546,6 +8973,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Duct Vent (30)
       objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8622,7 +9053,7 @@ PrefabInstance:
       objectReference: {fileID: 8215025302745287620, guid: 6bb263af168abb04f9f34236b4b1e8d7, type: 3}
     - target: {fileID: 8215025302745287620, guid: 6bb263af168abb04f9f34236b4b1e8d7, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8215025302745287620, guid: 6bb263af168abb04f9f34236b4b1e8d7, type: 3}
       propertyPath: 'serializationData.PrefabModifications.Array.data[0]'
@@ -8630,8 +9061,12 @@ PrefabInstance:
         UnityEngine.CoreModule","$rlength":2,"$rcontent":[$eref:0,$eref:1]}}'
       objectReference: {fileID: 0}
     - target: {fileID: 8215025302745287620, guid: 6bb263af168abb04f9f34236b4b1e8d7, type: 3}
+      propertyPath: 'serializationData.PrefabModifications.Array.data[1]'
+      value: '"path":"Systems.[2].hitEffect","value":$eref:2'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8215025302745287620, guid: 6bb263af168abb04f9f34236b4b1e8d7, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8215025302745287620, guid: 6bb263af168abb04f9f34236b4b1e8d7, type: 3}
       propertyPath: 'serializationData.PrefabModificationsReferencedUnityObjects.Array.data[0]'
@@ -8641,6 +9076,10 @@ PrefabInstance:
       propertyPath: 'serializationData.PrefabModificationsReferencedUnityObjects.Array.data[1]'
       value: 
       objectReference: {fileID: 516371287}
+    - target: {fileID: 8215025302745287620, guid: 6bb263af168abb04f9f34236b4b1e8d7, type: 3}
+      propertyPath: 'serializationData.PrefabModificationsReferencedUnityObjects.Array.data[2]'
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8827334880748415180, guid: 6bb263af168abb04f9f34236b4b1e8d7, type: 3}
       propertyPath: m_Name
       value: Solider
@@ -9721,39 +10160,23 @@ PrefabInstance:
       objectReference: {fileID: 8215025302745287620, guid: 6bb263af168abb04f9f34236b4b1e8d7, type: 3}
     - target: {fileID: 8215025302745287620, guid: 6bb263af168abb04f9f34236b4b1e8d7, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.size
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8215025302745287620, guid: 6bb263af168abb04f9f34236b4b1e8d7, type: 3}
       propertyPath: 'serializationData.PrefabModifications.Array.data[0]'
-      value: '"path":"Components.[3].animator","value":$eref:0'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8215025302745287620, guid: 6bb263af168abb04f9f34236b4b1e8d7, type: 3}
-      propertyPath: 'serializationData.PrefabModifications.Array.data[1]'
       value: '"path":"Components.[4]","value":{"$id":0,"$type":"PatrolData, Assembly-CSharp","patrolTrack":{"$id":1,"$type":"UnityEngine.Transform[],
-        UnityEngine.CoreModule","$rlength":2,"$rcontent":[$eref:1,$eref:2]}}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8215025302745287620, guid: 6bb263af168abb04f9f34236b4b1e8d7, type: 3}
-      propertyPath: 'serializationData.PrefabModifications.Array.data[2]'
-      value: '"path":"Components.[4].patrolTrack.[0]","value":$eref:1'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8215025302745287620, guid: 6bb263af168abb04f9f34236b4b1e8d7, type: 3}
-      propertyPath: 'serializationData.PrefabModifications.Array.data[3]'
-      value: '"path":"Components.[4].patrolTrack.[1]","value":$eref:2'
+        UnityEngine.CoreModule","$rlength":2,"$rcontent":[$eref:0,$eref:1]}}'
       objectReference: {fileID: 0}
     - target: {fileID: 8215025302745287620, guid: 6bb263af168abb04f9f34236b4b1e8d7, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8215025302745287620, guid: 6bb263af168abb04f9f34236b4b1e8d7, type: 3}
       propertyPath: 'serializationData.PrefabModificationsReferencedUnityObjects.Array.data[0]'
       value: 
-      objectReference: {fileID: 121903803}
-    - target: {fileID: 8215025302745287620, guid: 6bb263af168abb04f9f34236b4b1e8d7, type: 3}
-      propertyPath: 'serializationData.PrefabModificationsReferencedUnityObjects.Array.data[1]'
-      value: 
       objectReference: {fileID: 1827360513}
     - target: {fileID: 8215025302745287620, guid: 6bb263af168abb04f9f34236b4b1e8d7, type: 3}
-      propertyPath: 'serializationData.PrefabModificationsReferencedUnityObjects.Array.data[2]'
+      propertyPath: 'serializationData.PrefabModificationsReferencedUnityObjects.Array.data[1]'
       value: 
       objectReference: {fileID: 516371287}
     - target: {fileID: 8827334880748415180, guid: 6bb263af168abb04f9f34236b4b1e8d7, type: 3}
@@ -9828,6 +10251,10 @@ PrefabInstance:
     - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
       propertyPath: m_Name
       value: Duct Vent (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10205,6 +10632,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Exit Sign
       objectReference: {fileID: 0}
+    - target: {fileID: 864674128125767932, guid: 4da7cd4243bfe9f44b3bc9ac63b3cd1d, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1773382769788165824, guid: 4da7cd4243bfe9f44b3bc9ac63b3cd1d, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4441861298438718191, guid: 4da7cd4243bfe9f44b3bc9ac63b3cd1d, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.06
@@ -10260,6 +10695,10 @@ PrefabInstance:
     - target: {fileID: 4441861298438718191, guid: 4da7cd4243bfe9f44b3bc9ac63b3cd1d, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8591425886817626961, guid: 4da7cd4243bfe9f44b3bc9ac63b3cd1d, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10334,6 +10773,14 @@ PrefabInstance:
     - target: {fileID: 3163663986128208674, guid: 9faab88d9b9af9e4c8a39cccde709e94, type: 3}
       propertyPath: m_Name
       value: WarnLight (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3163663986128208674, guid: 9faab88d9b9af9e4c8a39cccde709e94, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6573256766522743058, guid: 9faab88d9b9af9e4c8a39cccde709e94, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10781,6 +11228,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Locker (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8522547555068297493, guid: 0bcab78f134816f4f9d0ae2a34ea6648, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 9011134906340219823, guid: 0bcab78f134816f4f9d0ae2a34ea6648, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -10976,6 +11427,10 @@ PrefabInstance:
     - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
       propertyPath: m_Name
       value: Duct Vent (41)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11216,7 +11671,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 734963719}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Props
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11936,6 +12391,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Duct Vent (39)
       objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12450,6 +12909,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6633705336866326792, guid: 262f9d08c1c1f0e4cb854a1452ef57d0, type: 3}
   m_PrefabInstance: {fileID: 792695883}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &800991810 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4339083227494973466, guid: 486d25b79980a4a4fb3a2bd38547f340, type: 3}
+  m_PrefabInstance: {fileID: 111805581}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &812576343
 PrefabInstance:
@@ -13819,6 +14283,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: WarnLight (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 3163663986128208674, guid: 9faab88d9b9af9e4c8a39cccde709e94, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6573256766522743058, guid: 9faab88d9b9af9e4c8a39cccde709e94, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14047,6 +14519,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 7b72352e73d6af749911eccc2857d334, type: 3}
       propertyPath: m_Name
       value: Chest (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7b72352e73d6af749911eccc2857d334, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14332,6 +14808,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Duct Vent (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14476,6 +14956,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Duct Vent
       objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14619,6 +15103,10 @@ PrefabInstance:
     - target: {fileID: 1125949228573653623, guid: 3021cfcaf0d4f714cbef1025851b7ce7, type: 3}
       propertyPath: m_Name
       value: Bottle (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125949228573653623, guid: 3021cfcaf0d4f714cbef1025851b7ce7, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14992,6 +15480,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chest (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7293141659354954032, guid: be86c53eb0608da40ad3cee370a4ce4b, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7961696867904136074, guid: be86c53eb0608da40ad3cee370a4ce4b, type: 3}
       propertyPath: m_LocalScale.x
       value: 4
@@ -15328,6 +15820,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Duct Vent (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15401,6 +15897,10 @@ PrefabInstance:
     - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
       propertyPath: m_Name
       value: Duct Vent (27)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15730,6 +16230,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Duct Vent (22)
       objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15803,6 +16307,14 @@ PrefabInstance:
     - target: {fileID: 3163663986128208674, guid: 9faab88d9b9af9e4c8a39cccde709e94, type: 3}
       propertyPath: m_Name
       value: WarnLight (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3163663986128208674, guid: 9faab88d9b9af9e4c8a39cccde709e94, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6573256766522743058, guid: 9faab88d9b9af9e4c8a39cccde709e94, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16392,6 +16904,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Duct Vent (24)
       objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16606,6 +17122,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Duct Vent (25)
       objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16679,6 +17199,10 @@ PrefabInstance:
     - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
       propertyPath: m_Name
       value: Duct Vent (35)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16920,6 +17444,10 @@ PrefabInstance:
     - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
       propertyPath: m_Name
       value: Duct Vent (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17370,6 +17898,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 734963719}
     m_Modifications:
+    - target: {fileID: 9222408218295385817, guid: 1b2e0c15a34b5e24ea266246ee7534f8, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9222408218460084581, guid: 1b2e0c15a34b5e24ea266246ee7534f8, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9222408219874554897, guid: 1b2e0c15a34b5e24ea266246ee7534f8, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 9222408220077309190, guid: 1b2e0c15a34b5e24ea266246ee7534f8, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.030000009
@@ -17425,6 +17965,14 @@ PrefabInstance:
     - target: {fileID: 9222408220077596966, guid: 1b2e0c15a34b5e24ea266246ee7534f8, type: 3}
       propertyPath: m_Name
       value: Pallet Variation 06
+      objectReference: {fileID: 0}
+    - target: {fileID: 9222408220077596966, guid: 1b2e0c15a34b5e24ea266246ee7534f8, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9222408220206537282, guid: 1b2e0c15a34b5e24ea266246ee7534f8, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17734,6 +18282,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Duct Vent (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17892,7 +18444,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1173297866}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpawnRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18629,6 +19181,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: WarnLight (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 3163663986128208674, guid: 9faab88d9b9af9e4c8a39cccde709e94, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6573256766522743058, guid: 9faab88d9b9af9e4c8a39cccde709e94, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18702,6 +19262,10 @@ PrefabInstance:
     - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
       propertyPath: m_Name
       value: Duct Vent (37)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18916,6 +19480,10 @@ PrefabInstance:
     - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
       propertyPath: m_Name
       value: Duct Vent (23)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -19659,6 +20227,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Duct Vent (42)
       objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20013,6 +20585,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: WarnLight (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 3163663986128208674, guid: 9faab88d9b9af9e4c8a39cccde709e94, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6573256766522743058, guid: 9faab88d9b9af9e4c8a39cccde709e94, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20156,6 +20736,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Duct Vent (34)
       objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20229,6 +20813,14 @@ PrefabInstance:
     - target: {fileID: 3163663986128208674, guid: 9faab88d9b9af9e4c8a39cccde709e94, type: 3}
       propertyPath: m_Name
       value: WarnLight (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3163663986128208674, guid: 9faab88d9b9af9e4c8a39cccde709e94, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6573256766522743058, guid: 9faab88d9b9af9e4c8a39cccde709e94, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -20327,7 +20919,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1835881230559808018, guid: 207f61281715ab24f9899fdfa960ca48, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3396001746467026945, guid: 207f61281715ab24f9899fdfa960ca48, type: 3}
       propertyPath: m_LocalScale.x
@@ -20906,6 +21498,10 @@ PrefabInstance:
     - target: {fileID: 1125949228573653623, guid: 3021cfcaf0d4f714cbef1025851b7ce7, type: 3}
       propertyPath: m_Name
       value: Bottle (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125949228573653623, guid: 3021cfcaf0d4f714cbef1025851b7ce7, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -21535,6 +22131,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Duct Vent (46)
       objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -21983,7 +22583,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1835881230559808018, guid: 207f61281715ab24f9899fdfa960ca48, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3396001746467026945, guid: 207f61281715ab24f9899fdfa960ca48, type: 3}
       propertyPath: m_LocalScale.x
@@ -22110,6 +22710,10 @@ PrefabInstance:
     - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
       propertyPath: m_Name
       value: Duct Vent (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -22254,6 +22858,14 @@ PrefabInstance:
     - target: {fileID: 3163663986128208674, guid: 9faab88d9b9af9e4c8a39cccde709e94, type: 3}
       propertyPath: m_Name
       value: WarnLight (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3163663986128208674, guid: 9faab88d9b9af9e4c8a39cccde709e94, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6573256766522743058, guid: 9faab88d9b9af9e4c8a39cccde709e94, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -22497,6 +23109,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pipes 06 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4551697137065323032, guid: 68b56f98a24210a4e82f6c092adcd68e, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -22698,6 +23314,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: WarnLight (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3163663986128208674, guid: 9faab88d9b9af9e4c8a39cccde709e94, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6573256766522743058, guid: 9faab88d9b9af9e4c8a39cccde709e94, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -22844,6 +23468,10 @@ PrefabInstance:
     - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
       propertyPath: m_Name
       value: Duct Vent (29)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -23128,6 +23756,10 @@ PrefabInstance:
     - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
       propertyPath: m_Name
       value: Duct Vent (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -23684,6 +24316,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Duct Vent (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -23989,6 +24625,10 @@ PrefabInstance:
     - target: {fileID: 5650836330288445686, guid: a481acdedee58d04aa1ddfe33e937ea7, type: 3}
       propertyPath: m_Name
       value: Pipes 01
+      objectReference: {fileID: 0}
+    - target: {fileID: 5650836330288445686, guid: a481acdedee58d04aa1ddfe33e937ea7, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8660585271137405669, guid: a481acdedee58d04aa1ddfe33e937ea7, type: 3}
       propertyPath: m_LocalScale.x
@@ -24731,6 +25371,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Duct Vent (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -25150,7 +25794,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1581291193}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Patrol3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25654,6 +26298,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Locker (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8522547555068297493, guid: 0bcab78f134816f4f9d0ae2a34ea6648, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 9011134906340219823, guid: 0bcab78f134816f4f9d0ae2a34ea6648, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -25911,6 +26559,14 @@ PrefabInstance:
     - target: {fileID: 3163663986128208674, guid: 9faab88d9b9af9e4c8a39cccde709e94, type: 3}
       propertyPath: m_Name
       value: WarnLight (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3163663986128208674, guid: 9faab88d9b9af9e4c8a39cccde709e94, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6573256766522743058, guid: 9faab88d9b9af9e4c8a39cccde709e94, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -26475,7 +27131,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1658539027}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Patrol 3 1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27031,6 +27687,10 @@ PrefabInstance:
     - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
       propertyPath: m_Name
       value: Duct Vent (26)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -28002,6 +28662,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Duct Vent (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -28079,6 +28743,10 @@ PrefabInstance:
     - target: {fileID: 8616474985601507132, guid: a1c3fdb86a0adcd46ab019295d74504c, type: 3}
       propertyPath: m_Name
       value: Fusebox 02
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616474985601507132, guid: a1c3fdb86a0adcd46ab019295d74504c, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -28317,6 +28985,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Box (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5169845841060556695, guid: f31df0b8a077cf44aafceb461ba27cb2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5545386664257500461, guid: f31df0b8a077cf44aafceb461ba27cb2, type: 3}
       propertyPath: m_LocalScale.x
       value: 5
@@ -28466,7 +29138,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1750827344}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Patrol3 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28705,6 +29377,10 @@ PrefabInstance:
     - target: {fileID: 8522547555068297493, guid: 0bcab78f134816f4f9d0ae2a34ea6648, type: 3}
       propertyPath: m_Name
       value: Locker (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8522547555068297493, guid: 0bcab78f134816f4f9d0ae2a34ea6648, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 9011134906340219823, guid: 0bcab78f134816f4f9d0ae2a34ea6648, type: 3}
       propertyPath: m_LocalScale.x
@@ -29315,7 +29991,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1797979786}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Patrol2 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29471,6 +30147,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Duct Vent (45)
       objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -29544,6 +30224,10 @@ PrefabInstance:
     - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
       propertyPath: m_Name
       value: Duct Vent (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -29639,7 +30323,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1827360513}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Patrol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30201,6 +30885,10 @@ PrefabInstance:
     - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
       propertyPath: m_Name
       value: Duct Vent (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -31076,6 +31764,10 @@ PrefabInstance:
       propertyPath: onDoActionFirsTime.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 5343914830086424558, guid: 091af8c8945fde34c955ada51799214d, type: 3}
+      propertyPath: ps.BulletPrefab
+      value: 
+      objectReference: {fileID: 3291958365060735898, guid: 2269f1410fcede04f8b4c6ed8397fef1, type: 3}
     - target: {fileID: 5347126998880126804, guid: 091af8c8945fde34c955ada51799214d, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -31135,10 +31827,22 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7949306990250845673, guid: 486d25b79980a4a4fb3a2bd38547f340, type: 3}
   m_PrefabInstance: {fileID: 111805581}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 800991810}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1889101306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800991810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8291d29d157ee646b46e571d92b9ae3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1890684104
@@ -31204,6 +31908,10 @@ PrefabInstance:
     - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
       propertyPath: m_Name
       value: Duct Vent (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -31279,6 +31987,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Duct Vent (32)
       objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -31298,7 +32010,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1905131116}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Patrol2 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31528,6 +32240,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pallet Variation 07
       objectReference: {fileID: 0}
+    - target: {fileID: 8486178408447812966, guid: 19782abfa2feab045a7110ffc30b6be8, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8486178408480264391, guid: 19782abfa2feab045a7110ffc30b6be8, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8486178408514614662, guid: 19782abfa2feab045a7110ffc30b6be8, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8486178408788029633, guid: 19782abfa2feab045a7110ffc30b6be8, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -31601,6 +32329,10 @@ PrefabInstance:
     - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
       propertyPath: m_Name
       value: Duct Vent (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -31916,6 +32648,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Duct Vent (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -32121,6 +32857,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fire Extinguisher
       objectReference: {fileID: 0}
+    - target: {fileID: 9119854835688774015, guid: 300abc4d244c9784cb330753dcf797e4, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -32194,6 +32934,14 @@ PrefabInstance:
     - target: {fileID: 3163663986128208674, guid: 9faab88d9b9af9e4c8a39cccde709e94, type: 3}
       propertyPath: m_Name
       value: WarnLight (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3163663986128208674, guid: 9faab88d9b9af9e4c8a39cccde709e94, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6573256766522743058, guid: 9faab88d9b9af9e4c8a39cccde709e94, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -32358,7 +33106,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1956545663}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Patrol 3 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32700,6 +33448,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chest (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7b72352e73d6af749911eccc2857d334, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -32854,6 +33606,10 @@ PrefabInstance:
     - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
       propertyPath: m_Name
       value: Duct Vent (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -33217,6 +33973,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 7b72352e73d6af749911eccc2857d334, type: 3}
       propertyPath: m_Name
       value: Chest
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7b72352e73d6af749911eccc2857d334, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -33683,6 +34443,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: WarnLight (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 3163663986128208674, guid: 9faab88d9b9af9e4c8a39cccde709e94, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6573256766522743058, guid: 9faab88d9b9af9e4c8a39cccde709e94, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -34048,6 +34816,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: WarnLight (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 3163663986128208674, guid: 9faab88d9b9af9e4c8a39cccde709e94, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6573256766522743058, guid: 9faab88d9b9af9e4c8a39cccde709e94, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -34057,6 +34833,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 2354334833539160472, guid: 9faab88d9b9af9e4c8a39cccde709e94, type: 3}
   m_PrefabInstance: {fileID: 2067164567}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &2071666487 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2465080079446445716, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
+  m_PrefabInstance: {fileID: 4840709879703901027}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2078782660
 PrefabInstance:
@@ -34142,7 +34923,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1835881230559808018, guid: 207f61281715ab24f9899fdfa960ca48, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3396001746467026945, guid: 207f61281715ab24f9899fdfa960ca48, type: 3}
       propertyPath: m_LocalScale.x
@@ -34428,7 +35209,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1835881230559808018, guid: 207f61281715ab24f9899fdfa960ca48, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3396001746467026945, guid: 207f61281715ab24f9899fdfa960ca48, type: 3}
       propertyPath: m_LocalScale.x
@@ -34631,6 +35412,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Duct Vent (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -34774,6 +35559,10 @@ PrefabInstance:
     - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
       propertyPath: m_Name
       value: Duct Vent (31)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2422230953702324436, guid: 573ef1f633878a64f8caef594c1c31d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -35076,6 +35865,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Box
       objectReference: {fileID: 0}
+    - target: {fileID: 5169845841060556695, guid: f31df0b8a077cf44aafceb461ba27cb2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5545386664257500461, guid: f31df0b8a077cf44aafceb461ba27cb2, type: 3}
       propertyPath: m_LocalScale.x
       value: 5
@@ -35289,6 +36082,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Locker
       objectReference: {fileID: 0}
+    - target: {fileID: 8522547555068297493, guid: 0bcab78f134816f4f9d0ae2a34ea6648, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 9011134906340219823, guid: 0bcab78f134816f4f9d0ae2a34ea6648, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -35415,6 +36212,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: WarnLight
       objectReference: {fileID: 0}
+    - target: {fileID: 3163663986128208674, guid: 9faab88d9b9af9e4c8a39cccde709e94, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6573256766522743058, guid: 9faab88d9b9af9e4c8a39cccde709e94, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -35526,19 +36331,39 @@ PrefabInstance:
       objectReference: {fileID: 145030466}
     - target: {fileID: 356741821060982488, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
       propertyPath: maxTime
-      value: 600
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 356741821060982488, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
       propertyPath: TIMEMAMA
       value: 
       objectReference: {fileID: 1774142987}
     - target: {fileID: 356741821060982488, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
+      propertyPath: diedPanel
+      value: 
+      objectReference: {fileID: 166828653}
+    - target: {fileID: 356741821060982488, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
       propertyPath: startTime
-      value: 100
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 356741821060982488, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
       propertyPath: currentTime
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 356741821060982488, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
+      propertyPath: replayDisableObject
+      value: 
+      objectReference: {fileID: 166828653}
+    - target: {fileID: 917137520031366753, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
+      propertyPath: m_Color.b
+      value: 0.5566038
+      objectReference: {fileID: 0}
+    - target: {fileID: 917137520031366753, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
+      propertyPath: m_Color.g
+      value: 0.32355526
+      objectReference: {fileID: 0}
+    - target: {fileID: 917137520031366753, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
+      propertyPath: m_Color.r
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 931613278978098617, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -35560,6 +36385,34 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3040455975844965359, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3040455975844965359, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3040455975844965359, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3040455975844965359, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3040455975844965359, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3040455975844965359, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3040455975844965359, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3608117639040708900, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
       propertyPath: m_Layer
       value: 5
@@ -35568,9 +36421,53 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 5011022785512310177, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
+      propertyPath: time
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5011022785512310177, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
+      propertyPath: turns
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5011022785512310177, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
+      propertyPath: period
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5011022785512310177, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
+      propertyPath: arrowHandler
+      value: 
+      objectReference: {fileID: 2071666487}
+    - target: {fileID: 5011022785512310177, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
+      propertyPath: clockGradient.key0.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5011022785512310177, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
+      propertyPath: clockGradient.key0.g
+      value: 0.2048912
+      objectReference: {fileID: 0}
+    - target: {fileID: 5011022785512310177, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
+      propertyPath: clockGradient.key0.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5011022785512310177, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
+      propertyPath: clockGradient.key1.g
+      value: 0.21568629
+      objectReference: {fileID: 0}
+    - target: {fileID: 5011022785512310177, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
+      propertyPath: clockGradient.key1.r
+      value: 0.007843138
+      objectReference: {fileID: 0}
+    - target: {fileID: 5011022785512310177, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
+      propertyPath: clockGradient.m_ColorSpace
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5213686110412811291, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 318
+      objectReference: {fileID: 0}
+    - target: {fileID: 5213686110412811291, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -122
       objectReference: {fileID: 0}
     - target: {fileID: 5718149192655540775, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
       propertyPath: m_BlockingMask.m_Bits
@@ -35579,6 +36476,18 @@ PrefabInstance:
     - target: {fileID: 5718149192655540775, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
       propertyPath: m_IgnoreReversedGraphics
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5745613382915590947, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
+      propertyPath: m_Color.b
+      value: 0.65882355
+      objectReference: {fileID: 0}
+    - target: {fileID: 5745613382915590947, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
+      propertyPath: m_Color.g
+      value: 0.1254902
+      objectReference: {fileID: 0}
+    - target: {fileID: 5745613382915590947, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
+      propertyPath: m_Color.r
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6133911383140396491, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
       propertyPath: entity
@@ -35623,6 +36532,10 @@ PrefabInstance:
     - target: {fileID: 8348317558733260285, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
       propertyPath: m_Layer
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8348317558733260285, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8642770739786039748, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
       propertyPath: m_Layer
@@ -35732,12 +36645,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9181660372135916941, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9181660372135916941, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9181660372135916941, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8775828740479154031, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
       insertIndex: 0
       addedObject: {fileID: 2020110418}
+    - targetCorrespondingSourceObject: {fileID: 8775828740479154031, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 166828656}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
 --- !u!1001 &7991541847525400739
@@ -35804,6 +36732,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bottle
       objectReference: {fileID: 0}
+    - target: {fileID: 1125949228573653623, guid: 3021cfcaf0d4f714cbef1025851b7ce7, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -35825,6 +36757,10 @@ PrefabInstance:
     - target: {fileID: 7293141659354954032, guid: be86c53eb0608da40ad3cee370a4ce4b, type: 3}
       propertyPath: m_Name
       value: Chest (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7293141659354954032, guid: be86c53eb0608da40ad3cee370a4ce4b, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7961696867904136074, guid: be86c53eb0608da40ad3cee370a4ce4b, type: 3}
       propertyPath: m_LocalPosition.x

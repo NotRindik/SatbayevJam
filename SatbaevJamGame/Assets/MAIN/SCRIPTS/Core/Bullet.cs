@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
     public AudioClip shot;
 
     public BulletComponent bc;
+    public ParticleSystem hitEffect;
     private void Start()
     {
         AudioManager.instance.PlayAudioClip(shot);
@@ -28,13 +29,14 @@ public class Bullet : MonoBehaviour
         int layer = other.gameObject.layer;
         if (((1 << layer) & bc.DestroyLayer) != 0)
         {
+            Instantiate(hitEffect, transform.position, Quaternion.identity);
             Destroy(gameObject);
             return;
         }
 
         if (((1 << layer) & bc.DamageLayer) != 0)
         {
-            if(other.gameObject.TryGetComponent<Entity>(out Entity ent))
+            if (other.gameObject.TryGetComponent<Entity>(out Entity ent))
             {
                 var hp = ent.GetControllerSystem<HealthSystem>();
 
@@ -46,13 +48,26 @@ public class Bullet : MonoBehaviour
                     FindAnyObjectByType<PlayerUIManager>().AddTime(15);
                 }
 
+                // HITSTOP: коротка€ пауза дл€ всех сущностей
+                if (TimeDataManager.Instance != null)
+                {
+                    //TimeDataManager.Instance.DoHitStop(0.08f, () =>
+                    //{
+                    //    // «апускаем тр€ску камеры после восстановлени€
+                    //    CameraShake.Instance?.Shake(0.18f, 0.12f);
+                    //});
+
+                    Instantiate(hitEffect, transform.position, Quaternion.identity);
+
+                }
+
             }
             Destroy(gameObject);
         }
     }
 }
 [System.Serializable]
-public struct   BulletComponent : IComponent
+public struct BulletComponent : IComponent
 {
     public float speed;
     public float lifeTime;
@@ -60,7 +75,7 @@ public struct   BulletComponent : IComponent
     public Vector3 dir;
     public LayerMask DestroyLayer;
     public LayerMask DamageLayer;
-           public LayerMask PlayerLayer;
+    public LayerMask PlayerLayer;
 
     public DamageComponent damage;
 }

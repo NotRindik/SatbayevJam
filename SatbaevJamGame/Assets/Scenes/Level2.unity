@@ -8703,6 +8703,10 @@ PrefabInstance:
       propertyPath: 'serializationData.PrefabModificationsReferencedUnityObjects.Array.data[4]'
       value: 
       objectReference: {fileID: 758263417}
+    - target: {fileID: 5343914830086424558, guid: 091af8c8945fde34c955ada51799214d, type: 3}
+      propertyPath: ps.BulletPrefab
+      value: 
+      objectReference: {fileID: 3291958365060735898, guid: 1f275e00f57e7244ea8a8d574fb26272, type: 3}
     - target: {fileID: 5817287578815503174, guid: 091af8c8945fde34c955ada51799214d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.2394056
@@ -10060,6 +10064,42 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4115121366202345625, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
       propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5011022785512310177, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
+      propertyPath: time
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5011022785512310177, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
+      propertyPath: turns
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5011022785512310177, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
+      propertyPath: period
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5011022785512310177, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
+      propertyPath: clockGradient.key0.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5011022785512310177, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
+      propertyPath: clockGradient.key0.g
+      value: 0.11023998
+      objectReference: {fileID: 0}
+    - target: {fileID: 5011022785512310177, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
+      propertyPath: clockGradient.key0.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5011022785512310177, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
+      propertyPath: clockGradient.key1.g
+      value: 0.1254902
+      objectReference: {fileID: 0}
+    - target: {fileID: 5011022785512310177, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
+      propertyPath: clockGradient.key1.r
+      value: 0.007843138
+      objectReference: {fileID: 0}
+    - target: {fileID: 5011022785512310177, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
+      propertyPath: clockGradient.m_ColorSpace
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5213686110412811291, guid: 58b92c60ec8c0014a9c1abe064ee6063, type: 3}
